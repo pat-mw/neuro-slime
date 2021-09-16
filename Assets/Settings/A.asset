@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2665318e53759e74db7a2d8238331945, type: 3}
   m_Name: A
   m_EditorClassIdentifier: 
-  stepsPerFrame: 2
+  stepsPerFrame: 10
   width: 1920
   height: 1080
   numAgents: 250000
@@ -20,6 +20,7 @@ MonoBehaviour:
   trailWeight: 5
   decayRate: 0.2
   diffuseRate: 3
+  bitmapImage: {fileID: 0}
   speciesSettings:
   - moveSpeed: 20
     turnSpeed: 2

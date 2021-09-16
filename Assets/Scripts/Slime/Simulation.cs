@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using ComputeShaderUtility;
+using System.Collections.Generic;
+using Sirenix.OdinInspector;
 
-public class Simulation : MonoBehaviour
+public class Simulation : SerializedMonoBehaviour
 {
-	public enum SpawnMode { Random, Point, InwardCircle, RandomCircle }
+	public enum SpawnMode { Random, Point, InwardCircle, RandomCircle, Bitmap }
 
 	const int updateKernel = 0;
 	const int diffuseMapKernel = 1;
@@ -12,13 +14,18 @@ public class Simulation : MonoBehaviour
 
 	public ComputeShader compute;
 	public ComputeShader drawAgentsCS;
-
 	public SlimeSettings settings;
 
 	[Header("Display Settings")]
 	public bool showAgentsOnly;
 	public FilterMode filterMode = FilterMode.Point;
 	public GraphicsFormat format = ComputeHelper.defaultGraphicsFormat;
+
+	[Header("Bitmap (Optional)")]
+	public Texture2D bitmapImage;
+
+	[Header("MAPPINGS")]
+	public List<IMapping> Mappings;
 
 
 	[SerializeField, HideInInspector] protected RenderTexture trailMap;
@@ -50,6 +57,8 @@ public class Simulation : MonoBehaviour
 		compute.SetTexture(colourKernel, "ColourMap", displayTexture);
 		compute.SetTexture(colourKernel, "TrailMap", trailMap);
 
+
+		List<Vector2> positions = GetBlackDots(bitmapImage);
 		// Create agents with initial positions and angles
 		Agent[] agents = new Agent[settings.numAgents];
 		for (int i = 0; i < agents.Length; i++)
@@ -79,6 +88,26 @@ public class Simulation : MonoBehaviour
 				startPos = centre + Random.insideUnitCircle * settings.height * 0.15f;
 				angle = randomAngle;
 			}
+			else if (settings.spawnMode == SpawnMode.Bitmap)
+            {
+                try
+                {
+					if (!bitmapImage)
+					{
+						Debug.LogError("Attempting to spawn in Bitmap mode but no Bitmap provided in settings");
+						return;
+					}
+
+					int random_number = Random.Range(1, positions.Count);
+					startPos = Scalepoint(positions[random_number], bitmapImage);
+					angle = randomAngle;
+				}
+                catch (System.Exception)
+                {
+					Debug.LogError("Error reading bitmap image for spawn");
+                }
+                
+			}
 
 			Vector3Int speciesMask;
 			int speciesIndex = 0;
@@ -106,14 +135,13 @@ public class Simulation : MonoBehaviour
 
 		compute.SetInt("width", settings.width);
 		compute.SetInt("height", settings.height);
-
-
 	}
 
 	void FixedUpdate()
 	{
 		for (int i = 0; i < settings.stepsPerFrame; i++)
 		{
+			ApplyMappings();
 			RunSimulation();
 		}
 	}
@@ -131,6 +159,14 @@ public class Simulation : MonoBehaviour
 			ComputeHelper.Dispatch(compute, settings.width, settings.height, 1, kernelIndex : colourKernel);
 		}
 	}
+
+	void ApplyMappings()
+    {
+		foreach(IMapping mapping in Mappings)
+        {
+			mapping.Map();
+        }
+    }
 
 	void RunSimulation()
 	{
@@ -169,4 +205,35 @@ public class Simulation : MonoBehaviour
 	}
 
 
+	public static List<Vector2> GetBlackDots(Texture2D myBitmap)
+	{
+		List<Vector2> BlackList = new List<Vector2>();
+		for (int i = 0; i < myBitmap.width; i++)
+		{
+			for (int j = 0; j < myBitmap.height; j++)
+			{
+				Color pixelColor = myBitmap.GetPixel(i, j);
+				if (pixelColor == Color.black)
+				{
+					BlackList.Add(new Vector2(i, j));
+
+				}
+			}
+		}
+		return BlackList;
+	}
+
+
+	public Vector2 Scalepoint(Vector2 point, Texture2D myBitmap)
+	{
+		float scaley = settings.height / myBitmap.height;
+
+		float scalex = settings.width / myBitmap.width;
+		Vector2 newpoint = new Vector2();
+		newpoint.x = (float)point.x * scalex;
+
+		newpoint.y = (float)point.y * scaley;
+
+		return newpoint;
+	}
 }

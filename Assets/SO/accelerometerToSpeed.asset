@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15cf9e7364c922e46884a9840c0d7d76, type: 3}
+  m_Name: accelerometerToSpeed
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mapType: 2
+  influencer:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: 835dbdfd0c679114f8ae5987e15d50d3, type: 2}
+  receiver:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: 3deed49a2c5aefa47afaf0715e2c7a81, type: 2}
