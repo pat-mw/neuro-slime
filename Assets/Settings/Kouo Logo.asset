@@ -12,18 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2665318e53759e74db7a2d8238331945, type: 3}
   m_Name: Kouo Logo
   m_EditorClassIdentifier: 
-  stepsPerFrame: 2
   width: 1080
   height: 720
+  stepsPerFrame: 3
   numAgents: 250000
   spawnMode: 4
-  trailWeight: 5
-  decayRate: 0.2
-  diffuseRate: 3
+  trailWeight: 20.7
+  decayRate: 8.2
+  diffuseRate: 25.4
   speciesSettings:
-  - moveSpeed: 20
-    turnSpeed: 2
-    sensorAngleSpacing: 30
-    sensorOffsetDst: 35
-    sensorSize: 1
+  - moveSpeed: 4.3
+    turnSpeed: -9.9
+    sensorAngleSpacing: 98.5
+    sensorOffsetDst: -67
+    sensorSize: 4
     colour: {r: 1, g: 1, b: 1, a: 0}
+  - moveSpeed: 10.3
+    turnSpeed: 3
+    sensorAngleSpacing: 92.5
+    sensorOffsetDst: 1
+    sensorSize: 4
+    colour: {r: 1, g: 0.63962233, b: 0, a: 0}
+  - moveSpeed: 94.8
+    turnSpeed: 2.9
+    sensorAngleSpacing: 82
+    sensorOffsetDst: -35
+    sensorSize: 8
+    colour: {r: 0.9622642, g: 0, b: 0.45416358, a: 0}

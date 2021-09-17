@@ -1,0 +1,69 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "cum",
+    "stepsPerFrame": 4,
+    "width": 1080,
+    "height": 720,
+    "numAgents": 250000,
+    "spawnMode": 4,
+    "trailWeight": 13.8,
+    "decayRate": 7.9,
+    "diffuseRate": 0,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 11.5,
+                "turnSpeed": 12.2,
+                "sensorAngleSpacing": 30,
+                "sensorOffsetDst": 35,
+                "sensorSize": 1,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    0
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 10.3,
+                "turnSpeed": 3,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 1,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    1,
+                    0.639622331,
+                    0,
+                    0
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 7.75,
+                "turnSpeed": -11.74,
+                "sensorAngleSpacing": 1.62,
+                "sensorOffsetDst": 2.05,
+                "sensorSize": 2,
+                "colour": {
+                    "$type": 3,
+                    0.9622642,
+                    0,
+                    0.454163581,
+                    0
+                }
+            }
+        ]
+    },
+    "spawnBitmap": {
+        "$id": 2,
+        "$type": "4|UnityEngine.Texture2D, UnityEngine.CoreModule"
+    }
+}

@@ -342,12 +342,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca480157b3ca15940b24e48b796dadd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: a20e9cbbe6cf17e4f9199f7fac128d7f, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: brainData
+      Entry: 10
+      Data: 0
   osc: {fileID: 1799366362}
   bandpowerKey: /band
   signalKey: /signal
   accelerometerKey: /accelerometer
   handler: 1
-  brainData: {fileID: 11400000, guid: a20e9cbbe6cf17e4f9199f7fac128d7f, type: 2}
 --- !u!4 &565484693
 Transform:
   m_ObjectHideFlags: 0
@@ -471,16 +483,129 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0173053465a956443813261665491110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: settings
+      Entry: 10
+      Data: 0
+    - Name: slimePresetList
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[SlimePreset, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: currentPreset
+      Entry: 7
+      Data: 1|SlimePreset, Assembly-CSharp
+    - Name: presetName
+      Entry: 1
+      Data: BobTheBuilder
+    - Name: stepsPerFrame
+      Entry: 3
+      Data: 2
+    - Name: width
+      Entry: 3
+      Data: 1080
+    - Name: height
+      Entry: 3
+      Data: 720
+    - Name: numAgents
+      Entry: 3
+      Data: 250000
+    - Name: spawnMode
+      Entry: 3
+      Data: 4
+    - Name: trailWeight
+      Entry: 4
+      Data: 5
+    - Name: decayRate
+      Entry: 4
+      Data: 0.2
+    - Name: diffuseRate
+      Entry: 4
+      Data: 3
+    - Name: speciesSettings
+      Entry: 7
+      Data: 2|SlimeSettings+SpeciesSettings[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: SlimeSettings+SpeciesSettings, Assembly-CSharp
+    - Name: moveSpeed
+      Entry: 4
+      Data: 20
+    - Name: turnSpeed
+      Entry: 4
+      Data: 2
+    - Name: sensorAngleSpacing
+      Entry: 4
+      Data: 30
+    - Name: sensorOffsetDst
+      Entry: 4
+      Data: 35
+    - Name: sensorSize
+      Entry: 3
+      Data: 1
+    - Name: colour
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: spawnBitmap
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   compute: {fileID: 7200000, guid: a0aea66b8c503e748bb334583d5db67c, type: 3}
   drawAgentsCS: {fileID: 7200000, guid: 9d6969cce8474ed4899115f5d816b0a5, type: 3}
-  settings: {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
-  showAgentsOnly: 1
+  showAgentsOnly: 0
   filterMode: 1
   format: 48
-  bitmapImage: {fileID: 2800000, guid: c104953ad514bea4a8708c0ac09829d6, type: 3}
+  spawnBitmap: {fileID: 2800000, guid: c104953ad514bea4a8708c0ac09829d6, type: 3}
   trailMap: {fileID: 0}
   diffusedTrailMap: {fileID: 0}
   displayTexture: {fileID: 0}
+  saveFolder: Presets
 --- !u!4 &1531495863
 Transform:
   m_ObjectHideFlags: 0

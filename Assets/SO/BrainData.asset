@@ -20,10 +20,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: floatMappings
-      Entry: 6
-      Data: 
+    SerializationNodes: []
   leftBands:
     channelNo: 1
     delta: 0

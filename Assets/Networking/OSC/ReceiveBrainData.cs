@@ -28,7 +28,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     [SerializeField] private HandlerMode handler = HandlerMode.Custom;
 
     [Header("DATA STORE")]
-    [OdinSerialize] private BrainDataStore brainData;
+    [OdinSerialize] private BrainData brainData;
 
     void Start()
     {
@@ -38,9 +38,9 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                 osc.SetAllMessageHandler(OnReceiveAnything);
                 break;
             case HandlerMode.Default:
-                //osc.SetAddressHandler(bandpowerKey, OnReceiveBandpower);
+                osc.SetAddressHandler(bandpowerKey, OnReceiveBandpower);
                 osc.SetAddressHandler(signalKey, OnReceiveSignal);
-                //osc.SetAddressHandler(accelerometerKey, OnReceiveAccelerometer);
+                osc.SetAddressHandler(accelerometerKey, OnReceiveAccelerometer);
                 break;
             default:
                 Debug.LogError($"Handler mode not recognised: {handler}");

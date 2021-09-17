@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Simulation))]
+
+
+class Bob{
+
+}
+[CustomEditor(typeof(Bob))]
 public class SimulationEditor : Editor
 {
 

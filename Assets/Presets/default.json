@@ -1,0 +1,39 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "default",
+    "stepsPerFrame": 2,
+    "width": 1080,
+    "height": 720,
+    "numAgents": 253388,
+    "spawnMode": 2,
+    "trailWeight": 5,
+    "decayRate": 0.2,
+    "diffuseRate": 3,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 1,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 20,
+                "turnSpeed": 2,
+                "sensorAngleSpacing": 30,
+                "sensorOffsetDst": 35,
+                "sensorSize": 1,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    0
+                }
+            }
+        ]
+    },
+    "spawnBitmap": {
+        "$id": 2,
+        "$type": "4|UnityEngine.Texture2D, UnityEngine.CoreModule"
+    }
+}

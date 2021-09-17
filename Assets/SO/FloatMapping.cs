@@ -16,23 +16,25 @@ public class FloatMapping : SerializedScriptableObject, IMapping
 
     public void Map()
     {
-        FloatMappings.ApplyMap(mapType, influencer.Value, ref receiver);
+        Mappings.ApplyMap(mapType, influencer.Value, ref receiver);
     }
-}
 
 
-public static class FloatMappings
-{
-    public static void ApplyMap(MapType type, float influencer, ref FloatReference receiver)
+    public static class Mappings
     {
-        switch (type)
+        public static void ApplyMap(MapType type, float influencer, ref FloatReference receiver)
         {
-            case MapType.Follow:
-                receiver.Value = influencer;
-                break;
-            default:
-                receiver.Value = 0;
-                break;
+            switch (type)
+            {
+                case MapType.Follow:
+                    receiver.Value = influencer;
+                    break;
+                default:
+                    receiver.Value = 0;
+                    break;
+            }
         }
     }
 }
+
+
