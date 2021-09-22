@@ -14,28 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 1080
   height: 720
-  stepsPerFrame: 3
-  numAgents: 250000
+  stepsPerFrame: 6
+  numAgents: 100
   spawnMode: 4
-  trailWeight: 20.7
-  decayRate: 8.2
-  diffuseRate: 25.4
-  speciesSettings:
-  - moveSpeed: 4.3
-    turnSpeed: -9.9
-    sensorAngleSpacing: 98.5
-    sensorOffsetDst: -67
-    sensorSize: 4
-    colour: {r: 1, g: 1, b: 1, a: 0}
-  - moveSpeed: 10.3
-    turnSpeed: 3
-    sensorAngleSpacing: 92.5
-    sensorOffsetDst: 1
-    sensorSize: 4
-    colour: {r: 1, g: 0.63962233, b: 0, a: 0}
-  - moveSpeed: 94.8
-    turnSpeed: 2.9
-    sensorAngleSpacing: 82
-    sensorOffsetDst: -35
-    sensorSize: 8
-    colour: {r: 0.9622642, g: 0, b: 0.45416358, a: 0}
+  trailWeight: 0
+  decayRate: 0.1
+  diffuseRate: 0
+  speciesSettings: []

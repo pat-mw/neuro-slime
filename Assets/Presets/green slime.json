@@ -1,15 +1,15 @@
 {
     "$id": 0,
     "$type": "0|SlimePreset, Assembly-CSharp",
-    "presetName": "default",
-    "stepsPerFrame": 2,
+    "presetName": "green slime",
+    "stepsPerFrame": 4,
     "width": 1080,
     "height": 720,
-    "numAgents": 253388,
+    "numAgents": 6064,
     "spawnMode": 2,
-    "trailWeight": 5,
-    "decayRate": 0.2,
-    "diffuseRate": 3,
+    "trailWeight": 72.8,
+    "decayRate": 2.1,
+    "diffuseRate": 60.7,
     "speciesSettings": {
         "$id": 1,
         "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
@@ -17,16 +17,16 @@
         "$rcontent": [
             {
                 "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
-                "moveSpeed": 20,
+                "moveSpeed": 5.9,
                 "turnSpeed": 2,
                 "sensorAngleSpacing": 30,
                 "sensorOffsetDst": 35,
                 "sensorSize": 1,
                 "colour": {
                     "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    0.6717651,
                     1,
-                    1,
-                    1,
+                    0.3254717,
                     0
                 }
             }

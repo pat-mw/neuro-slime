@@ -19,18 +19,6 @@ public class Simulation : SerializedMonoBehaviour
 	[Header("SLIME SETTINGS")]
 	[InlineEditor(InlineEditorModes.FullEditor)]
 	[NonSerialized][OdinSerialize] public SlimeSettings settings;
-	
-	//[Min(1)] public int stepsPerFrame = 1;
-	//public int width = 1280;
-	//public int height = 720;
-	//public int numAgents = 100;
-	//public Simulation.SpawnMode spawnMode;
-
-	//[Header("Trail Settings")]
-	//public float trailWeight = 1;
-	//public float decayRate = 1;
-	//public float diffuseRate = 1;
-
 
 	[Header("SHADERS")]
 	public ComputeShader compute;
@@ -43,6 +31,15 @@ public class Simulation : SerializedMonoBehaviour
 
 	[Header("SPAWN SHAPE (Optional)")]
 	public Texture2D spawnBitmap;
+
+	[Header("PRESETS")]
+	[SerializeField] private string saveFolder = "Presets";
+	[ListDrawerSettings(ShowIndexLabels = true, ShowPaging = true, ShowItemCount = true, HideRemoveButton = false, ListElementLabelName = "presetName")]
+	[OdinSerialize] private List<SlimePreset> slimePresetList = new List<SlimePreset>();
+
+	[OnValueChanged("ChangePreset")]
+	[ValueDropdown("GetAllCurrentlyLoadedPresets", DropdownTitle = "Select current preset", IsUniqueList = true)]
+	[OdinSerialize] private SlimePreset currentPreset;
 
 	//[Header("MAPPINGS")]
 	//public List<IMapping> Mappings;
@@ -258,14 +255,7 @@ public class Simulation : SerializedMonoBehaviour
 	}
 
 
-	[Header("PRESETS")]
-	[SerializeField] private string saveFolder = "Presets";
-	[ListDrawerSettings(ShowIndexLabels = true, ShowPaging = true, ShowItemCount = true, HideRemoveButton = false, ListElementLabelName = "presetName")]
-	[OdinSerialize] private List<SlimePreset> slimePresetList = new List<SlimePreset>();
 
-	[OnValueChanged("ChangePreset")]
-	[ValueDropdown("GetAllCurrentlyLoadedPresets", DropdownTitle = "Select current preset", IsUniqueList = true)]
-	[OdinSerialize] private SlimePreset currentPreset;
 
 
 	[Button]
@@ -304,7 +294,8 @@ public class Simulation : SerializedMonoBehaviour
 
 	private void RefreshSlimePresetList()
 	{
-		//var folder = Application.dataPath + $"/{saveFolder}/";
+		slimePresetList.Clear();
+
 		var folder = $"Assets/{saveFolder}/";
 
 		Debug.Log($"Attempting to load existing presets from folder: {folder}");
@@ -351,6 +342,7 @@ public class Simulation : SerializedMonoBehaviour
 
 	private void ChangePreset(SlimePreset slimePreset)
 	{
+		// then set the preset
 		currentPreset = slimePreset;
 		settings.width = currentPreset.width;
 		settings.height = currentPreset.height;
@@ -366,6 +358,13 @@ public class Simulation : SerializedMonoBehaviour
     {
 		currentPreset = null;
 		slimePresetList.Clear();
-    }
+
+		settings.numAgents = 0;
+		settings.spawnMode = SpawnMode.Bitmap;
+		settings.trailWeight = 0;
+		settings.decayRate = 0;
+		settings.diffuseRate = 0;
+		settings.speciesSettings = null;
+	}
 
 }

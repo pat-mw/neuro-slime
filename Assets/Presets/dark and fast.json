@@ -1,15 +1,15 @@
 {
     "$id": 0,
     "$type": "0|SlimePreset, Assembly-CSharp",
-    "presetName": "cum",
-    "stepsPerFrame": 4,
+    "presetName": "dark and fast",
+    "stepsPerFrame": 10,
     "width": 1080,
     "height": 720,
-    "numAgents": 250000,
+    "numAgents": 18903,
     "spawnMode": 4,
-    "trailWeight": 13.8,
-    "decayRate": 7.9,
-    "diffuseRate": 0,
+    "trailWeight": 10.34,
+    "decayRate": 0.1,
+    "diffuseRate": 100,
     "speciesSettings": {
         "$id": 1,
         "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
@@ -17,8 +17,8 @@
         "$rcontent": [
             {
                 "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
-                "moveSpeed": 11.5,
-                "turnSpeed": 12.2,
+                "moveSpeed": 52.2,
+                "turnSpeed": 2,
                 "sensorAngleSpacing": 30,
                 "sensorOffsetDst": 35,
                 "sensorSize": 1,
@@ -32,22 +32,22 @@
             },
             {
                 "$type": 2,
-                "moveSpeed": 10.3,
+                "moveSpeed": 28.1,
                 "turnSpeed": 3,
                 "sensorAngleSpacing": 0,
                 "sensorOffsetDst": 1,
                 "sensorSize": 4,
                 "colour": {
                     "$type": 3,
-                    1,
-                    0.639622331,
                     0,
+                    0.0601561069,
+                    1,
                     0
                 }
             },
             {
                 "$type": 2,
-                "moveSpeed": 7.75,
+                "moveSpeed": 26.5,
                 "turnSpeed": -11.74,
                 "sensorAngleSpacing": 1.62,
                 "sensorOffsetDst": 2.05,

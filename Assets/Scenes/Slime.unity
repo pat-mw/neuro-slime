@@ -602,10 +602,11 @@ MonoBehaviour:
   filterMode: 1
   format: 48
   spawnBitmap: {fileID: 2800000, guid: c104953ad514bea4a8708c0ac09829d6, type: 3}
+  saveFolder: Presets
+  loadDefault: 1
   trailMap: {fileID: 0}
   diffusedTrailMap: {fileID: 0}
   displayTexture: {fileID: 0}
-  saveFolder: Presets
 --- !u!4 &1531495863
 Transform:
   m_ObjectHideFlags: 0

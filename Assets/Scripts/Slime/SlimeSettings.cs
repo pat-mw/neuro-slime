@@ -32,13 +32,13 @@ public class SlimeSettings : ScriptableObject
 	public struct SpeciesSettings
 	{
 		[Header("Movement Settings")]
-		[Range(1, 100)] public float moveSpeed;
+		[Range(0, 100)] public float moveSpeed;
 		[Range(-15, 15)] public float turnSpeed;
 
 		[Header("Sensor Settings")]
 		[Range(0, 100)] public float sensorAngleSpacing;
 		[Range(-75, 75)] public float sensorOffsetDst;
-		[Range(1, 10)] public int sensorSize;
+		[Range(0, 10)] public int sensorSize;
 
 		[Header("Display settings")]
 		public Color colour;

@@ -1,14 +1,14 @@
 {
     "$id": 0,
     "$type": "0|SlimePreset, Assembly-CSharp",
-    "presetName": "brightGlow",
+    "presetName": "glow pink blue",
     "stepsPerFrame": 1,
     "width": 1080,
     "height": 720,
     "numAgents": 250000,
     "spawnMode": 4,
     "trailWeight": 10.34,
-    "decayRate": 0.9,
+    "decayRate": 0.1,
     "diffuseRate": 100,
     "speciesSettings": {
         "$id": 1,
@@ -39,9 +39,9 @@
                 "sensorSize": 4,
                 "colour": {
                     "$type": 3,
-                    1,
-                    0.639622331,
                     0,
+                    0.0601561069,
+                    1,
                     0
                 }
             },
@@ -54,9 +54,9 @@
                 "sensorSize": 2,
                 "colour": {
                     "$type": 3,
-                    1,
-                    0.930357933,
-                    0.6650944,
+                    0.9622642,
+                    0,
+                    0.454163581,
                     0
                 }
             }

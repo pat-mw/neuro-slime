@@ -1,0 +1,54 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "forrest fire",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 720,
+    "numAgents": 130708,
+    "spawnMode": 4,
+    "trailWeight": 79.7,
+    "decayRate": 3.3,
+    "diffuseRate": 9.2,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 2,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 66.3,
+                "turnSpeed": 15,
+                "sensorAngleSpacing": 21.4,
+                "sensorOffsetDst": 1,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    0,
+                    0.2310667,
+                    0
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 61.8,
+                "turnSpeed": -15,
+                "sensorAngleSpacing": 23.6,
+                "sensorOffsetDst": 1,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.332321882,
+                    1,
+                    0,
+                    0
+                }
+            }
+        ]
+    },
+    "spawnBitmap": {
+        "$id": 2,
+        "$type": "4|UnityEngine.Texture2D, UnityEngine.CoreModule"
+    }
+}

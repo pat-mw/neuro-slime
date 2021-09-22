@@ -1,15 +1,15 @@
 {
     "$id": 0,
     "$type": "0|SlimePreset, Assembly-CSharp",
-    "presetName": "brightGlow",
-    "stepsPerFrame": 1,
+    "presetName": "matrix",
+    "stepsPerFrame": 10,
     "width": 1080,
     "height": 720,
-    "numAgents": 250000,
+    "numAgents": 18903,
     "spawnMode": 4,
-    "trailWeight": 10.34,
-    "decayRate": 0.9,
-    "diffuseRate": 100,
+    "trailWeight": 11.9,
+    "decayRate": 0.1,
+    "diffuseRate": 0,
     "speciesSettings": {
         "$id": 1,
         "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
@@ -17,46 +17,46 @@
         "$rcontent": [
             {
                 "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
-                "moveSpeed": 20,
+                "moveSpeed": 52.2,
                 "turnSpeed": 2,
                 "sensorAngleSpacing": 30,
                 "sensorOffsetDst": 35,
                 "sensorSize": 1,
                 "colour": {
                     "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    0.935144544,
                     1,
-                    1,
-                    1,
+                    0.8820755,
                     0
                 }
             },
             {
                 "$type": 2,
-                "moveSpeed": 10.3,
+                "moveSpeed": 28.1,
                 "turnSpeed": 3,
                 "sensorAngleSpacing": 0,
                 "sensorOffsetDst": 1,
                 "sensorSize": 4,
                 "colour": {
                     "$type": 3,
-                    1,
-                    0.639622331,
+                    0.171686083,
+                    0.5943396,
                     0,
                     0
                 }
             },
             {
                 "$type": 2,
-                "moveSpeed": 7.75,
+                "moveSpeed": 26.5,
                 "turnSpeed": -11.74,
                 "sensorAngleSpacing": 1.62,
                 "sensorOffsetDst": 2.05,
                 "sensorSize": 2,
                 "colour": {
                     "$type": 3,
-                    1,
-                    0.930357933,
-                    0.6650944,
+                    0,
+                    0.3490566,
+                    0.0103011671,
                     0
                 }
             }

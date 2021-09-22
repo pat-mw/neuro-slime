@@ -1,0 +1,39 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "smoke",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 720,
+    "numAgents": 250000,
+    "spawnMode": 4,
+    "trailWeight": 10.34,
+    "decayRate": 0.9,
+    "diffuseRate": 100,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 1,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 43.1,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 16.1,
+                "sensorOffsetDst": 0,
+                "sensorSize": 1,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    0.9245283,
+                    0.9054413,
+                    0.876557469,
+                    0
+                }
+            }
+        ]
+    },
+    "spawnBitmap": {
+        "$id": 2,
+        "$type": "4|UnityEngine.Texture2D, UnityEngine.CoreModule"
+    }
+}
