@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Kouo Logo
   m_EditorClassIdentifier: 
   width: 1080
-  height: 720
-  stepsPerFrame: 6
-  numAgents: 100
+  height: 1080
+  stepsPerFrame: 1
+  numAgents: 0
   spawnMode: 4
   trailWeight: 0
-  decayRate: 0.1
+  decayRate: 0
   diffuseRate: 0
   speciesSettings: []

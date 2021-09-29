@@ -1,15 +1,15 @@
 {
     "$id": 0,
     "$type": "0|SlimePreset, Assembly-CSharp",
-    "presetName": "celluloid",
-    "stepsPerFrame": 1,
+    "presetName": "electric logo",
+    "stepsPerFrame": 6,
     "width": 1080,
-    "height": 720,
+    "height": 1080,
     "numAgents": 212020,
-    "spawnMode": 1,
-    "trailWeight": 26.1,
-    "decayRate": 20,
-    "diffuseRate": 17.3,
+    "spawnMode": 4,
+    "trailWeight": 39,
+    "decayRate": 2.7,
+    "diffuseRate": 14.6,
     "speciesSettings": {
         "$id": 1,
         "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
@@ -17,11 +17,11 @@
         "$rcontent": [
             {
                 "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
-                "moveSpeed": 66.6,
-                "turnSpeed": -4.3,
+                "moveSpeed": 0,
+                "turnSpeed": -0.3,
                 "sensorAngleSpacing": 100,
-                "sensorOffsetDst": -23,
-                "sensorSize": 8,
+                "sensorOffsetDst": 75,
+                "sensorSize": 1,
                 "colour": {
                     "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
                     1,
@@ -35,13 +35,13 @@
                 "moveSpeed": 100,
                 "turnSpeed": 13.2,
                 "sensorAngleSpacing": 21.4,
-                "sensorOffsetDst": 29,
+                "sensorOffsetDst": 19,
                 "sensorSize": 1,
                 "colour": {
                     "$type": 3,
-                    1,
                     0,
-                    0.9635534,
+                    0.9587312,
+                    1,
                     0
                 }
             },
@@ -51,12 +51,12 @@
                 "turnSpeed": 14.3,
                 "sensorAngleSpacing": 0,
                 "sensorOffsetDst": -74,
-                "sensorSize": 10,
+                "sensorSize": 1,
                 "colour": {
                     "$type": 3,
-                    0,
-                    0.8607614,
-                    0.9607843,
+                    0.9103774,
+                    1,
+                    0.936577737,
                     0
                 }
             }

@@ -2,9 +2,9 @@
     "$id": 0,
     "$type": "0|SlimePreset, Assembly-CSharp",
     "presetName": "BobTheBuilder",
-    "stepsPerFrame": 2,
+    "stepsPerFrame": 6,
     "width": 1080,
-    "height": 720,
+    "height": 1080,
     "numAgents": 250000,
     "spawnMode": 4,
     "trailWeight": 5,
@@ -31,5 +31,9 @@
                 }
             }
         ]
+    },
+    "spawnBitmap": {
+        "$id": 2,
+        "$type": "4|UnityEngine.Texture2D, UnityEngine.CoreModule"
     }
 }

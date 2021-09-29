@@ -1,0 +1,51 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "purple bursts",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 250000,
+    "spawnMode": 4,
+    "trailWeight": 18.3,
+    "decayRate": 1.2,
+    "diffuseRate": 78.8,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 2,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 100,
+                "turnSpeed": -15,
+                "sensorAngleSpacing": 69,
+                "sensorOffsetDst": -47,
+                "sensorSize": 1,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    0,
+                    0.990587234,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 82,
+                "turnSpeed": 3,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": -1,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.2924528,
+                    0.1972677,
+                    0.280216455,
+                    0
+                }
+            }
+        ]
+    },
+    "spawnBitmap": null
+}

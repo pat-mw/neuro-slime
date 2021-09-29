@@ -20,7 +20,7 @@ public class SlimePreset
         (string _presetName, int _stepsPerFrame, int _width, int _height,
          int _numAgents, Simulation.SpawnMode _spawnMode, float _trailWeight, 
          float _decayRate, float _diffuseRate, 
-         SlimeSettings.SpeciesSettings[] _speciesSettings, Texture2D _spawnBitmap)
+         SlimeSettings.SpeciesSettings[] _speciesSettings)
     {
         presetName = _presetName;
         stepsPerFrame = _stepsPerFrame;
@@ -32,8 +32,6 @@ public class SlimePreset
         decayRate = _decayRate;
         diffuseRate = _diffuseRate;
         speciesSettings = _speciesSettings;
-        spawnBitmap = _spawnBitmap;
-
         Debug.Log($"Initialised Slime Preset: {presetName}");
     }
 }

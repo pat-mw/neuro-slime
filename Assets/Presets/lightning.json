@@ -1,15 +1,15 @@
 {
     "$id": 0,
     "$type": "0|SlimePreset, Assembly-CSharp",
-    "presetName": "default",
-    "stepsPerFrame": 1,
+    "presetName": "lightning",
+    "stepsPerFrame": 6,
     "width": 1080,
-    "height": 720,
-    "numAgents": 212020,
+    "height": 1080,
+    "numAgents": 18903,
     "spawnMode": 4,
-    "trailWeight": 39,
-    "decayRate": 2.7,
-    "diffuseRate": 14.6,
+    "trailWeight": 10.34,
+    "decayRate": 0.1,
+    "diffuseRate": 100,
     "speciesSettings": {
         "$id": 1,
         "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
@@ -17,10 +17,10 @@
         "$rcontent": [
             {
                 "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
-                "moveSpeed": 0,
-                "turnSpeed": -0.3,
-                "sensorAngleSpacing": 100,
-                "sensorOffsetDst": 75,
+                "moveSpeed": 52.2,
+                "turnSpeed": 2,
+                "sensorAngleSpacing": 30,
+                "sensorOffsetDst": 35,
                 "sensorSize": 1,
                 "colour": {
                     "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
@@ -32,31 +32,31 @@
             },
             {
                 "$type": 2,
-                "moveSpeed": 100,
-                "turnSpeed": 13.2,
-                "sensorAngleSpacing": 21.4,
-                "sensorOffsetDst": 19,
-                "sensorSize": 1,
+                "moveSpeed": 72.2,
+                "turnSpeed": -5.6,
+                "sensorAngleSpacing": 40.4,
+                "sensorOffsetDst": 1,
+                "sensorSize": 4,
                 "colour": {
                     "$type": 3,
                     0,
-                    0.9587312,
+                    0.0601561069,
                     1,
                     0
                 }
             },
             {
                 "$type": 2,
-                "moveSpeed": 1,
-                "turnSpeed": 14.3,
-                "sensorAngleSpacing": 0,
-                "sensorOffsetDst": -74,
-                "sensorSize": 1,
+                "moveSpeed": 80.5,
+                "turnSpeed": -8.3,
+                "sensorAngleSpacing": 29.3,
+                "sensorOffsetDst": 2.05,
+                "sensorSize": 2,
                 "colour": {
                     "$type": 3,
-                    0.9103774,
-                    1,
-                    0.936577737,
+                    0.9622642,
+                    0,
+                    0.454163581,
                     0
                 }
             }

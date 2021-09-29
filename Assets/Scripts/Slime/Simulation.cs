@@ -20,6 +20,9 @@ public class Simulation : SerializedMonoBehaviour
 	[InlineEditor(InlineEditorModes.FullEditor)]
 	[NonSerialized][OdinSerialize] public SlimeSettings settings;
 
+	[Header("MAPPINGS")]
+	public List<IMapping> Mappings;
+
 	[Header("SHADERS")]
 	public ComputeShader compute;
 	public ComputeShader drawAgentsCS;
@@ -41,10 +44,42 @@ public class Simulation : SerializedMonoBehaviour
 	[ValueDropdown("GetAllCurrentlyLoadedPresets", DropdownTitle = "Select current preset", IsUniqueList = true)]
 	[OdinSerialize] private SlimePreset currentPreset;
 
-	//[Header("MAPPINGS")]
-	//public List<IMapping> Mappings;
 
-	[SerializeField, HideInInspector] protected RenderTexture trailMap;
+	[Button]
+	public void SavePreset(string presetName)
+	{
+		if (presetName == null)
+			presetName = $"NewSlime_{System.DateTime.Now}";
+
+		SlimePreset slimePreset = new SlimePreset(
+			presetName, settings.stepsPerFrame, settings.width, settings.height, settings.numAgents,
+			settings.spawnMode, settings.trailWeight, settings.decayRate,
+			settings.diffuseRate, settings.speciesSettings);
+
+		SlimeSerializer.SaveSlimePreset(slimePreset, saveFolder);
+		slimePresetList.Add(slimePreset);
+	}
+
+	[Button]
+	public void LoadPreset(string presetName)
+	{
+		if (presetName == null)
+			throw new System.Exception("Preset Name cannot be null, please add name before saving");
+
+		try
+		{
+			string savePath = $"{saveFolder}/{presetName}.json";
+			SlimePreset slimePreset = SlimeSerializer.LoadSlimePreset(savePath);
+			slimePresetList.Add(slimePreset);
+			ChangePreset(slimePreset);
+		}
+		catch (System.Exception e)
+		{
+			Debug.LogError($"Error loading slime preset: {presetName} \n Full Exception: {e}");
+		}
+	}
+
+    [SerializeField, HideInInspector] protected RenderTexture trailMap;
 	[SerializeField, HideInInspector] protected RenderTexture diffusedTrailMap;
 	[SerializeField, HideInInspector] protected RenderTexture displayTexture;
 
@@ -110,6 +145,8 @@ public class Simulation : SerializedMonoBehaviour
             {
                 try
                 {
+					Debug.Log("Trying to load via bitmap");
+
 					if (!spawnBitmap)
 					{
 						Debug.LogError("Attempting to spawn in Bitmap mode but no Bitmap provided in settings");
@@ -120,9 +157,9 @@ public class Simulation : SerializedMonoBehaviour
 					startPos = Scalepoint(positions[random_number], spawnBitmap);
 					angle = randomAngle;
 				}
-                catch (System.Exception)
+                catch (System.Exception ex)
                 {
-					Debug.LogError("Error reading bitmap image for spawn");
+					Debug.LogError($"Error reading bitmap image for spawn: {ex}");
                 }
                 
 			}
@@ -159,7 +196,7 @@ public class Simulation : SerializedMonoBehaviour
 	{
 		for (int i = 0; i < settings.stepsPerFrame; i++)
 		{
-			//ApplyMappings();
+			ApplyMappings();
 			RunSimulation();
 		}
 	}
@@ -180,10 +217,11 @@ public class Simulation : SerializedMonoBehaviour
 
 	void ApplyMappings()
     {
-		//foreach(IMapping mapping in Mappings)
-		//{
-		//	mapping.Map();
-		//}
+        foreach (IMapping mapping in Mappings)
+        {
+			//Debug.Log($"Applying mapping: {mapping}");
+            mapping.Map();
+        }
     }
 
 	void RunSimulation()
@@ -258,39 +296,7 @@ public class Simulation : SerializedMonoBehaviour
 
 
 
-	[Button]
-	public void SavePreset(string presetName)
-	{
-		if (presetName == null)
-			presetName = $"NewSlime_{System.DateTime.Now}";
-
-		SlimePreset slimePreset = new SlimePreset(
-			presetName, settings.stepsPerFrame, settings.width, settings.height, settings.numAgents,
-			settings.spawnMode, settings.trailWeight, settings.decayRate, 
-			settings.diffuseRate, settings.speciesSettings, spawnBitmap);
-
-		SlimeSerializer.SaveSlimePreset(slimePreset, saveFolder);
-		slimePresetList.Add(slimePreset);
-	}
-
-	[Button]
-	public void LoadPreset(string presetName)
-	{
-		if (presetName == null)
-			throw new System.Exception("Preset Name cannot be null, please add name before saving");
-
-		try
-		{
-			string savePath = $"{saveFolder}/{presetName}.json";
-			SlimePreset slimePreset = SlimeSerializer.LoadSlimePreset(savePath);
-			slimePresetList.Add(slimePreset);
-			ChangePreset(slimePreset);
-		}
-		catch (System.Exception e)
-		{
-			Debug.LogError($"Error loading slime preset: {presetName} \n Full Exception: {e}");
-		}
-	}
+	
 
 	private void RefreshSlimePresetList()
 	{

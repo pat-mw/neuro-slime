@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,7 +266,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -282,7 +282,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 4.5
   m_Depth: -1
   m_CullingMask:
@@ -307,7 +307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -8.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1281355259
 Transform:
   m_ObjectHideFlags: 0
@@ -454,6 +454,87 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1477882165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1477882166}
+  - component: {fileID: 1477882168}
+  - component: {fileID: 1477882167}
+  m_Layer: 0
+  m_Name: logo quad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1477882166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477882165}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.25}
+  m_LocalScale: {x: 9, y: 9, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1531495863}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1477882167
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477882165}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 742694142e9c07f49952f644acad049e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1477882168
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477882165}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1531495861
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +569,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
+    - {fileID: 2800000, guid: 5a4cebc11b9d7af40a0b601e8faec8b0, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -496,10 +578,9 @@ MonoBehaviour:
     - Name: settings
       Entry: 10
       Data: 0
-    - Name: slimePresetList
+    - Name: Mappings
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[SlimePreset, Assembly-CSharp]],
-        mscorlib
+      Data: 0|System.Collections.Generic.List`1[[IMapping, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -509,15 +590,22 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: currentPreset
+    - Name: slimePresetList
       Entry: 7
-      Data: 1|SlimePreset, Assembly-CSharp
+      Data: 1|System.Collections.Generic.List`1[[SlimePreset, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 2|SlimePreset, Assembly-CSharp
     - Name: presetName
       Entry: 1
-      Data: BobTheBuilder
+      Data: default
     - Name: stepsPerFrame
       Entry: 3
-      Data: 2
+      Data: 6
     - Name: width
       Entry: 3
       Data: 1080
@@ -526,64 +614,25 @@ MonoBehaviour:
       Data: 720
     - Name: numAgents
       Entry: 3
-      Data: 250000
+      Data: 100
     - Name: spawnMode
       Entry: 3
       Data: 4
     - Name: trailWeight
       Entry: 4
-      Data: 5
+      Data: 0
     - Name: decayRate
       Entry: 4
-      Data: 0.2
+      Data: 0.1
     - Name: diffuseRate
       Entry: 4
-      Data: 3
+      Data: 0
     - Name: speciesSettings
       Entry: 7
-      Data: 2|SlimeSettings+SpeciesSettings[], Assembly-CSharp
+      Data: 3|SlimeSettings+SpeciesSettings[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: SlimeSettings+SpeciesSettings, Assembly-CSharp
-    - Name: moveSpeed
-      Entry: 4
-      Data: 20
-    - Name: turnSpeed
-      Entry: 4
-      Data: 2
-    - Name: sensorAngleSpacing
-      Entry: 4
-      Data: 30
-    - Name: sensorOffsetDst
-      Entry: 4
-      Data: 35
-    - Name: sensorSize
-      Entry: 3
-      Data: 1
-    - Name: colour
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
       Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -591,19 +640,30 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: spawnBitmap
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 6
       Data: 
     - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
       Entry: 8
+      Data: 
+    - Name: currentPreset
+      Entry: 6
       Data: 
   compute: {fileID: 7200000, guid: a0aea66b8c503e748bb334583d5db67c, type: 3}
   drawAgentsCS: {fileID: 7200000, guid: 9d6969cce8474ed4899115f5d816b0a5, type: 3}
   showAgentsOnly: 0
   filterMode: 1
   format: 48
-  spawnBitmap: {fileID: 2800000, guid: c104953ad514bea4a8708c0ac09829d6, type: 3}
+  spawnBitmap: {fileID: 2800000, guid: 5a4cebc11b9d7af40a0b601e8faec8b0, type: 3}
   saveFolder: Presets
-  loadDefault: 1
   trailMap: {fileID: 0}
   diffusedTrailMap: {fileID: 0}
   displayTexture: {fileID: 0}
@@ -619,6 +679,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1534864513}
+  - {fileID: 1477882166}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -697,8 +758,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534864509}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0, z: 0}
-  m_LocalScale: {x: 16, y: 9, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 9, y: 9, z: 1}
   m_Children: []
   m_Father: {fileID: 1531495863}
   m_RootOrder: 0
@@ -718,7 +779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1597086099
 Transform:
   m_ObjectHideFlags: 0

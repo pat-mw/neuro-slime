@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15cf9e7364c922e46884a9840c0d7d76, type: 3}
-  m_Name: accelerometerToSpeed
+  m_Name: FOLLOW_accXtrailWeight
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,12 +21,8 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  mapType: 2
-  influencer:
-    _useConstant: 0
-    _constantValue: 0
-    _variable: {fileID: 11400000, guid: 835dbdfd0c679114f8ae5987e15d50d3, type: 2}
-  receiver:
-    _useConstant: 0
-    _constantValue: 0
-    _variable: {fileID: 11400000, guid: 3deed49a2c5aefa47afaf0715e2c7a81, type: 2}
+  brainData: {fileID: 11400000, guid: a20e9cbbe6cf17e4f9199f7fac128d7f, type: 2}
+  slimeSettings: {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
+  mapType: 0
+  influencer: 10
+  receiver: 2

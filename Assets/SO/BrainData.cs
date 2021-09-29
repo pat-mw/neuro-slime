@@ -5,8 +5,8 @@ using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName ="Brain Data Store")]
 [System.Serializable]
-public class BrainData : SerializedScriptableObject 
-{
+public class BrainData : SerializedScriptableObject
+{ 
     [Header("BAND POWER SPECTRA")]
     public BandPower leftBands = new BandPower(GlobalConfig.LEFT_CHANNEL);
     public BandPower rightBands = new BandPower(GlobalConfig.RIGHT_CHANNEL);
@@ -34,7 +34,6 @@ public class BrainData : SerializedScriptableObject
         }
     }
 
-
     [System.Serializable]
     public class EEGSample
     {
@@ -52,6 +51,18 @@ public class BrainData : SerializedScriptableObject
         {
             left = new float[sampleCount];
             right = new float[sampleCount];
+        }
+
+        public float FetchLatestSampleLeft()
+        {
+            float value = left[leftIndex];
+            return value;
+        }
+
+        public float FetchLatestSampleRight()
+        {
+            float value = right[rightIndex];
+            return value;
         }
 
         public void AddSample(float value, GlobalConfig.CHANNEL channel)

@@ -1,15 +1,15 @@
 {
     "$id": 0,
     "$type": "0|SlimePreset, Assembly-CSharp",
-    "presetName": "forrest fire",
+    "presetName": "default",
     "stepsPerFrame": 6,
     "width": 1080,
     "height": 1080,
-    "numAgents": 130708,
+    "numAgents": 212020,
     "spawnMode": 4,
-    "trailWeight": 79.7,
-    "decayRate": 3.3,
-    "diffuseRate": 9.2,
+    "trailWeight": 39,
+    "decayRate": 2.7,
+    "diffuseRate": 14.6,
     "speciesSettings": {
         "$id": 1,
         "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
@@ -17,38 +17,35 @@
         "$rcontent": [
             {
                 "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
-                "moveSpeed": 66.3,
-                "turnSpeed": 15,
-                "sensorAngleSpacing": 21.4,
-                "sensorOffsetDst": 1,
-                "sensorSize": 5,
+                "moveSpeed": 0,
+                "turnSpeed": -0.3,
+                "sensorAngleSpacing": 100,
+                "sensorOffsetDst": 75,
+                "sensorSize": 1,
                 "colour": {
                     "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
                     1,
-                    0,
-                    0.2310667,
+                    1,
+                    1,
                     0
                 }
             },
             {
                 "$type": 2,
-                "moveSpeed": 61.8,
-                "turnSpeed": -15,
-                "sensorAngleSpacing": 23.6,
-                "sensorOffsetDst": 1,
-                "sensorSize": 5,
+                "moveSpeed": 100,
+                "turnSpeed": 13.2,
+                "sensorAngleSpacing": 21.4,
+                "sensorOffsetDst": 19,
+                "sensorSize": 1,
                 "colour": {
                     "$type": 3,
-                    0.332321882,
-                    1,
                     0,
+                    0.9587312,
+                    1,
                     0
                 }
             }
         ]
     },
-    "spawnBitmap": {
-        "$id": 2,
-        "$type": "4|UnityEngine.Texture2D, UnityEngine.CoreModule"
-    }
+    "spawnBitmap": null
 }

@@ -3,7 +3,9 @@ guid: 15cf9e7364c922e46884a9840c0d7d76
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - brainData: {fileID: 11400000, guid: a20e9cbbe6cf17e4f9199f7fac128d7f, type: 2}
+  - slimeSettings: {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
