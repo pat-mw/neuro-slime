@@ -6,7 +6,6 @@
     "width": 1080,
     "height": 1080,
     "numAgents": 250000,
-    "spawnMode": 4,
     "trailWeight": 18.3,
     "decayRate": 1.2,
     "diffuseRate": 78.8,
@@ -46,6 +45,5 @@
                 }
             }
         ]
-    },
-    "spawnBitmap": null
+    }
 }

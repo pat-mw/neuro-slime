@@ -6,7 +6,6 @@
     "width": 1080,
     "height": 1080,
     "numAgents": 212020,
-    "spawnMode": 2,
     "trailWeight": 39,
     "decayRate": 2.7,
     "diffuseRate": 14.6,
@@ -46,9 +45,5 @@
                 }
             }
         ]
-    },
-    "spawnBitmap": {
-        "$id": 2,
-        "$type": "4|UnityEngine.Texture2D, UnityEngine.CoreModule"
     }
 }

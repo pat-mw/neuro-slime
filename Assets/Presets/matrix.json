@@ -4,9 +4,8 @@
     "presetName": "matrix",
     "stepsPerFrame": 10,
     "width": 1080,
-    "height": 720,
+    "height": 1080,
     "numAgents": 18903,
-    "spawnMode": 4,
     "trailWeight": 11.9,
     "decayRate": 0.1,
     "diffuseRate": 0,
@@ -61,9 +60,5 @@
                 }
             }
         ]
-    },
-    "spawnBitmap": {
-        "$id": 2,
-        "$type": "4|UnityEngine.Texture2D, UnityEngine.CoreModule"
     }
 }

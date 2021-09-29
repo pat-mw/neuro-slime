@@ -4,9 +4,8 @@
     "presetName": "stressed base",
     "stepsPerFrame": 1,
     "width": 1080,
-    "height": 720,
+    "height": 1080,
     "numAgents": 130708,
-    "spawnMode": 4,
     "trailWeight": 79.7,
     "decayRate": 3.3,
     "diffuseRate": 9.2,
@@ -31,9 +30,5 @@
                 }
             }
         ]
-    },
-    "spawnBitmap": {
-        "$id": 2,
-        "$type": "4|UnityEngine.Texture2D, UnityEngine.CoreModule"
     }
 }

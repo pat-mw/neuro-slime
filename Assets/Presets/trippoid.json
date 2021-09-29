@@ -4,9 +4,8 @@
     "presetName": "trippoid",
     "stepsPerFrame": 6,
     "width": 1080,
-    "height": 720,
+    "height": 1080,
     "numAgents": 250000,
-    "spawnMode": 4,
     "trailWeight": 10.34,
     "decayRate": 0.9,
     "diffuseRate": 100,
@@ -61,9 +60,5 @@
                 }
             }
         ]
-    },
-    "spawnBitmap": {
-        "$id": 2,
-        "$type": "4|UnityEngine.Texture2D, UnityEngine.CoreModule"
     }
 }

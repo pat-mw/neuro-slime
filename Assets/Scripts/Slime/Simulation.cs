@@ -52,8 +52,7 @@ public class Simulation : SerializedMonoBehaviour
 			presetName = $"NewSlime_{System.DateTime.Now}";
 
 		SlimePreset slimePreset = new SlimePreset(
-			presetName, settings.stepsPerFrame, settings.width, settings.height, settings.numAgents,
-			settings.spawnMode, settings.trailWeight, settings.decayRate,
+			presetName, settings.stepsPerFrame, settings.width, settings.height, settings.numAgents, settings.trailWeight, settings.decayRate,
 			settings.diffuseRate, settings.speciesSettings);
 
 		SlimeSerializer.SaveSlimePreset(slimePreset, saveFolder);
@@ -87,12 +86,25 @@ public class Simulation : SerializedMonoBehaviour
 	ComputeBuffer settingsBuffer;
 	Texture2D colourMapTexture;
 
+
+	bool isSimActive = false;
+
+
 	protected virtual void Start()
 	{
+		PreActivateSim();
+	}
+
+	void PreActivateSim()
+    {
 		Init();
 		transform.GetComponentInChildren<MeshRenderer>().material.mainTexture = displayTexture;
 	}
 
+	public void ActivateSim()
+    {
+		isSimActive = true;
+	}
 
 	void Init()
 	{
@@ -190,28 +202,36 @@ public class Simulation : SerializedMonoBehaviour
 
 		compute.SetInt("width", settings.width);
 		compute.SetInt("height", settings.height);
+
 	}
 
 	void FixedUpdate()
 	{
-		for (int i = 0; i < settings.stepsPerFrame; i++)
-		{
-			ApplyMappings();
-			RunSimulation();
+		if (isSimActive)
+        {
+			for (int i = 0; i < settings.stepsPerFrame; i++)
+			{
+				ApplyMappings();
+				RunSimulation();
+			}
 		}
+		
 	}
 
 	void LateUpdate()
 	{
-		if (showAgentsOnly)
-		{
-			ComputeHelper.ClearRenderTexture(displayTexture);
-			drawAgentsCS.SetTexture(0, "TargetTexture", displayTexture);
-			ComputeHelper.Dispatch(drawAgentsCS, settings.numAgents, 1, 1, 0);
-		}
-		else
-		{
-			ComputeHelper.Dispatch(compute, settings.width, settings.height, 1, kernelIndex : colourKernel);
+		if (isSimActive)
+        {
+			if (showAgentsOnly)
+			{
+				ComputeHelper.ClearRenderTexture(displayTexture);
+				drawAgentsCS.SetTexture(0, "TargetTexture", displayTexture);
+				ComputeHelper.Dispatch(drawAgentsCS, settings.numAgents, 1, 1, 0);
+			}
+			else
+			{
+				ComputeHelper.Dispatch(compute, settings.width, settings.height, 1, kernelIndex: colourKernel);
+			}
 		}
 	}
 
@@ -353,7 +373,6 @@ public class Simulation : SerializedMonoBehaviour
 		settings.width = currentPreset.width;
 		settings.height = currentPreset.height;
 		settings.numAgents = currentPreset.numAgents;
-		settings.spawnMode = currentPreset.spawnMode;
 		settings.trailWeight = currentPreset.trailWeight;
 		settings.decayRate = currentPreset.decayRate;
 		settings.diffuseRate = currentPreset.diffuseRate;

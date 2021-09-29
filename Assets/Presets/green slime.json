@@ -4,9 +4,8 @@
     "presetName": "green slime",
     "stepsPerFrame": 2,
     "width": 1080,
-    "height": 720,
+    "height": 1080,
     "numAgents": 54954,
-    "spawnMode": 2,
     "trailWeight": 100,
     "decayRate": 2.1,
     "diffuseRate": 60.7,
@@ -31,9 +30,5 @@
                 }
             }
         ]
-    },
-    "spawnBitmap": {
-        "$id": 2,
-        "$type": "4|UnityEngine.Texture2D, UnityEngine.CoreModule"
     }
 }
