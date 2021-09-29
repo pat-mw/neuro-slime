@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 83fedfb5268b9e647b10b27643481f1e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - formDebuggerEvent: {fileID: 11400000, guid: 0f41fec33fe407e40af162868f076975, type: 2}
+  - closeFormEvent: {fileID: 11400000, guid: 10fba235fb7027648bc5d9630115d245, type: 2}
+  - resetFormEvent: {fileID: 11400000, guid: a875db138cf3e174089a9e8b4406593d, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
