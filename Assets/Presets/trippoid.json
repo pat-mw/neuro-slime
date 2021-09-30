@@ -2,7 +2,7 @@
     "$id": 0,
     "$type": "0|SlimePreset, Assembly-CSharp",
     "presetName": "trippoid",
-    "stepsPerFrame": 6,
+    "stepsPerFrame": 2,
     "width": 1080,
     "height": 1080,
     "numAgents": 250000,
@@ -16,13 +16,28 @@
         "$rcontent": [
             {
                 "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": -15,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": -75,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    0.826473355,
+                    1,
+                    0,
+                    0
+                }
+            },
+            {
+                "$type": 2,
                 "moveSpeed": 100,
                 "turnSpeed": 2,
                 "sensorAngleSpacing": 30,
                 "sensorOffsetDst": 6,
                 "sensorSize": 2,
                 "colour": {
-                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    "$type": 3,
                     0.9198113,
                     1,
                     0.9708629,
@@ -41,21 +56,6 @@
                     1,
                     0.639622331,
                     0,
-                    0
-                }
-            },
-            {
-                "$type": 2,
-                "moveSpeed": 12.4,
-                "turnSpeed": -11.74,
-                "sensorAngleSpacing": 1.62,
-                "sensorOffsetDst": 2.05,
-                "sensorSize": 2,
-                "colour": {
-                    "$type": 3,
-                    1,
-                    0.930357933,
-                    0.6650944,
                     0
                 }
             }

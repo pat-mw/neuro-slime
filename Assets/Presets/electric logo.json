@@ -17,10 +17,10 @@
             {
                 "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
                 "moveSpeed": 0,
-                "turnSpeed": -0.3,
-                "sensorAngleSpacing": 100,
-                "sensorOffsetDst": 75,
-                "sensorSize": 1,
+                "turnSpeed": -15,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": -75,
+                "sensorSize": 0,
                 "colour": {
                     "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
                     1,

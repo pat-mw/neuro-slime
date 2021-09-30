@@ -12,17 +12,32 @@
     "speciesSettings": {
         "$id": 1,
         "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
-        "$rlength": 3,
+        "$rlength": 4,
         "$rcontent": [
             {
                 "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": -15,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": -75,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    0
+                }
+            },
+            {
+                "$type": 2,
                 "moveSpeed": 52.2,
                 "turnSpeed": 2,
                 "sensorAngleSpacing": 30,
                 "sensorOffsetDst": 35,
                 "sensorSize": 1,
                 "colour": {
-                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    "$type": 3,
                     0.935144544,
                     1,
                     0.8820755,
