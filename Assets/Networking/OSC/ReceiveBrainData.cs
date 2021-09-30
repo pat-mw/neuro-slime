@@ -10,16 +10,12 @@ References:
  */
 
 using UnityEngine;
-using ScriptableObjectArchitecture;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System.Collections;
 
 public class ReceiveBrainData : SerializedMonoBehaviour
 {
-    [Header("EVENTS")]
-    public GameEvent OnFetchMood = default(GameEvent);
-
     [Header("NETWORK")]
     public OSC osc;
 
@@ -195,7 +191,6 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                 Debug.Log("Epoch completed!! Backing up now");
 
                 // TODO: send epoch to amygdyla and query for the mood
-                OnFetchMood.Raise();
 
                 brainData.BackupEpoch();
             }

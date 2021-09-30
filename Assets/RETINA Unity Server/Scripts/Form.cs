@@ -16,21 +16,20 @@ namespace RetinaNetworking.Server
 
         [SerializeField] TextMeshProUGUI debugText;
 
-        private UserAuth userAuth;
+        [SerializeField] UserAuth webPost;
 
-        private bool isValid;
+        private bool isActive;
 
         private void Start()
         {
-            isValid = false;
-            userAuth = GetComponent<UserAuth>();
+            isActive = false;
         }
 
         private void Update()
         {
             CheckInputFields();
 
-            if (isValid)
+            if (isActive)
             {
                 //enable button
                 button.interactable = true;
@@ -48,19 +47,19 @@ namespace RetinaNetworking.Server
             {
                 if (string.IsNullOrEmpty(field.text))
                 {
-                    isValid = false;
+                    isActive = false;
                     return;
                 }
             }
 
             // all the input fields were NOT null or empty, therefore valid
-            isValid = true;
+            isActive = true;
             return;
         }
 
         public void SendForm()
         {
-            if (isValid)
+            if (isActive)
             {
                 string username = inputFields[0].text;
                 string email = inputFields[1].text;
@@ -72,12 +71,12 @@ namespace RetinaNetworking.Server
                 }
                 catch (SystemException ex)
                 {
-                    Debug.LogError($"Age input was not a valid: {ex}");
+                    Debug.LogError("Age input was not a valid");
                 }
                 string language = inputFields[4].text;
                 string password = inputFields[5].text;
 
-                userAuth.RequestAuth(username, email, gender, age, language, password);
+                webPost.RequestAuth(username, email, gender, age, language, password);
             }
             else
             {
@@ -91,7 +90,6 @@ namespace RetinaNetworking.Server
             {
                 field.text = "";
             }
-            isValid = false;
         }
 
     }
