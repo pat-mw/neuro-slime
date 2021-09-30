@@ -101,10 +101,22 @@ public class Simulation : SerializedMonoBehaviour
 		transform.GetComponentInChildren<MeshRenderer>().material.mainTexture = displayTexture;
 	}
 
+	[GUIColor(0, 1, 0)]
+	[Button(ButtonSizes.Large)]
+	[ButtonGroup("SimActivationButtons")]
 	public void ActivateSim()
     {
 		isSimActive = true;
 	}
+
+	[GUIColor(1, 0, 0)]
+	[Button(ButtonSizes.Large)]
+	[ButtonGroup("SimActivationButtons")]
+	public void DeactivateSim()
+    {
+		isSimActive = false;
+		PreActivateSim();
+    }
 
 	void Init()
 	{
@@ -157,7 +169,7 @@ public class Simulation : SerializedMonoBehaviour
             {
                 try
                 {
-					Debug.Log("Trying to load via bitmap");
+					//Debug.Log("Trying to load via bitmap");
 
 					if (!spawnBitmap)
 					{
@@ -178,8 +190,8 @@ public class Simulation : SerializedMonoBehaviour
 
 			Vector3Int speciesMask;
 			int speciesIndex = 0;
-			int numSpecies = settings.speciesSettings.Length;
-
+			//int numSpecies = settings.speciesSettings.Length;
+			int numSpecies = 4;
 			if (numSpecies == 1)
 			{
 				speciesMask = Vector3Int.one;

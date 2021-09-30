@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using ScriptableObjectArchitecture;
 
 [CreateAssetMenu(menuName ="Brain Data Store")]
 [System.Serializable]
 public class BrainData : SerializedScriptableObject
-{ 
+{
     [Header("BAND POWER SPECTRA")]
     public BandPower leftBands = new BandPower(GlobalConfig.LEFT_CHANNEL);
     public BandPower rightBands = new BandPower(GlobalConfig.RIGHT_CHANNEL);
@@ -104,6 +105,7 @@ public class BrainData : SerializedScriptableObject
                     if (leftFull == true && rightFull == true)
                     {
                         epochComplete = true;
+                        // HERE WE WANT TO FETCH THE MOOD
                     }
                 }
                 else
