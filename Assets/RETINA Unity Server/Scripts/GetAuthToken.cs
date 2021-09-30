@@ -11,34 +11,18 @@ namespace RetinaNetworking.Server
     /// The Amygdyla class is for all behaviour relating to the backend connection
     /// GET method to retrieve amygdyla session token, and POST for depositing data to the backend
     /// </summary>
-    public class Amygdala : MonoBehaviour
+    public class GetAuthToken : MonoBehaviour
     {
         [Header("Network Properties")]
         public string strapiURL = "https://kouo-strapi-staging.herokuapp.com";
         public string strapiEndpoint = "/datasets/getAuthToken/";
         public string strapiParams = "?expires_after=";
         public int sessionTimeLimit = 20;
-        public string testJWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTA1LCJpYXQiOjE2MjM2ODY4ODUsImV4cCI6MTYyNjI3ODg4NX0.j1Q2r-7pOOoAzDcDjQu0oQnRiMoWBqmW5Xh7FmMlXY4";
-
-        public string AmyURL = "https://kouo-amygdala-staging.herokuapp.com";
-        public string AmyEndpoint = "/auth/local/register/";
-
         private StrapiTokenResponse lastResponse = new StrapiTokenResponse();
-
-        /// <summary>
-        /// for testing
-        /// </summary>
-        //private async void Awake()
-        //{
-        //    string bob = await RequestSessionToken(testJWT);
-        //    Debug.Log("*** " + bob);
-        //}
 
         public async UniTask<string> RequestSessionToken(string _JWT)
         {
             Debug.Log(" -- attempting to request session token -- ");
-
-            //StartCoroutine(GetRequest(strapiURL + strapiEndpoint + strapiParams + sessionTimeLimit.ToString(), _JWT));
 
             await GetSessionToken(strapiURL + strapiEndpoint + strapiParams + sessionTimeLimit.ToString(), _JWT);
 
@@ -85,7 +69,7 @@ namespace RetinaNetworking.Server
                         StrapiTokenResponse response = new StrapiTokenResponse();
                         JsonUtility.FromJsonOverwrite(webRequest.downloadHandler.text, response);
 
-                        Debug.Log("-- USER AUTHENTICATED --");
+                        Debug.Log(">- USER AUTHENTICATED -<");
                         Debug.Log($"token: {response.token}");
                         Debug.Log($"expires at: {response.expires_at}");
 

@@ -9,15 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2665318e53759e74db7a2d8238331945, type: 3}
-  m_Name: Kouo Logo
+  m_Script: {fileID: 11500000, guid: d315e0b31d04a074e89c0e5e55e9de48, type: 3}
+  m_Name: FetchAuthToken
   m_EditorClassIdentifier: 
-  width: 1080
-  height: 1080
-  stepsPerFrame: 2
-  numAgents: 100
-  spawnMode: 4
-  trailWeight: 0
-  decayRate: 0.1
-  diffuseRate: 0
-  speciesSettings: []
+  _debugValue: 

@@ -157,7 +157,7 @@ public class Simulation : SerializedMonoBehaviour
             {
                 try
                 {
-					Debug.Log("Trying to load via bitmap");
+					//Debug.Log("Trying to load via bitmap");
 
 					if (!spawnBitmap)
 					{
@@ -215,7 +215,6 @@ public class Simulation : SerializedMonoBehaviour
 				RunSimulation();
 			}
 		}
-		
 	}
 
 	void LateUpdate()
@@ -312,11 +311,6 @@ public class Simulation : SerializedMonoBehaviour
 		return newpoint;
 	}
 
-
-
-
-
-	
 
 	private void RefreshSlimePresetList()
 	{
