@@ -31,7 +31,7 @@ public class SlimeSerializer
         {
             var bytes = File.ReadAllBytes(path);
             SlimePreset slimePreset = SerializationUtility.DeserializeValue<SlimePreset>(bytes, dataFormat);
-            Debug.Log($"Loading slime preset from: {path}");
+            //Debug.Log($"Loading slime preset from: {path}");
             return slimePreset;
         }
         catch(Exception e)

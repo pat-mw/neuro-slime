@@ -8,6 +8,7 @@ using System.Collections;
 using UnityEditor;
 using System;
 
+[DefaultExecutionOrder(-1)]
 public class Simulation : SerializedMonoBehaviour
 { 
 	public enum SpawnMode { Random, Point, InwardCircle, RandomCircle, Bitmap }
@@ -45,7 +46,7 @@ public class Simulation : SerializedMonoBehaviour
 	[OdinSerialize] private SlimePreset currentPreset;
 
 
-	[Button]
+	[Button(ButtonSizes.Large)]
 	public void SavePreset(string presetName)
 	{
 		if (presetName == null)
@@ -59,7 +60,7 @@ public class Simulation : SerializedMonoBehaviour
 		slimePresetList.Add(slimePreset);
 	}
 
-	[Button]
+	[Button(ButtonSizes.Large)]
 	public void LoadPreset(string presetName)
 	{
 		if (presetName == null)
@@ -90,24 +91,82 @@ public class Simulation : SerializedMonoBehaviour
 	bool isSimActive = false;
 
 
-	protected virtual void Start()
+	protected virtual void Awake()
 	{
 		PreActivateSim();
 	}
 
 	void PreActivateSim()
     {
-		Init();
 		transform.GetComponentInChildren<MeshRenderer>().material.mainTexture = displayTexture;
+		Init();
 	}
+
+	
+	public void ActivateSim()
+    {
+		Debug.Log("ACTIVATING SLIME");
+		isSimActive = true;
+	}
+
+	
+	
+	[GUIColor(0.8f, 0.6f, 1)]
+	[Button(ButtonSizes.Large)]
+	[LabelText(" << PREVIOUS PRESET")]
+	[ButtonGroup("PresetSwitcher")]
+	public void PreviousPreset()
+	{
+		// get index of current preset
+		var index = slimePresetList.IndexOf(currentPreset);
+
+		// iterate index (find previous preset)
+		index -= 1;
+
+		// check overflow
+		if (index < 0)
+		{
+			index = slimePresetList.Count - 1;
+		}
+
+		// get and set preset
+		var preset = slimePresetList[index];
+		ChangePreset(preset);
+	}
+
+	[GUIColor(1, 0.85f, 0.45f)]
+	[Button(ButtonSizes.Large)]
+	[LabelText("NEXT PRESET >>")]
+	[ButtonGroup("PresetSwitcher")]
+	public void NextPreset()
+	{
+		// get index of current preset
+		var index = slimePresetList.IndexOf(currentPreset);
+
+		// iterate index (find next preset)
+		index += 1;
+
+		// check overflow
+		if (index >= slimePresetList.Count)
+		{
+			index = 0;
+		}
+
+		// get and set preset
+		var preset = slimePresetList[index];
+		ChangePreset(preset);
+	}
+
+
 
 	[GUIColor(0, 1, 0)]
 	[Button(ButtonSizes.Large)]
 	[ButtonGroup("SimActivationButtons")]
-	public void ActivateSim()
-    {
+	public void ActivateSimButton()
+	{
 		isSimActive = true;
 	}
+
 
 	[GUIColor(1, 0, 0)]
 	[Button(ButtonSizes.Large)]
@@ -191,7 +250,7 @@ public class Simulation : SerializedMonoBehaviour
 			Vector3Int speciesMask;
 			int speciesIndex = 0;
 			//int numSpecies = settings.speciesSettings.Length;
-			int numSpecies = 4;
+			int numSpecies = 3;
 			if (numSpecies == 1)
 			{
 				speciesMask = Vector3Int.one;
@@ -230,8 +289,9 @@ public class Simulation : SerializedMonoBehaviour
 		
 	}
 
-	void LateUpdate()
-	{
+	// *** LATE UPDATE??
+    private void Update()
+    {
 		if (isSimActive)
         {
 			if (showAgentsOnly)
@@ -325,18 +385,13 @@ public class Simulation : SerializedMonoBehaviour
 	}
 
 
-
-
-
-	
-
 	private void RefreshSlimePresetList()
 	{
 		slimePresetList.Clear();
 
 		var folder = $"Assets/{saveFolder}/";
 
-		Debug.Log($"Attempting to load existing presets from folder: {folder}");
+		//Debug.Log($"Attempting to load existing presets from folder: {folder}");
 
 		// since we are loading a JSON file we cannot easily filter by type
 		// so assume all objects in the folder are presets, and catch any errors later
@@ -351,7 +406,7 @@ public class Simulation : SerializedMonoBehaviour
 			try
 			{
 				SlimePreset preset = SlimeSerializer.LoadSlimePreset(assetPath);
-				Debug.Log($"Found existing slime preset: {preset.presetName}");
+				//Debug.Log($"Found existing slime preset: {preset.presetName}");
 				slimePresetList.Add(preset);
 
 				if (preset.presetName == "default")
@@ -371,10 +426,13 @@ public class Simulation : SerializedMonoBehaviour
 
 	private IEnumerable GetAllCurrentlyLoadedPresets()
 	{
-		var dropdownItems = new List<ValueDropdownItem>();
-		foreach (SlimePreset preset in slimePresetList)
-		{
-			yield return new ValueDropdownItem(preset.presetName, preset);
+		if (Application.isPlaying)
+        {
+			var dropdownItems = new List<ValueDropdownItem>();
+			foreach (SlimePreset preset in slimePresetList)
+			{
+				yield return new ValueDropdownItem(preset.presetName, preset);
+			}
 		}
 	}
 

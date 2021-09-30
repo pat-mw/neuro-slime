@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 1080
   height: 1080
-  stepsPerFrame: 1
-  numAgents: 100
+  stepsPerFrame: 4
+  numAgents: 0
   spawnMode: 4
   trailWeight: 0
-  decayRate: 0.1
+  decayRate: 0
   diffuseRate: 0
   speciesSettings: []
