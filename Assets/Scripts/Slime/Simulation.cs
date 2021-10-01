@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System.Collections;
 using UnityEditor;
-using System;
+//using System;
 
 [DefaultExecutionOrder(-1)]
 public class Simulation : SerializedMonoBehaviour
@@ -19,7 +19,7 @@ public class Simulation : SerializedMonoBehaviour
 
 	[Header("SLIME SETTINGS")]
 	[InlineEditor(InlineEditorModes.FullEditor)]
-	[NonSerialized][OdinSerialize] public SlimeSettings settings;
+	[System.NonSerialized] [OdinSerialize] public SlimeSettings settings;
 
 	[Header("MAPPINGS")]
 	public List<IMapping> Mappings;
@@ -30,6 +30,14 @@ public class Simulation : SerializedMonoBehaviour
 
 	[Header("DISPLAY")]
 	public bool showAgentsOnly;
+	public void ShowAgentsOnly()
+    {
+		showAgentsOnly = true;
+    }
+	public void ShowTrails()
+	{
+		showAgentsOnly = false;
+	}
 	public FilterMode filterMode = FilterMode.Point;
 	public GraphicsFormat format = ComputeHelper.defaultGraphicsFormat;
 
@@ -109,8 +117,70 @@ public class Simulation : SerializedMonoBehaviour
 		isSimActive = true;
 	}
 
-	
-	
+
+	[GUIColor(1, 0.188f, 0.756f)]
+	[Button(ButtonSizes.Large)]
+	[LabelText("RANDOMISE")]
+	public void RandomiseSettings()
+    {
+		/// SLIME SETTINGS
+		//public int width = 1080;
+		//public int height = 1080;
+		//[Range(1, 10)] public int stepsPerFrame = 1;
+		//[Range(100, 500000)] public int numAgents = 250000;
+		//public Simulation.SpawnMode spawnMode = Simulation.SpawnMode.InwardCircle;
+		//[Range(0, 100)] public float trailWeight = 1f;
+		//[Range(0.1f, 20)] public float decayRate = 1f;
+		//[Range(0, 100)] public float diffuseRate = 1f;
+		//public SpeciesSettings[] speciesSettings;
+
+		
+		// create a new slime preset 
+		var stepsPerFrame = Random.Range(1, 5);
+		var width = 1080;
+		var height = 1080;
+		var numAgents = Random.Range(100000, 500000);
+		var trailWeight = Random.Range(0f, 100f);
+		var decayRate = Random.Range(0.1f, 10f);
+		var diffuseRate = Random.Range(0f, 100f);
+
+		/// SPECIES SETTINGS
+		//[Range(0, 100)] public float moveSpeed;
+		//[Range(-15, 15)] public float turnSpeed;
+		//[Range(0, 100)] public float sensorAngleSpacing;
+		//[Range(-75, 75)] public float sensorOffsetDst;
+		//[Range(0, 10)] public int sensorSize;
+		//public Color colour;
+
+		SlimeSettings.SpeciesSettings[] species = new SlimeSettings.SpeciesSettings[3];
+		
+		// first species is the logo (zero movement)
+		species[0].moveSpeed = 0;
+		species[0].turnSpeed = 0;
+		species[0].sensorAngleSpacing = 0;
+		species[0].sensorOffsetDst = 0;
+		species[0].sensorSize = 0;
+		species[0].colour = Color.white;
+
+        // remaining two species are random
+        for (int i = 1; i < 3; i++)
+        {
+			species[i].moveSpeed = Random.Range(0f, 100f);
+			species[i].turnSpeed = Random.Range(-15f, 15f);
+			species[i].sensorAngleSpacing = Random.Range(0f, 100f);
+			species[i].sensorOffsetDst = Random.Range(-75f, 75f);
+			species[i].sensorSize = Random.Range(1, 10);
+			var randomColor = Random.ColorHSV();
+			species[i].colour = Color.HSVToRGB(randomColor[0], Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
+		}
+
+		// create slime preset and apply it
+		SlimePreset preset = new SlimePreset("random", stepsPerFrame, width, height, numAgents, trailWeight, decayRate, diffuseRate, species);
+		slimePresetList.Add(preset);
+		ChangePreset(preset);
+    }
+
+
 	[GUIColor(0.8f, 0.6f, 1)]
 	[Button(ButtonSizes.Large)]
 	[LabelText(" << PREVIOUS PRESET")]
@@ -156,7 +226,6 @@ public class Simulation : SerializedMonoBehaviour
 		var preset = slimePresetList[index];
 		ChangePreset(preset);
 	}
-
 
 
 	[GUIColor(0, 1, 0)]
@@ -290,7 +359,7 @@ public class Simulation : SerializedMonoBehaviour
 	}
 
 	// *** LATE UPDATE??
-    private void Update()
+    private void LateUpdate()
     {
 		if (isSimActive)
         {

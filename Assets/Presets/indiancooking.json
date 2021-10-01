@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "indiancooking",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 433744,
+    "trailWeight": 98.52484,
+    "decayRate": 4.74407864,
+    "diffuseRate": 94.5425644,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 66.04125,
+                "turnSpeed": -13.3639736,
+                "sensorAngleSpacing": 19.8580742,
+                "sensorOffsetDst": -5.64459229,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.8408317,
+                    0.291094,
+                    0.28410545,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 1.83051825,
+                "turnSpeed": -9.873713,
+                "sensorAngleSpacing": 49.3177719,
+                "sensorOffsetDst": -50.6149979,
+                "sensorSize": 7,
+                "colour": {
+                    "$type": 3,
+                    0.6404736,
+                    0.06311495,
+                    0.276414931,
+                    1
+                }
+            }
+        ]
+    }
+}

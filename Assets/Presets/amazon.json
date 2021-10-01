@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "amazon",
+    "stepsPerFrame": 2,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 131807,
+    "trailWeight": 81.03027,
+    "decayRate": 1.56074488,
+    "diffuseRate": 63.5913963,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 50.1582222,
+                "turnSpeed": 7.414026,
+                "sensorAngleSpacing": 75.84165,
+                "sensorOffsetDst": 38.6897,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.391658157,
+                    0.5160212,
+                    0.189194173,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 14.9463892,
+                "turnSpeed": 5.97175169,
+                "sensorAngleSpacing": 46.5575867,
+                "sensorOffsetDst": 12.7635136,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.968811452,
+                    0.80559206,
+                    0.02655238,
+                    1
+                }
+            }
+        ]
+    }
+}

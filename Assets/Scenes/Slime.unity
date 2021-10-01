@@ -4844,6 +4844,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1531495862}
+        m_TargetAssemblyTypeName: Simulation, Assembly-CSharp
+        m_MethodName: ShowTrails
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1359326407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4899,7 +4911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1467549162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4977,19 +4989,21 @@ GameObject:
   - component: {fileID: 1471353935}
   - component: {fileID: 1471353943}
   - component: {fileID: 1471353942}
+  - component: {fileID: 1471353944}
   - component: {fileID: 1471353941}
   - component: {fileID: 1471353940}
   - component: {fileID: 1471353939}
   - component: {fileID: 1471353938}
   - component: {fileID: 1471353937}
   - component: {fileID: 1471353936}
+  - component: {fileID: 1471353945}
   m_Layer: 5
   m_Name: Panel - New user
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1471353935
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5181,11 +5195,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83fedfb5268b9e647b10b27643481f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectionParams: {fileID: 11400000, guid: ac82aaf83b4b1f8499ae2559a70ea68e, type: 2}
   defaultURL: https://kouo-strapi-staging.herokuapp.com
   defaultEndpoint: /auth/local/register
   formDebuggerEvent: {fileID: 11400000, guid: 0f41fec33fe407e40af162868f076975, type: 2}
   closeFormEvent: {fileID: 11400000, guid: 10fba235fb7027648bc5d9630115d245, type: 2}
   resetFormEvent: {fileID: 11400000, guid: a875db138cf3e174089a9e8b4406593d, type: 2}
+  activateSimEvent: {fileID: 11400000, guid: 87d16fc330caedd4ca2877f7513a7cda, type: 2}
 --- !u!114 &1471353943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5208,6 +5224,56 @@ MonoBehaviour:
   button: {fileID: 501429811}
   debugText: {fileID: 801289139}
   webPost: {fileID: 1471353942}
+--- !u!114 &1471353944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471353934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f051a30f124d774088e3b1025bc5c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strapiURL: https://kouo-strapi-staging.herokuapp.com
+  strapiEndpoint: /datasets/getAuthToken/
+  strapiParams: ?expires_after=
+  sessionTimeLimit: 20
+--- !u!114 &1471353945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471353934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636b72f8fc644b4418a9e8ad0f4f804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 0b910346581690c4cbde72a53b815e6b,
+    type: 2}
+  _event: {fileID: 11400000, guid: 0b910346581690c4cbde72a53b815e6b, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1471353942}
+        m_TargetAssemblyTypeName: RetinaNetworking.Server.UserAuth, Assembly-CSharp
+        m_MethodName: RequestSessionToken
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 
 --- !u!1 &1516553731
 GameObject:
   m_ObjectHideFlags: 0
@@ -5969,6 +6035,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1603345483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1603345484}
+  - component: {fileID: 1603345485}
+  m_Layer: 0
+  m_Name: MoodFetch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1603345484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603345483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 646.8548, y: 375.64447, z: -75.15933}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1603345485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603345483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977d07b01f8e04f4f85d2ac24e1dc0dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmyURL: https://kouo-amygdala-staging.herokuapp.com
+  AmyEndpointStart: /v2/recording/start/
+  AmyEndpointChunk: /v2/recording/chunk/
+  AmyEndpointEnd: /v2/recording/end/
+  AmyEndpointInference: /v2/infer/
+  OnStartInferenceSession: {fileID: 11400000, guid: 2242a86f6e75bee44b456904f7800414,
+    type: 2}
+  OnFetchMood: {fileID: 11400000, guid: 67009c9f3e1a7c043b0c4153d0c6f558, type: 2}
+  OnFetchAuthToken: {fileID: 11400000, guid: 0b910346581690c4cbde72a53b815e6b, type: 2}
+  OnEndInferenceSession: {fileID: 11400000, guid: e8bb520745084f648a34f75e170332bf,
+    type: 2}
+  connectionParams: {fileID: 11400000, guid: ac82aaf83b4b1f8499ae2559a70ea68e, type: 2}
+  brainData: {fileID: 11400000, guid: a20e9cbbe6cf17e4f9199f7fac128d7f, type: 2}
 --- !u!1 &1610610515
 GameObject:
   m_ObjectHideFlags: 0
@@ -7461,7 +7583,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1471353934}
+      - m_Target: {fileID: 1467549161}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -7564,7 +7686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4477424cf37394d85d50e4f29df2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameRate: 12
+  frameRate: 60
 --- !u!4 &2095816622
 Transform:
   m_ObjectHideFlags: 0

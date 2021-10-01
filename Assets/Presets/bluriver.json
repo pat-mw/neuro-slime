@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "bluriver",
+    "stepsPerFrame": 5,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 319666,
+    "trailWeight": 3.9,
+    "decayRate": 0.21,
+    "diffuseRate": 25.5,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 40.2594032,
+                "turnSpeed": -12.4524021,
+                "sensorAngleSpacing": 61.632782,
+                "sensorOffsetDst": -20.0746822,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.09176756,
+                    0.5856314,
+                    0.69314754,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 28.4338779,
+                "turnSpeed": 14.7665367,
+                "sensorAngleSpacing": 9.158897,
+                "sensorOffsetDst": 13.4951859,
+                "sensorSize": 6,
+                "colour": {
+                    "$type": 3,
+                    0.506769955,
+                    0.08241161,
+                    0.0151392594,
+                    1
+                }
+            }
+        ]
+    }
+}

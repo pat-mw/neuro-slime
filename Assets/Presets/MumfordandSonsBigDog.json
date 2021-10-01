@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "MumfordandSonsBigDog",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 155111,
+    "trailWeight": 18.7,
+    "decayRate": 0.21,
+    "diffuseRate": 39.558773,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 90.36121,
+                "turnSpeed": -8.351927,
+                "sensorAngleSpacing": 47.8449173,
+                "sensorOffsetDst": -28.9944916,
+                "sensorSize": 3,
+                "colour": {
+                    "$type": 3,
+                    0.562743664,
+                    0.107553646,
+                    0.0398343056,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 40.1776733,
+                "turnSpeed": -2.327755,
+                "sensorAngleSpacing": 35.04153,
+                "sensorOffsetDst": -12.3888474,
+                "sensorSize": 3,
+                "colour": {
+                    "$type": 3,
+                    0.0185777489,
+                    0.509802,
+                    0.600311458,
+                    1
+                }
+            }
+        ]
+    }
+}

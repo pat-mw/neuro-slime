@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "feathers",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 129678,
+    "trailWeight": 43.5061646,
+    "decayRate": 3.73481822,
+    "diffuseRate": 47.4300079,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 66.76862,
+                "turnSpeed": 9.658249,
+                "sensorAngleSpacing": 68.4316254,
+                "sensorOffsetDst": -71.6626,
+                "sensorSize": 7,
+                "colour": {
+                    "$type": 3,
+                    0.10188245,
+                    0.147413179,
+                    0.6453179,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 4.06149626,
+                "turnSpeed": 3.70386076,
+                "sensorAngleSpacing": 58.6316643,
+                "sensorOffsetDst": -7.126816,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.808682561,
+                    0.550068259,
+                    0.3494057,
+                    1
+                }
+            }
+        ]
+    }
+}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 1080
   height: 1080
-  stepsPerFrame: 10
+  stepsPerFrame: 2
   numAgents: 100
   spawnMode: 4
   trailWeight: 0

@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "greenRing",
+    "stepsPerFrame": 3,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 332947,
+    "trailWeight": 61.4000244,
+    "decayRate": 3.213823,
+    "diffuseRate": 98.64919,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 73.79258,
+                "turnSpeed": -14.44277,
+                "sensorAngleSpacing": 54.9718666,
+                "sensorOffsetDst": 1.9306488,
+                "sensorSize": 6,
+                "colour": {
+                    "$type": 3,
+                    0.250890881,
+                    0.615198255,
+                    0.175851882,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 84.3387756,
+                "turnSpeed": 6.429451,
+                "sensorAngleSpacing": 93.2805,
+                "sensorOffsetDst": 57.3878632,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.401293576,
+                    0.526064634,
+                    0.02516759,
+                    1
+                }
+            }
+        ]
+    }
+}

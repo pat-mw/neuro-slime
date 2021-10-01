@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "murmur",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 438874,
+    "trailWeight": 60.81938,
+    "decayRate": 9.869328,
+    "diffuseRate": 56.64411,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 59.5705223,
+                "turnSpeed": 9.678633,
+                "sensorAngleSpacing": 53.4921227,
+                "sensorOffsetDst": -52.63842,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.97486794,
+                    0.09199026,
+                    0.0420300551,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 79.16811,
+                "turnSpeed": 2.06815672,
+                "sensorAngleSpacing": 51.9422,
+                "sensorOffsetDst": -60.8494377,
+                "sensorSize": 6,
+                "colour": {
+                    "$type": 3,
+                    0.716491938,
+                    0.331667662,
+                    0.117804632,
+                    1
+                }
+            }
+        ]
+    }
+}

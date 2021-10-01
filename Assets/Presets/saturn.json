@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "saturn",
+    "stepsPerFrame": 2,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 363499,
+    "trailWeight": 62.3228951,
+    "decayRate": 4.22463,
+    "diffuseRate": 4.379225,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 83.94309,
+                "turnSpeed": 12.3957,
+                "sensorAngleSpacing": 8.525157,
+                "sensorOffsetDst": 65.9870453,
+                "sensorSize": 6,
+                "colour": {
+                    "$type": 3,
+                    0.6461181,
+                    0.331855029,
+                    0.914844036,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 99.53722,
+                "turnSpeed": 11.1046066,
+                "sensorAngleSpacing": 9.581232,
+                "sensorOffsetDst": 61.6862144,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.3156338,
+                    0.8995695,
+                    0.833424449,
+                    1
+                }
+            }
+        ]
+    }
+}

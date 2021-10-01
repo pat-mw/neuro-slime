@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "mysterymatter",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 201336,
+    "trailWeight": 36.2979469,
+    "decayRate": 7.344109,
+    "diffuseRate": 81.03296,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 78.62703,
+                "turnSpeed": -8.148933,
+                "sensorAngleSpacing": 59.12543,
+                "sensorOffsetDst": 40.08892,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.524989963,
+                    0.155186549,
+                    0.08710375,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 39.8197479,
+                "turnSpeed": -14.1070347,
+                "sensorAngleSpacing": 20.7101345,
+                "sensorOffsetDst": -72.39183,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.7439393,
+                    0.27567026,
+                    0.223623484,
+                    1
+                }
+            }
+        ]
+    }
+}

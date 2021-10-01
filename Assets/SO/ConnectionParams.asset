@@ -25,7 +25,7 @@ MonoBehaviour:
     - Name: moodReport
       Entry: 10
       Data: 0
-  debugMode: 0
+  debugMode: 1
   userID: -1
   username: 
   jwt: 

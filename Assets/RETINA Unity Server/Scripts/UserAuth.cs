@@ -7,9 +7,12 @@ using Cysharp.Threading.Tasks;
 
 namespace RetinaNetworking.Server
 {
-    [RequireComponent(typeof(Amygdala))]
+    [RequireComponent(typeof(GetAuthToken))]
     public class UserAuth : MonoBehaviour
     {
+        [Header("DATA")]
+        public ConnectionParams connectionParams;
+
         [Header("Network Properties")]
         public string defaultURL = "https://kouo-strapi-staging.herokuapp.com";
         public string defaultEndpoint = "/auth/local/register";
@@ -18,15 +21,16 @@ namespace RetinaNetworking.Server
         public StringGameEvent formDebuggerEvent = default(StringGameEvent);
         public GameEvent closeFormEvent = default(GameEvent);
         public GameEvent resetFormEvent = default(GameEvent);
+        public GameEvent activateSimEvent = default(GameEvent);
 
-        private Amygdala amy;
+        private GetAuthToken auth;
 
         private void Awake()
         {
-            amy = GetComponent<Amygdala>();
+            auth = GetComponent<GetAuthToken>();
         }
 
-        public void RequestAuth(string username, string email, string gender, int age, string language, string password)
+        async public void RequestAuth(string username, string email, string gender, int age, string language, string password)
         {
             Debug.Log(" -- attempting to request authentication -- ");
 
@@ -40,10 +44,10 @@ namespace RetinaNetworking.Server
             data.Add("language", language);
             data.Add("password", password);
 
-            StartCoroutine(POST(defaultURL, defaultEndpoint, data));
+            await POST(defaultURL, defaultEndpoint, data);
         }
 
-        IEnumerator POST(string _URL, string _endPoint, Dictionary<string, dynamic> _data)
+        async UniTask POST(string _URL, string _endPoint, Dictionary<string, dynamic> _data)
         {
             WWWForm form = new WWWForm();
 
@@ -62,7 +66,7 @@ namespace RetinaNetworking.Server
 
             using (UnityWebRequest www = UnityWebRequest.Post(_URL + _endPoint, form))
             {
-                yield return www.SendWebRequest();
+                await www.SendWebRequest();
 
                 if (www.result == UnityWebRequest.Result.Success)
                 {
@@ -82,18 +86,16 @@ namespace RetinaNetworking.Server
                     formDebuggerEvent.Raise($"User Authenticated! \n UserID: {response.user.id} \n Username: {response.user.username}");
 
                     // get amy session token
-                    string sessionToken = amy.RequestSessionToken(response.jwt).ToString();
-                    Debug.Log("*** session token: " + sessionToken);
-
-                    // create player card
-                    ClientDatabase.Instance.AddClientPanel(new Client(response.user.id, response.user.username, response.jwt, sessionToken));
-
+                    await FetchSessionToken(response.jwt);
 
                     // reset form
                     resetFormEvent.Raise();
 
                     // close panel
                     closeFormEvent.Raise();
+
+                    //  activate simulation
+                    activateSimEvent.Raise();
                 }
                 else
                 {
@@ -121,7 +123,31 @@ namespace RetinaNetworking.Server
                 }
             }
         }
+
+        async public void RequestSessionToken(string JWT)
+        {
+            Debug.Log($"REQUESTING SESSION TOKEN with JWT: {JWT}");
+            await FetchSessionToken(JWT);
+        }
+
+        async public UniTask FetchSessionToken(string JWT)
+        {
+            Debug.Log($"Fetching Session Token");
+            var sessionToken = await auth.RequestSessionToken(JWT);
+            sessionToken = sessionToken.ToString();
+
+            Debug.Log($"Session token fetched: {sessionToken}");
+            connectionParams.SetSessionToken(sessionToken);
+        }
+
+        private void OnDisable()
+        {
+            connectionParams.Reset();
+        }
+
     }
+
+
 
     [System.Serializable]
     public class BadResponse
@@ -156,4 +182,5 @@ namespace RetinaNetworking.Server
             public string username;
         }
     }
+
 }

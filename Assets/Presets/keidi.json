@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "keidi",
+    "stepsPerFrame": 5,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 422243,
+    "trailWeight": 55.0739479,
+    "decayRate": 4.37957239,
+    "diffuseRate": 80.14809,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 16.9859886,
+                "turnSpeed": -9.27128,
+                "sensorAngleSpacing": 50.4997444,
+                "sensorOffsetDst": 1.84687042,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.4097213,
+                    0.2052788,
+                    0.9349131,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 57.05858,
+                "turnSpeed": -11.9774857,
+                "sensorAngleSpacing": 65.7337646,
+                "sensorOffsetDst": 68.6362152,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.382244974,
+                    0.573247135,
+                    0.874985456,
+                    1
+                }
+            }
+        ]
+    }
+}

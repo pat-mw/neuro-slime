@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "glowScatter",
+    "stepsPerFrame": 3,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 267710,
+    "trailWeight": 82.28349,
+    "decayRate": 3.6630137,
+    "diffuseRate": 2.534771,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 79.63954,
+                "turnSpeed": -9.497459,
+                "sensorAngleSpacing": 36.41543,
+                "sensorOffsetDst": 20.54243,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.260072321,
+                    0.951895237,
+                    0.9983228,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 42.1539955,
+                "turnSpeed": -4.886665,
+                "sensorAngleSpacing": 16.451025,
+                "sensorOffsetDst": 13.2399464,
+                "sensorSize": 7,
+                "colour": {
+                    "$type": 3,
+                    0.552440643,
+                    0.7176193,
+                    0.3284776,
+                    1
+                }
+            }
+        ]
+    }
+}

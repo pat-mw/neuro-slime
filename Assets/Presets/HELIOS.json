@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "HELIOS",
+    "stepsPerFrame": 3,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 384897,
+    "trailWeight": 91.03042,
+    "decayRate": 0.981284559,
+    "diffuseRate": 66.99087,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 65.28268,
+                "turnSpeed": 5.63250637,
+                "sensorAngleSpacing": 1.01883411,
+                "sensorOffsetDst": 74.71396,
+                "sensorSize": 3,
+                "colour": {
+                    "$type": 3,
+                    0.973552346,
+                    0.370920837,
+                    0.08047751,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 95.84927,
+                "turnSpeed": -1.78308439,
+                "sensorAngleSpacing": 72.02951,
+                "sensorOffsetDst": 53.2354851,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.921159148,
+                    0.4969977,
+                    0.11546807,
+                    1
+                }
+            }
+        ]
+    }
+}

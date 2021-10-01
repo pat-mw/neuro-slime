@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "alienWorms",
+    "stepsPerFrame": 2,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 354068,
+    "trailWeight": 34.69142,
+    "decayRate": 8.023336,
+    "diffuseRate": 73.8263245,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 55.3454933,
+                "turnSpeed": 8.516078,
+                "sensorAngleSpacing": 96.76439,
+                "sensorOffsetDst": -15.5027466,
+                "sensorSize": 2,
+                "colour": {
+                    "$type": 3,
+                    0.17201896,
+                    0.9219687,
+                    0.0529988073,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 42.6013641,
+                "turnSpeed": -14.4782639,
+                "sensorAngleSpacing": 81.14382,
+                "sensorOffsetDst": 27.6332436,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.8795692,
+                    0.1655453,
+                    0.389242262,
+                    1
+                }
+            }
+        ]
+    }
+}
