@@ -122,13 +122,13 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                 float beta = message.GetFloat(4);
                 float gamma = message.GetFloat(5);
 
-                Debug.Log($"Received bandpower data: \n" +
-                    $"channel: {channelNumber} \n" +
-                    $"delta: {delta} \n" +
-                    $"theta: {theta} \n" +
-                    $"alpha: {alpha} \n" +
-                    $"beta: {beta} \n" +
-                    $"gamma: {gamma} \n");
+                //Debug.Log($"Received bandpower data: \n" +
+                //    $"channel: {channelNumber} \n" +
+                //    $"delta: {delta} \n" +
+                //    $"theta: {theta} \n" +
+                //    $"alpha: {alpha} \n" +
+                //    $"beta: {beta} \n" +
+                //    $"gamma: {gamma} \n");
 
                 brainData.leftBands.delta = delta;
                 brainData.leftBands.theta = theta;
@@ -145,13 +145,13 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                 float beta = message.GetFloat(4);
                 float gamma = message.GetFloat(5);
 
-                Debug.Log($"Received bandpower data: \n" +
-                    $"channel: {channelNumber} \n" +
-                    $"delta: {delta} \n" +
-                    $"theta: {theta} \n" +
-                    $"alpha: {alpha} \n" +
-                    $"beta: {beta} \n" +
-                    $"gamma: {gamma} \n");
+                //Debug.Log($"Received bandpower data: \n" +
+                //    $"channel: {channelNumber} \n" +
+                //    $"delta: {delta} \n" +
+                //    $"theta: {theta} \n" +
+                //    $"alpha: {alpha} \n" +
+                //    $"beta: {beta} \n" +
+                //    $"gamma: {gamma} \n");
 
                 brainData.rightBands.delta = delta;
                 brainData.rightBands.theta = theta;
@@ -181,7 +181,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
             float left = message.GetFloat(0);
             float right = message.GetFloat(7);
 
-            Debug.Log($"Received Signal - left: {left} - right: {right}");
+            //Debug.Log($"Received Signal - left: {left} - right: {right}");
 
             brainData.currentEpoch.AddSample(left, GlobalConfig.CHANNEL.LEFT);
             brainData.currentEpoch.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
@@ -189,8 +189,6 @@ public class ReceiveBrainData : SerializedMonoBehaviour
             if (brainData.currentEpoch.epochComplete)
             {
                 Debug.Log("Epoch completed!! Backing up now");
-
-                // TODO: send epoch to amygdyla and query for the mood
 
                 brainData.BackupEpoch();
             }

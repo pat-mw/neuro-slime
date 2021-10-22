@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15cf9e7364c922e46884a9840c0d7d76, type: 3}
-  m_Name: FOLLOW_accXtrailWeight
+  m_Script: {fileID: 11500000, guid: a4e80ee38340aac4fa13416adf7090a1, type: 3}
+  m_Name: accY_decayRate
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -24,5 +24,5 @@ MonoBehaviour:
   brainData: {fileID: 11400000, guid: a20e9cbbe6cf17e4f9199f7fac128d7f, type: 2}
   slimeSettings: {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
   mapType: 0
-  influencer: 10
-  receiver: 2
+  influencer: 11
+  receiver: 3

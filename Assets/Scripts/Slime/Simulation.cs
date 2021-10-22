@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System.Collections;
 using UnityEditor;
+using Cysharp.Threading.Tasks;
 //using System;
 
 [DefaultExecutionOrder(-1)]
@@ -115,6 +116,7 @@ public class Simulation : SerializedMonoBehaviour
     {
 		Debug.Log("ACTIVATING SLIME");
 		isSimActive = true;
+		SlowUpdate();
 	}
 
 
@@ -126,11 +128,11 @@ public class Simulation : SerializedMonoBehaviour
 		/// SLIME SETTINGS
 		//public int width = 1080;
 		//public int height = 1080;
-		//[Range(1, 10)] public int stepsPerFrame = 1;
-		//[Range(100, 500000)] public int numAgents = 250000;
+		//[Range(1, 5)] public int stepsPerFrame = 1;
+		//[Range(100000, 500000)] public int numAgents = 250000;
 		//public Simulation.SpawnMode spawnMode = Simulation.SpawnMode.InwardCircle;
 		//[Range(0, 100)] public float trailWeight = 1f;
-		//[Range(0.1f, 20)] public float decayRate = 1f;
+		//[Range(0.1f, 10f)] public float decayRate = 1f;
 		//[Range(0, 100)] public float diffuseRate = 1f;
 		//public SpeciesSettings[] speciesSettings;
 
@@ -233,7 +235,7 @@ public class Simulation : SerializedMonoBehaviour
 	[ButtonGroup("SimActivationButtons")]
 	public void ActivateSimButton()
 	{
-		isSimActive = true;
+		ActivateSim();
 	}
 
 
@@ -351,7 +353,6 @@ public class Simulation : SerializedMonoBehaviour
         {
 			for (int i = 0; i < settings.stepsPerFrame; i++)
 			{
-				ApplyMappings();
 				RunSimulation();
 			}
 		}
@@ -376,11 +377,24 @@ public class Simulation : SerializedMonoBehaviour
 		}
 	}
 
+
+	async private void SlowUpdate()
+    {
+
+		Debug.Log($"SLOW UPDATE");
+		if (isSimActive)
+        {
+			ApplyMappings();
+			// await frame-based operation like a coroutine
+			await UniTask.Delay(1000);
+			SlowUpdate();
+		}
+    }
+
 	void ApplyMappings()
     {
         foreach (IMapping mapping in Mappings)
         {
-			//Debug.Log($"Applying mapping: {mapping}");
             mapping.Map();
         }
     }

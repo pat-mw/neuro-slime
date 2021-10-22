@@ -8,6 +8,9 @@ using ScriptableObjectArchitecture;
 [System.Serializable]
 public class BrainData : SerializedScriptableObject
 {
+    [Header("EVENTS")]
+    public GameEvent OnFetchMood = default(GameEvent);
+
     [Header("BAND POWER SPECTRA")]
     public BandPower leftBands = new BandPower(GlobalConfig.LEFT_CHANNEL);
     public BandPower rightBands = new BandPower(GlobalConfig.RIGHT_CHANNEL);
@@ -24,6 +27,7 @@ public class BrainData : SerializedScriptableObject
         if (currentEpoch.epochComplete)
         {
             previousEpoch = currentEpoch;
+            OnFetchMood.Raise();
             currentEpoch = new EEGSample(GlobalConfig.EPOCH_SAMPLE_COUNT);
         }
         else
@@ -70,7 +74,6 @@ public class BrainData : SerializedScriptableObject
         {
             try
             {
-                Debug.Log("ADDING SAMPLE");
                 if (!epochComplete)
                 {
                     switch (channel)

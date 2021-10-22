@@ -78,9 +78,13 @@ namespace RetinaNetworking.Server
 
             // data
             Dictionary<string, dynamic> data = new Dictionary<string, dynamic>();
+            // delete deviceID + mediaID
+            // two field: userID + timeseries {ch1: [], ch2: []}
             data.Add("deviceId", "2");
             data.Add("userId", connectionParams.UserID());
             data.Add("mediaId", 1);
+
+            // return inference ID
 
             try
             {
@@ -112,6 +116,8 @@ namespace RetinaNetworking.Server
         /// </summary>
         async void FetchMood()
         {
+            Debug.Log($"FETCHING MOOD!");
+
             // data
             Dictionary<string, dynamic> data = new Dictionary<string, dynamic>();
             data.Add("datasetId", connectionParams.SessionID());
@@ -119,9 +125,15 @@ namespace RetinaNetworking.Server
             string[] events = new string[0];
             data.Add("events", events);
 
+
+            // TODO: rename "headset" -> "timeseries"
+
+            // two fields:
+            // inferenceID from start
+            // time series
             Dictionary<string, float[]> headset = new Dictionary<string, float[]>();
-            headset.Add("channel0", brainData.currentEpoch.left);
-            headset.Add("channel1", brainData.currentEpoch.right);
+            headset.Add("channel0", brainData.previousEpoch.left);
+            headset.Add("channel1", brainData.previousEpoch.right);
             data.Add("headset", headset);
 
             try
@@ -135,14 +147,14 @@ namespace RetinaNetworking.Server
                 {
                     MoodResponse response = new MoodResponse();
                     JsonUtility.FromJsonOverwrite(responseText, response);
-                    Debug.Log($"MOOD: {response.message}");
+                    Debug.Log($"RESPONSE MESSAGE: {response.message}");
 
                     //connectionParams.SetMood(response.message);
                 }
             }
             catch (System.Exception ex)
             {
-                Debug.LogError($"Error occured when starting amygdala session: {ex.Message}");
+                Debug.LogWarning($"Error occured when starting amygdala session: {ex.Message}");
                 throw;
             }
         }
@@ -180,7 +192,7 @@ namespace RetinaNetworking.Server
 
         async UniTask<string> POST(string _URL, Dictionary<string, dynamic> data)
         {
-            Debug.Log($"-- MOOD attempting POST request: {_URL} --");
+            Debug.Log($"-- attempting POST request: {_URL} --");
 
             string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(data);
 

@@ -12,17 +12,17 @@ public class SlimeSettings : ScriptableObject
 	public int height = 720;
 
 	[Header("Simulation Settings")]
-	[Range(1, 10)] public int stepsPerFrame = 1;
-	[Range(100, 500000)] public int numAgents = 250000;
+	[Range(1, 5)] public int stepsPerFrame = 1;
+	[Range(100000, 500000)] public int numAgents = 250000;
 	public Simulation.SpawnMode spawnMode = Simulation.SpawnMode.InwardCircle;
 
 	// You can also control spacing both before and after the PropertySpace attribute.
 	[PropertySpace(SpaceBefore = 20)]
 	// You can also control spacing both before and after the PropertySpace attribute.
 	[Header("Trail Settings")]
-	[Range(0, 100)] public float trailWeight = 1f;
-	[Range(0.1f,20)] public float decayRate = 1f;
-	[Range(0, 100)] public float diffuseRate = 1f;
+	[Range(0, 100f)] public float trailWeight = 1f;
+	[Range(0.1f,10f)] public float decayRate = 1f;
+	[Range(0, 100f)] public float diffuseRate = 1f;
 
 	// You can also control spacing both before and after the PropertySpace attribute.
 	[PropertySpace(SpaceBefore = 20)]
