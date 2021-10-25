@@ -82,7 +82,6 @@ public static class Mappings
                 receiver = influencer;
                 break;
             default:
-                receiver = 0;
                 break;
         }
     }

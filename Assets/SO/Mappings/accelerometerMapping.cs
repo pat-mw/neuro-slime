@@ -94,7 +94,6 @@ public class accelerometerMapping : SerializedScriptableObject, IMapping
         // y = mx + c
         var y = ((R2 - R1) / (I2 - I1)) * (x - I1) + R1;
 
-
         Debug.Log($"LINEAR MAP - input: {x} - output: {y}");
         return y;
     }

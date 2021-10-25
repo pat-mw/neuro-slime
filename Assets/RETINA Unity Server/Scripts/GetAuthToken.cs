@@ -22,7 +22,7 @@ namespace RetinaNetworking.Server
 
         public async UniTask<string> RequestSessionToken(string _JWT)
         {
-            Debug.Log(" -- attempting to request session token -- ");
+            //Debug.Log(" -- attempting to request session token -- ");
 
             await GetSessionToken(strapiURL + strapiEndpoint + strapiParams + sessionTimeLimit.ToString(), _JWT);
 
@@ -32,7 +32,7 @@ namespace RetinaNetworking.Server
         async UniTask GetSessionToken(string _URL, string _JWT)
         {
             lastResponse = new StrapiTokenResponse();
-            Debug.Log($"-- attempting GET request: {_URL} --");
+            //Debug.Log($"-- attempting GET request: {_URL} --");
             using (UnityWebRequest webRequest = UnityWebRequest.Get(_URL))
             {
                 // authentication
@@ -47,25 +47,25 @@ namespace RetinaNetworking.Server
                 switch (webRequest.result)
                 {
                     case UnityWebRequest.Result.ConnectionError:
-                        Debug.LogError(pages[page] + ": Connection error: " + webRequest.error);
+                        Debug.LogWarning(pages[page] + ": Connection error: " + webRequest.error);
 
                         lastResponse = null;
                         break;
 
                     case UnityWebRequest.Result.DataProcessingError:
-                        Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                        Debug.LogWarning(pages[page] + ": Error: " + webRequest.error);
 
                         lastResponse = null;
                         break;
 
                     case UnityWebRequest.Result.ProtocolError:
-                        Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                        Debug.LogWarning(pages[page] + ": HTTP Error: " + webRequest.error);
 
                         lastResponse = null;
                         break;
 
                     case UnityWebRequest.Result.Success:
-                        Debug.Log(pages[page] + ":\n Received: " + webRequest.downloadHandler.text);
+                        //Debug.Log(pages[page] + ":\n Received: " + webRequest.downloadHandler.text);
                         StrapiTokenResponse response = new StrapiTokenResponse();
                         JsonUtility.FromJsonOverwrite(webRequest.downloadHandler.text, response);
 

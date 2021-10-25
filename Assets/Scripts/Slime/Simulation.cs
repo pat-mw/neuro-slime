@@ -23,6 +23,7 @@ public class Simulation : SerializedMonoBehaviour
 	[System.NonSerialized] [OdinSerialize] public SlimeSettings settings;
 
 	[Header("MAPPINGS")]
+	public bool activateMappings = false;
 	public List<IMapping> Mappings;
 
 	[Header("SHADERS")]
@@ -380,14 +381,14 @@ public class Simulation : SerializedMonoBehaviour
 
 	async private void SlowUpdate()
     {
-
-		Debug.Log($"SLOW UPDATE");
 		if (isSimActive)
         {
-			ApplyMappings();
-			// await frame-based operation like a coroutine
-			await UniTask.Delay(1000);
-			SlowUpdate();
+			if (activateMappings)
+            {
+				ApplyMappings();
+				await UniTask.Delay(1000);
+				SlowUpdate();
+			}
 		}
     }
 

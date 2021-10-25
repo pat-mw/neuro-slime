@@ -13,11 +13,16 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System.Collections;
+using ScriptableObjectArchitecture;
 
 public class ReceiveBrainData : SerializedMonoBehaviour
 {
     [Header("NETWORK")]
     public OSC osc;
+
+    [Header("EVENTS")]
+    public GameEvent onStartReceivingBrainData;
+    public GameEvent onStopReceivingBrainData;
 
     [Header("KEYS")]
     [SerializeField] private string bandpowerKey = "/band";
@@ -30,8 +35,16 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     [Header("DATA STORE")]
     [OdinSerialize] private BrainData brainData;
 
+    private bool isCalibPeriod = true;
+    private bool isReceiving = false;
+
     void Start()
     {
+        brainData.Reset();
+
+        onStartReceivingBrainData.AddListener(StartReceiving);
+        onStopReceivingBrainData.AddListener(StopReceiving);
+
         switch (handler)
         {
             case HandlerMode.Custom:
@@ -48,7 +61,16 @@ public class ReceiveBrainData : SerializedMonoBehaviour
         }
     }
 
-    
+    void StartReceiving()
+    {
+        isReceiving = true;
+    }
+
+    void StopReceiving()
+    {
+        isReceiving = false;
+    }
+
     /// <summary>
     /// Default Callback handler
     /// Is called when any data is received
@@ -56,24 +78,28 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     void OnReceiveAnything(OscMessage message)
     {
         //Debug.Log($"Receiving message: {message}");
-        string address = message.address;
-      
-        address = CleanAddress(address);
-
-        switch (address)
+        
+        if (isReceiving)
         {
-            case "/band":
-                OnReceiveBandpower(message);
-                break;
-            case "/focus":
-                OnReceiveSignal(message);
-                break;
-            case "/accelerometer":
-                OnReceiveAccelerometer(message);
-                break;
-            default:
-                OnReceiveUnknown(message);
-                break;
+            string address = message.address;
+
+            address = CleanAddress(address);
+
+            switch (address)
+            {
+                case "/band":
+                    OnReceiveBandpower(message);
+                    break;
+                case "/focus":
+                    OnReceiveSignal(message);
+                    break;
+                case "/accelerometer":
+                    OnReceiveAccelerometer(message);
+                    break;
+                default:
+                    OnReceiveUnknown(message);
+                    break;
+            }
         }
     }
 
@@ -106,65 +132,67 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     void OnReceiveBandpower(OscMessage message)
     {
         //Debug.Log($"Receiving Bandpower: {message}");
-
-        try
+        if (isReceiving)
         {
-            int channelNumber = message.GetInt(0);
-
-            int leftChannel = brainData.leftBands.channelNo;
-            int rightChannel = brainData.rightBands.channelNo;
-
-            if (channelNumber == leftChannel)
+            try
             {
-                float delta = message.GetFloat(1);
-                float theta = message.GetFloat(2);
-                float alpha = message.GetFloat(3);
-                float beta = message.GetFloat(4);
-                float gamma = message.GetFloat(5);
+                int channelNumber = message.GetInt(0);
 
-                //Debug.Log($"Received bandpower data: \n" +
-                //    $"channel: {channelNumber} \n" +
-                //    $"delta: {delta} \n" +
-                //    $"theta: {theta} \n" +
-                //    $"alpha: {alpha} \n" +
-                //    $"beta: {beta} \n" +
-                //    $"gamma: {gamma} \n");
+                int leftChannel = brainData.leftBands.channelNo;
+                int rightChannel = brainData.rightBands.channelNo;
 
-                brainData.leftBands.delta = delta;
-                brainData.leftBands.theta = theta;
-                brainData.leftBands.alpha = alpha;
-                brainData.leftBands.beta = beta;
-                brainData.leftBands.gamma = gamma;
+                if (channelNumber == leftChannel)
+                {
+                    float delta = message.GetFloat(1);
+                    float theta = message.GetFloat(2);
+                    float alpha = message.GetFloat(3);
+                    float beta = message.GetFloat(4);
+                    float gamma = message.GetFloat(5);
+
+                    //Debug.Log($"Received bandpower data: \n" +
+                    //    $"channel: {channelNumber} \n" +
+                    //    $"delta: {delta} \n" +
+                    //    $"theta: {theta} \n" +
+                    //    $"alpha: {alpha} \n" +
+                    //    $"beta: {beta} \n" +
+                    //    $"gamma: {gamma} \n");
+
+                    brainData.leftBands.delta = delta;
+                    brainData.leftBands.theta = theta;
+                    brainData.leftBands.alpha = alpha;
+                    brainData.leftBands.beta = beta;
+                    brainData.leftBands.gamma = gamma;
+                }
+
+                if (channelNumber == rightChannel)
+                {
+                    float delta = message.GetFloat(1);
+                    float theta = message.GetFloat(2);
+                    float alpha = message.GetFloat(3);
+                    float beta = message.GetFloat(4);
+                    float gamma = message.GetFloat(5);
+
+                    //Debug.Log($"Received bandpower data: \n" +
+                    //    $"channel: {channelNumber} \n" +
+                    //    $"delta: {delta} \n" +
+                    //    $"theta: {theta} \n" +
+                    //    $"alpha: {alpha} \n" +
+                    //    $"beta: {beta} \n" +
+                    //    $"gamma: {gamma} \n");
+
+                    brainData.rightBands.delta = delta;
+                    brainData.rightBands.theta = theta;
+                    brainData.rightBands.alpha = alpha;
+                    brainData.rightBands.beta = beta;
+                    brainData.rightBands.gamma = gamma;
+                }
             }
-
-            if (channelNumber == rightChannel)
+            catch (System.Exception e)
             {
-                float delta = message.GetFloat(1);
-                float theta = message.GetFloat(2);
-                float alpha = message.GetFloat(3);
-                float beta = message.GetFloat(4);
-                float gamma = message.GetFloat(5);
-
-                //Debug.Log($"Received bandpower data: \n" +
-                //    $"channel: {channelNumber} \n" +
-                //    $"delta: {delta} \n" +
-                //    $"theta: {theta} \n" +
-                //    $"alpha: {alpha} \n" +
-                //    $"beta: {beta} \n" +
-                //    $"gamma: {gamma} \n");
-
-                brainData.rightBands.delta = delta;
-                brainData.rightBands.theta = theta;
-                brainData.rightBands.alpha = alpha;
-                brainData.rightBands.beta = beta;
-                brainData.rightBands.gamma = gamma;
+                Debug.LogError($"Error Reading Bandpower: {e}");
             }
         }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"Error Reading Bandpower: {e}");
-        }
-        
+       
     }
 
 
@@ -176,27 +204,61 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     {
         //Debug.Log($"Receiving signal: {message}");
 
-        try
+        if (isReceiving)
         {
-            float left = message.GetFloat(0);
-            float right = message.GetFloat(7);
-
-            //Debug.Log($"Received Signal - left: {left} - right: {right}");
-
-            brainData.currentEpoch.AddSample(left, GlobalConfig.CHANNEL.LEFT);
-            brainData.currentEpoch.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
-
-            if (brainData.currentEpoch.epochComplete)
+            if (isCalibPeriod)
             {
-                Debug.Log("Epoch completed!! Backing up now");
 
-                brainData.BackupEpoch();
+                Debug.LogWarning("RECEIVING CALIBRATION");
+                try
+                {
+                    float left = message.GetFloat(0);
+                    float right = message.GetFloat(7);
+
+                    //Debug.Log($"Received Signal - left: {left} - right: {right}");
+
+                    brainData.calibrationPeriod.AddSample(left, GlobalConfig.CHANNEL.LEFT);
+                    brainData.calibrationPeriod.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
+
+                    if (brainData.calibrationPeriod.epochComplete)
+                    {
+                        Debug.Log("Calibration Complete! Backing up now");
+                        isCalibPeriod = false;
+                        
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogError($"Error receiving signal: {e}");
+                }
             }
+            else // not calibration period
+            {
+                try
+                {
+                    float left = message.GetFloat(0);
+                    float right = message.GetFloat(7);
+
+                    //Debug.Log($"Received Signal - left: {left} - right: {right}");
+
+                    brainData.currentEpoch.AddSample(left, GlobalConfig.CHANNEL.LEFT);
+                    brainData.currentEpoch.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
+
+                    if (brainData.currentEpoch.epochComplete)
+                    {
+                        Debug.Log("Epoch completed!! Backing up now");
+
+                        brainData.BackupEpoch();
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogError($"Error receiving signal: {e}");
+                }
+            }
+           
         }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"Error receiving signal: {e}");
-        }
+        
     }
 
 
@@ -209,31 +271,36 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     {
         //Debug.Log($"Receiving Accelerometer: {message}");
 
-        try
-        {
-            int index = message.GetInt(0);
-            float value = message.GetFloat(1);
 
-            switch (index)
+        if (isReceiving)
+        {
+            try
             {
-                case 1:
-                    brainData.accelerometer.X = value;
-                    break;
-                case 2:
-                    brainData.accelerometer.Y = value;
-                    break;
-                case 3:
-                    brainData.accelerometer.Z = value;
-                    break;
-                default:
-                    Debug.LogError($"Did not recognise index: {index}");
-                    break;
+                int index = message.GetInt(0);
+                float value = message.GetFloat(1);
+
+                switch (index)
+                {
+                    case 1:
+                        brainData.accelerometer.X = value;
+                        break;
+                    case 2:
+                        brainData.accelerometer.Y = value;
+                        break;
+                    case 3:
+                        brainData.accelerometer.Z = value;
+                        break;
+                    default:
+                        Debug.LogError($"Did not recognise index: {index}");
+                        break;
+                }
+            }
+            catch (System.Exception)
+            {
+                Debug.LogError("Error fetching accelerometer data");
             }
         }
-        catch (System.Exception)
-        {
-            Debug.LogError("Error fetching accelerometer data");
-        }
+        
     }
 
 
@@ -243,7 +310,10 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     /// </summary>
     void OnReceiveUnknown(OscMessage message)
     {
-        Debug.LogError($"Message received from unrecognised address: {message.address} \n message: {message}");
+        if (isReceiving)
+        {
+            Debug.LogError($"Message received from unrecognised address: {message.address} \n message: {message}");
+        }
     }
 
 }

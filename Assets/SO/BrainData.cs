@@ -9,6 +9,7 @@ using ScriptableObjectArchitecture;
 public class BrainData : SerializedScriptableObject
 {
     [Header("EVENTS")]
+    public GameEvent onStartInference = default(GameEvent);
     public GameEvent OnFetchMood = default(GameEvent);
 
     [Header("BAND POWER SPECTRA")]
@@ -21,14 +22,30 @@ public class BrainData : SerializedScriptableObject
     [Header("EEG SAMPLES")]
     public EEGSample currentEpoch = new EEGSample(GlobalConfig.EPOCH_SAMPLE_COUNT);
     public EEGSample previousEpoch = new EEGSample(GlobalConfig.EPOCH_SAMPLE_COUNT);
+    public EEGSample calibrationPeriod = new EEGSample(GlobalConfig.CALIBRATION_SAMPLE_COUNT);
+
+
+    [GUIColor(0, 0, 1)]
+    [Button(ButtonSizes.Large)]
+    [ButtonGroup("Reset Brain Data")]
+    public void Reset()
+    {
+        currentEpoch = new EEGSample(GlobalConfig.EPOCH_SAMPLE_COUNT);
+        previousEpoch = new EEGSample(GlobalConfig.EPOCH_SAMPLE_COUNT);
+        calibrationPeriod = new EEGSample(GlobalConfig.CALIBRATION_SAMPLE_COUNT);
+        leftBands = new BandPower(GlobalConfig.LEFT_CHANNEL);
+        rightBands = new BandPower(GlobalConfig.RIGHT_CHANNEL);
+        accelerometer = new Accelerometer();
+    }
 
     public void BackupEpoch()
     {
         if (currentEpoch.epochComplete)
         {
             previousEpoch = currentEpoch;
-            OnFetchMood.Raise();
+
             currentEpoch = new EEGSample(GlobalConfig.EPOCH_SAMPLE_COUNT);
+
         }
         else
         {

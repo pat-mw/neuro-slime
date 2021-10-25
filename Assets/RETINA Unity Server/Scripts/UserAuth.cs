@@ -21,7 +21,9 @@ namespace RetinaNetworking.Server
         public StringGameEvent formDebuggerEvent = default(StringGameEvent);
         public GameEvent closeFormEvent = default(GameEvent);
         public GameEvent resetFormEvent = default(GameEvent);
-        public GameEvent activateSimEvent = default(GameEvent);
+        public GameEvent showInstructions = default(GameEvent);
+        
+        //public GameEvent activateSimEvent = default(GameEvent);
 
         private GetAuthToken auth;
 
@@ -66,7 +68,14 @@ namespace RetinaNetworking.Server
 
             using (UnityWebRequest www = UnityWebRequest.Post(_URL + _endPoint, form))
             {
-                await www.SendWebRequest();
+                try
+                {
+                    await www.SendWebRequest();
+                }
+                catch (UnityWebRequestException e)
+                {
+                    Debug.LogWarning($"Exception: {e}");
+                }
 
                 if (www.result == UnityWebRequest.Result.Success)
                 {
@@ -82,8 +91,7 @@ namespace RetinaNetworking.Server
                     Debug.Log($"User ID: {response.user.id}");
                     Debug.Log($"Username: {response.user.username}");
 
-                    // debugger text
-                    formDebuggerEvent.Raise($"User Authenticated! \n UserID: {response.user.id} \n Username: {response.user.username}");
+                    connectionParams.SetParams(response.user.id, response.user.username, response.jwt);
 
                     // get amy session token
                     await FetchSessionToken(response.jwt);
@@ -94,8 +102,8 @@ namespace RetinaNetworking.Server
                     // close panel
                     closeFormEvent.Raise();
 
-                    //  activate simulation
-                    activateSimEvent.Raise();
+                    // show instructions panel
+                    showInstructions.Raise();
                 }
                 else
                 {

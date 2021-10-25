@@ -16,6 +16,8 @@ namespace RetinaNetworking.Server
         [HideIf("debugMode")]
         [SerializeField] int userID;
         [HideIf("debugMode")]
+        [SerializeField] string fullName;
+        [HideIf("debugMode")]
         [SerializeField] string username;
         [HideIf("debugMode")]
         [SerializeField] string jwt;
@@ -24,10 +26,11 @@ namespace RetinaNetworking.Server
         [ShowIf("debugMode", true)]
         [SerializeField] int debugUserID = 186;
         [ShowIf("debugMode", true)]
+        [SerializeField] string debugFullName = "Papa";
+        [ShowIf("debugMode", true)]
         [SerializeField] string debugUsername = "popsjohns";
         [ShowIf("debugMode", true)]
         [SerializeField] string debugJwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTg2LCJpYXQiOjE2MzI5OTYzNjQsImV4cCI6MTYzNTU4ODM2NH0.4TIciP6yiu8HBzLyEYGV1RmHP6nyHCRnprDWjmdPUfo";
-
         [Header("SESSION")]
         [SerializeField] string sessionToken;
         [SerializeField] int sessionID;
@@ -35,12 +38,16 @@ namespace RetinaNetworking.Server
         [Header("MOOD")]
         [InlineEditor(InlineEditorModes.FullEditor)][OdinSerialize] MoodReport moodReport;
 
-        public void SetParams(int _userID, string _username, string _JWT, string _sessionToken)
+        public void SetParams(int _userID, string _username, string _JWT)
         {
             userID = _userID;
             username = _username;
             jwt = _JWT;
-            sessionToken = _sessionToken;
+        }
+
+        public void SetName(string _name)
+        {
+            fullName = _name;
         }
 
         public void SetMood(Mood _mood)
@@ -63,7 +70,7 @@ namespace RetinaNetworking.Server
             username = "";
             jwt = "";
             sessionToken = "";
-            moodReport.SetInferedMood(Mood.NONE);
+            moodReport.SetInferedMood(Mood.NEUTRAL);
             sessionID = -1;
         }
 
@@ -81,6 +88,18 @@ namespace RetinaNetworking.Server
             else
             {
                 return userID;
+            }
+        }
+
+        public string Name()
+        {
+            if (debugMode)
+            {
+                return debugFullName;
+            }
+            else
+            {
+                return fullName;
             }
         }
 
@@ -122,7 +141,6 @@ namespace RetinaNetworking.Server
 
     public enum Mood
     {
-        NONE,
         POSITIVE,
         NEGATIVE,
         NEUTRAL
