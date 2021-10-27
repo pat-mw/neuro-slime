@@ -597,7 +597,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dda722448f88d34d908d58560802409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textToDisplay: 
+  textToDisplay: 'NEUROPRINT v1
+
+    -- WELCOME --'
 --- !u!1 &166539359
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,7 +868,7 @@ MonoBehaviour:
   connectionParams: {fileID: 11400000, guid: ac82aaf83b4b1f8499ae2559a70ea68e, type: 2}
   defaultURL: https://kouo-strapi-staging.herokuapp.com
   defaultEndpoint: /auth/local/register
-  DebuggerEvent: {fileID: 0}
+  DebuggerEvent: {fileID: 11400000, guid: 0f41fec33fe407e40af162868f076975, type: 2}
   closeFormEvent: {fileID: 11400000, guid: 10fba235fb7027648bc5d9630115d245, type: 2}
   resetFormEvent: {fileID: 11400000, guid: a875db138cf3e174089a9e8b4406593d, type: 2}
   showInstructions: {fileID: 11400000, guid: dd95ef0dc1c8adc4a99361b55d452416, type: 2}
