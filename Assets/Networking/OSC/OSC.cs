@@ -408,7 +408,7 @@ public class UDPPacketIO
 
 
 
-    void Awake() {
+    void Start() {
 		Wenzil.Console.Console.Log("Opening OSC listener on port " + inPort);
 
 		OscPacketIO = new UDPPacketIO(outIP, outPort, inPort);
