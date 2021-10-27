@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "berghaus",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 342065,
+    "trailWeight": 72.8702545,
+    "decayRate": 5.251814,
+    "diffuseRate": 75.59122,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 28.14458,
+                "turnSpeed": -5.424526,
+                "sensorAngleSpacing": 74.2411041,
+                "sensorOffsetDst": 69.09352,
+                "sensorSize": 7,
+                "colour": {
+                    "$type": 3,
+                    0.237042889,
+                    0.8479381,
+                    0.82790035,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 24.6012325,
+                "turnSpeed": -6.43590164,
+                "sensorAngleSpacing": 32.84443,
+                "sensorOffsetDst": 5.925438,
+                "sensorSize": 2,
+                "colour": {
+                    "$type": 3,
+                    0.8723528,
+                    0.155600265,
+                    0.724437654,
+                    1
+                }
+            }
+        ]
+    }
+}

@@ -56,13 +56,13 @@ public class accelerometerMapping : SerializedScriptableObject, IMapping
                 Mappings.ApplyMap(mapType, (int)influencerValue, ref slimeSettings.numAgents);
                 break;
             case MappingIndex.Receivers.trailWeight:
-                // trailWeight range: (0f, 100f)
-                influencerValue = LinearRemap(influencerValue, (-1f, 1f), (0f, 100f));
+                // trailWeight range: (10f, 100f)
+                influencerValue = LinearRemap(influencerValue, (-1f, 1f), (10f, 100f));
                 Mappings.ApplyMap(mapType, influencerValue, ref slimeSettings.trailWeight);
                 break;
             case MappingIndex.Receivers.decayRate:
-                // decayRate range: (0.1f, 10f)
-                influencerValue = LinearRemap(influencerValue, (-1f, 1f), (0.1f, 10f));
+                // decayRate range: (0.1f, 6f)
+                influencerValue = LinearRemap(influencerValue, (-1f, 1f), (0.1f, 6f));
                 Mappings.ApplyMap(mapType, influencerValue, ref slimeSettings.decayRate);
                 break;
             case MappingIndex.Receivers.diffuseRate:
@@ -94,7 +94,7 @@ public class accelerometerMapping : SerializedScriptableObject, IMapping
         // y = mx + c
         var y = ((R2 - R1) / (I2 - I1)) * (x - I1) + R1;
 
-        Debug.Log($"LINEAR MAP - input: {x} - output: {y}");
+        //Debug.Log($"LINEAR MAP - input: {x} - output: {y}");
         return y;
     }
 }

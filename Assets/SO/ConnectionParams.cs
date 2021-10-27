@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using ScriptableObjectArchitecture;
+using Wenzil.Console;
 
 namespace RetinaNetworking.Server
 {
     [CreateAssetMenu(menuName = "CONNECTION PARAMS")]
     public class ConnectionParams : SerializedScriptableObject
     {
+
         [Header("DEBUG")]
         public bool debugMode = false;
+
+        [Header("MOOD CHANGED")]
+        public GameEvent onMoodChanged;
 
         [Header("PARAMS")]
         [HideIf("debugMode")]
@@ -33,7 +39,10 @@ namespace RetinaNetworking.Server
         [SerializeField] string debugJwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTg2LCJpYXQiOjE2MzI5OTYzNjQsImV4cCI6MTYzNTU4ODM2NH0.4TIciP6yiu8HBzLyEYGV1RmHP6nyHCRnprDWjmdPUfo";
         [Header("SESSION")]
         [SerializeField] string sessionToken;
-        [SerializeField] int sessionID;
+        [SerializeField] int sessionId;
+
+        [Header("INFERENCE ID")]
+        [SerializeField] int inferenceId;
 
         [Header("MOOD")]
         [InlineEditor(InlineEditorModes.FullEditor)][OdinSerialize] MoodReport moodReport;
@@ -52,7 +61,9 @@ namespace RetinaNetworking.Server
 
         public void SetMood(Mood _mood)
         {
+            Console.Log($"SETTING MOOD! : {_mood}");
             moodReport.SetInferedMood(_mood);
+            onMoodChanged.Raise();
         }
 
         public void SetSessionToken(string _sessionToken)
@@ -61,7 +72,12 @@ namespace RetinaNetworking.Server
         }
         public void SetSessionID(int _sessionID)
         {
-            sessionID = _sessionID;
+            sessionId = _sessionID;
+        }
+
+        public void SetInferenceID(int _inferenceId)
+        {
+            inferenceId = _inferenceId;
         }
 
         public void Reset()
@@ -71,7 +87,8 @@ namespace RetinaNetworking.Server
             jwt = "";
             sessionToken = "";
             moodReport.SetInferedMood(Mood.NEUTRAL);
-            sessionID = -1;
+            sessionId = -1;
+            inferenceId = -1;
         }
 
         public string SessionToken()
@@ -129,12 +146,22 @@ namespace RetinaNetworking.Server
 
         public int SessionID()
         {
-            return sessionID;
+            return sessionId;
+        }
+
+        public int InferenceID()
+        {
+            return inferenceId;
         }
 
         public MoodReport MoodReport()
         {
             return moodReport;
+        }
+
+        public Mood FetchMood()
+        {
+            return moodReport.inferedMood;
         }
     }
 

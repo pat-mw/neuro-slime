@@ -26,13 +26,15 @@ MonoBehaviour:
       Entry: 10
       Data: 0
   debugMode: 0
+  onMoodChanged: {fileID: 11400000, guid: 0aa605b3af2627a4ba0504e4fca324f5, type: 2}
   userID: -1
-  namee: 
+  fullName: Hello
   username: 
   jwt: 
   debugUserID: 186
-  debugName: Papa
+  debugFullName: Papa
   debugUsername: popsjohns
   debugJwt: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTg2LCJpYXQiOjE2MzI5OTYzNjQsImV4cCI6MTYzNTU4ODM2NH0.4TIciP6yiu8HBzLyEYGV1RmHP6nyHCRnprDWjmdPUfo
   sessionToken: 
-  sessionID: -1
+  sessionId: -1
+  inferenceId: -1

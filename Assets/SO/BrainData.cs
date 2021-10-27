@@ -46,6 +46,7 @@ public class BrainData : SerializedScriptableObject
 
             currentEpoch = new EEGSample(GlobalConfig.EPOCH_SAMPLE_COUNT);
 
+            OnFetchMood.Raise();
         }
         else
         {

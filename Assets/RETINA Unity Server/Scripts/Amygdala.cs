@@ -29,8 +29,9 @@ namespace RetinaNetworking.Server
         [InlineEditor(InlineEditorModes.FullEditor)] [OdinSerialize] public BrainData brainData;
 
         
-        private void Start()
+        private void Awake()
         {
+            Wenzil.Console.Console.Log("AMYGDALA STARTING");
             connectionParams.Reset();
             OnFetchMood.AddListener(FetchMood);
             OnSendCalibration.AddListener(SendCalibrationData);
@@ -38,22 +39,19 @@ namespace RetinaNetworking.Server
 
         /// <summary>
         /// Begins the inference session by:
-        /// 1. asserting presence of a session token
-        /// 2. building a form
-        /// 3. POST request to the start endpoint on amygdala
+        /// 1. building a form
+        /// 2. POST request to the start endpoint on amygdala
         /// </summary>
 
         async void SendCalibrationData()
         {
-            Debug.Log("SENDING CALIBRATION");
+            Wenzil.Console.Console.Log("SENDING CALIBRATION");
+
             Dictionary<string, dynamic> data = new Dictionary<string, dynamic>();
             data.Add("userId", connectionParams.UserID());
             var timeseries = new Dictionary<string, float[]>();
             timeseries.Add("ch1", brainData.calibrationPeriod.left);
             timeseries.Add("ch2", brainData.calibrationPeriod.right);
-
-
-            Debug.Log($"calibration timeseries: {timeseries}");
             data.Add("timeseries", timeseries);
 
             try
@@ -61,29 +59,26 @@ namespace RetinaNetworking.Server
                 string responseText = await POST(AmyURL + AmyEndpointStart, data);
                 if (responseText == null)
                 {
-                    Debug.LogError("START SESSION RESPONSE: Response was empty, cannot decode");
+                    Wenzil.Console.Console.Log("START SESSION RESPONSE: Response was empty, cannot decode");
                 }
                 else
                 {
-                    Debug.Log($"START SESSION RESPONSE: {responseText}");
+                    Wenzil.Console.Console.Log($"START SESSION RESPONSE: {responseText}");
                     SessionStartResponse response = new SessionStartResponse();
                     JsonUtility.FromJsonOverwrite(responseText, response);
-                    Debug.Log($"SESSION ID: {response.datasetId}");
-                    connectionParams.SetSessionID(response.datasetId);
+                    Wenzil.Console.Console.Log($"INFERENCE ID: {response.inferenceId}");
+                    connectionParams.SetInferenceID(response.inferenceId);
                 }
             }
             catch (System.Exception ex)
             {
-                Debug.LogError($"AMYGDALA ERROR: {ex}");
+                Wenzil.Console.Console.Log($"AMYGDALA ERROR: {ex}");
                 throw;
             }
         }
 
 
 
-        
-
-        
 
         /// <summary>
         /// Called automatically when the last epoch of EEG data is completed.
@@ -91,63 +86,67 @@ namespace RetinaNetworking.Server
         /// </summary>
         async void FetchMood()
         {
-            Debug.Log($"FETCHING MOOD!");
+            Wenzil.Console.Console.Log($"FETCHING MOOD! SENDING STIMULI");
 
-            // data
             Dictionary<string, dynamic> data = new Dictionary<string, dynamic>();
-            data.Add("datasetId", connectionParams.SessionID());
-
-            string[] events = new string[0];
-            data.Add("events", events);
-
-
-            // TODO: rename "headset" -> "timeseries"
-
-            // two fields:
-            // inferenceID from start
-            // time series
-            Dictionary<string, float[]> headset = new Dictionary<string, float[]>();
-            headset.Add("channel0", brainData.previousEpoch.left);
-            headset.Add("channel1", brainData.previousEpoch.right);
-            data.Add("headset", headset);
+            data.Add("inferenceId", connectionParams.InferenceID());
+            var timeseries = new Dictionary<string, float[]>();
+            timeseries.Add("ch1", brainData.previousEpoch.left);
+            timeseries.Add("ch2", brainData.previousEpoch.right);
+            data.Add("timeseries", timeseries);
 
             try
             {
                 string responseText = await POST(AmyURL + AmyEndpointChunk, data);
                 if (responseText == null)
                 {
-                    Debug.LogError("Response was empty, cannot decode");
+                    Wenzil.Console.Console.LogError("CHUNK RESPONSE: Response was empty, cannot decode");
                 }
                 else
                 {
                     MoodResponse response = new MoodResponse();
                     JsonUtility.FromJsonOverwrite(responseText, response);
-                    Debug.Log($"RESPONSE MESSAGE: {response.message}");
+                    Wenzil.Console.Console.Log($"MOOD: {response.mood}");
 
-                    //connectionParams.SetMood(response.message);
+                    switch (response.mood)
+                    {
+                        case "positive":
+                            connectionParams.SetMood(Mood.POSITIVE);
+                            break;
+                        case "negative":
+                            connectionParams.SetMood(Mood.NEGATIVE);
+                            break;
+                        case "neutral":
+                            connectionParams.SetMood(Mood.NEUTRAL);
+                            break;
+                        default:
+                            Wenzil.Console.Console.Log("mood not recognised");
+                            connectionParams.SetMood(Mood.NEUTRAL);
+                            break;
+                    }
                 }
             }
             catch (System.Exception ex)
             {
-                Debug.LogWarning($"Error occured when starting amygdala session: {ex.Message}");
+                Wenzil.Console.Console.LogError($"Error occured when starting amygdala session: {ex.Message}");
                 throw;
             }
         }
 
-        [System.Obsolete]
+
         async UniTask<string> POST(string _URL, Dictionary<string, dynamic> data)
         {
-            Debug.Log($"-- attempting POST request: {_URL} --");
+            Wenzil.Console.Console.Log($"-- attempting POST request: {_URL} --");
 
             string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(data);
 
-            Debug.Log($"JSON Data: {jsonData}");
+            //Wenzil.Console.Console.Log($"JSON Data: {jsonData}");
 
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
 
             using (UnityWebRequest www = new UnityWebRequest(_URL, "POST"))
             {
-                www.chunkedTransfer = false;
+                // submits post request with headers before body
                 www.useHttpContinue = false;
 
                 www.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
@@ -164,27 +163,27 @@ namespace RetinaNetworking.Server
                 string[] pages = _URL.Split('/');
                 int page = pages.Length - 1;
 
-                Debug.Log($"Checking POST result: {www.result}");
+                Wenzil.Console.Console.Log($"Checking POST result: {www.result}");
                 switch (www.result)
                 {
                     case UnityWebRequest.Result.Success:
-                        Debug.Log(pages[page] + ": Received: " + www.downloadHandler.text);
+                        Wenzil.Console.Console.Log(pages[page] + ": Received: " + www.downloadHandler.text);
                         return www.downloadHandler.text;
 
                     case UnityWebRequest.Result.ConnectionError:
-                        Debug.LogWarning(pages[page] + ": Connection error: " + www.error);
+                        Wenzil.Console.Console.LogError(pages[page] + ": Connection error: " + www.error);
                         break;
 
                     case UnityWebRequest.Result.DataProcessingError:
-                        Debug.LogWarning(pages[page] + ": Error: " + www.error);
+                        Wenzil.Console.Console.LogError(pages[page] + ": Error: " + www.error);
                         break;
 
                     case UnityWebRequest.Result.ProtocolError:
-                        Debug.LogWarning(pages[page] + ": HTTP Error: " + www.error);
+                        Wenzil.Console.Console.LogError(pages[page] + ": HTTP Error: " + www.error);
                         break;
 
                     default:
-                        Debug.LogWarning($"Response not recognised: {www.error}");
+                        Wenzil.Console.Console.LogError($"Response not recognised: {www.error}");
                         break;
                 }
                 return null;
@@ -195,13 +194,13 @@ namespace RetinaNetworking.Server
         [System.Serializable]
         public class MoodResponse
         {
-            public string message;
+            public string mood;
         }
 
         [System.Serializable]
         public class SessionStartResponse
         {
-            public int datasetId;
+            public int inferenceId;
         }
 
 
@@ -237,8 +236,8 @@ namespace RetinaNetworking.Server
                     Debug.Log($"START SESSION RESPONSE: {responseText}");
                     SessionStartResponse response = new SessionStartResponse();
                     JsonUtility.FromJsonOverwrite(responseText, response);
-                    Debug.Log($"SESSION ID: {response.datasetId}");
-                    connectionParams.SetSessionID(response.datasetId);
+                    //Wenzil.Console.Console.Log($"SESSION ID: {response.inferenceId}");
+                    connectionParams.SetSessionID(response.inferenceId);
                 }
             }
             catch (System.Exception ex)

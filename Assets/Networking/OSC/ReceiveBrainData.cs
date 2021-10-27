@@ -13,6 +13,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using ScriptableObjectArchitecture;
 
 public class ReceiveBrainData : SerializedMonoBehaviour
@@ -23,6 +24,10 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     [Header("EVENTS")]
     public GameEvent onStartReceivingBrainData;
     public GameEvent onStopReceivingBrainData;
+    public GameEvent onStartCalib;
+    public GameEvent onEndCalib;
+    public GameEvent onStartStim;
+    public GameEvent onEndStim;
 
     [Header("KEYS")]
     [SerializeField] private string bandpowerKey = "/band";
@@ -35,15 +40,24 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     [Header("DATA STORE")]
     [OdinSerialize] private BrainData brainData;
 
-    private bool isCalibPeriod = true;
+    private bool isCalibPeriod = false;
+    private bool isStimPeriod = false;
     private bool isReceiving = false;
 
     void Start()
     {
+        Wenzil.Console.Console.Log($"STARTING BRAIN DATA RECEIVER");
+
         brainData.Reset();
 
         onStartReceivingBrainData.AddListener(StartReceiving);
         onStopReceivingBrainData.AddListener(StopReceiving);
+
+        onStartCalib.AddListener(StartCalib);
+        onEndCalib.AddListener(EndCalib);
+
+        onStartStim.AddListener(StartStimuli);
+        onEndStim.AddListener(EndStimuli);
 
         switch (handler)
         {
@@ -56,9 +70,31 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                 osc.SetAddressHandler(accelerometerKey, OnReceiveAccelerometer);
                 break;
             default:
-                Debug.LogError($"Handler mode not recognised: {handler}");
+                Wenzil.Console.Console.LogError($"Handler mode not recognised: {handler}");
                 break;
         }
+    }
+
+    void StartStimuli()
+    {
+        isStimPeriod = true;
+    }
+
+    void EndStimuli()
+    {
+        isStimPeriod = false;
+    }
+
+
+    void StartCalib()
+    {
+        isCalibPeriod = true;
+    }
+
+
+    void EndCalib()
+    {
+        isCalibPeriod = false;
     }
 
     void StartReceiving()
@@ -77,7 +113,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     /// </summary>
     void OnReceiveAnything(OscMessage message)
     {
-        //Debug.Log($"Receiving message: {message}");
+        // Wenzil.Console.Console.Log($"Receiving message: {message}");
         
         if (isReceiving)
         {
@@ -131,7 +167,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     /// </summary>
     void OnReceiveBandpower(OscMessage message)
     {
-        //Debug.Log($"Receiving Bandpower: {message}");
+        // Wenzil.Console.Console.Log($"Receiving Bandpower: {message}");
         if (isReceiving)
         {
             try
@@ -149,7 +185,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                     float beta = message.GetFloat(4);
                     float gamma = message.GetFloat(5);
 
-                    //Debug.Log($"Received bandpower data: \n" +
+                    // Wenzil.Console.Console.Log($"Received bandpower data: \n" +
                     //    $"channel: {channelNumber} \n" +
                     //    $"delta: {delta} \n" +
                     //    $"theta: {theta} \n" +
@@ -172,7 +208,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                     float beta = message.GetFloat(4);
                     float gamma = message.GetFloat(5);
 
-                    //Debug.Log($"Received bandpower data: \n" +
+                    // Wenzil.Console.Console.Log($"Received bandpower data: \n" +
                     //    $"channel: {channelNumber} \n" +
                     //    $"delta: {delta} \n" +
                     //    $"theta: {theta} \n" +
@@ -189,7 +225,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
             }
             catch (System.Exception e)
             {
-                Debug.LogError($"Error Reading Bandpower: {e}");
+                Wenzil.Console.Console.LogError($"Error Reading Bandpower: {e}");
             }
         }
        
@@ -202,63 +238,59 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     /// </summary>
     void OnReceiveSignal(OscMessage message)
     {
-        //Debug.Log($"Receiving signal: {message}");
+        // Wenzil.Console.Console.Log($"Receiving signal: {message}");
 
         if (isReceiving)
         {
             if (isCalibPeriod)
             {
-
-                Debug.LogWarning("RECEIVING CALIBRATION");
                 try
                 {
                     float left = message.GetFloat(0);
                     float right = message.GetFloat(7);
 
-                    //Debug.Log($"Received Signal - left: {left} - right: {right}");
+                    // Wenzil.Console.Console.Log($"Received Signal - left: {left} - right: {right}");
 
                     brainData.calibrationPeriod.AddSample(left, GlobalConfig.CHANNEL.LEFT);
                     brainData.calibrationPeriod.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
 
                     if (brainData.calibrationPeriod.epochComplete)
                     {
-                        Debug.Log("Calibration Complete! Backing up now");
+                        Wenzil.Console.Console.Log("Calibration Complete! Backing up now");
                         isCalibPeriod = false;
                         
                     }
                 }
                 catch (System.Exception e)
                 {
-                    Debug.LogError($"Error receiving signal: {e}");
+                    Wenzil.Console.Console.LogError($"Error receiving signal: {e}");
                 }
             }
-            else // not calibration period
+            else if (isStimPeriod)// not calibration period
             {
                 try
                 {
                     float left = message.GetFloat(0);
                     float right = message.GetFloat(7);
 
-                    //Debug.Log($"Received Signal - left: {left} - right: {right}");
+                    // Wenzil.Console.Console.Log($"Received Signal - left: {left} - right: {right}");
 
                     brainData.currentEpoch.AddSample(left, GlobalConfig.CHANNEL.LEFT);
                     brainData.currentEpoch.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
 
                     if (brainData.currentEpoch.epochComplete)
                     {
-                        Debug.Log("Epoch completed!! Backing up now");
+                        Wenzil.Console.Console.Log("Epoch completed!! Backing up now");
 
                         brainData.BackupEpoch();
                     }
                 }
                 catch (System.Exception e)
                 {
-                    Debug.LogError($"Error receiving signal: {e}");
+                    Wenzil.Console.Console.LogError($"Error receiving signal: {e}");
                 }
             }
-           
-        }
-        
+        }   
     }
 
 
@@ -269,7 +301,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     /// </summary>
     void OnReceiveAccelerometer(OscMessage message)
     {
-        //Debug.Log($"Receiving Accelerometer: {message}");
+        // Wenzil.Console.Console.Log($"Receiving Accelerometer: {message}");
 
 
         if (isReceiving)
@@ -291,13 +323,13 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                         brainData.accelerometer.Z = value;
                         break;
                     default:
-                        Debug.LogError($"Did not recognise index: {index}");
+                         Wenzil.Console.Console.LogError($"Did not recognise index: {index}");
                         break;
                 }
             }
             catch (System.Exception)
             {
-                Debug.LogError("Error fetching accelerometer data");
+                 Wenzil.Console.Console.LogError("Error fetching accelerometer data");
             }
         }
         
@@ -312,7 +344,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     {
         if (isReceiving)
         {
-            Debug.LogError($"Message received from unrecognised address: {message.address} \n message: {message}");
+             Wenzil.Console.Console.LogError($"Message received from unrecognised address: {message.address} \n message: {message}");
         }
     }
 

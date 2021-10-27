@@ -20,6 +20,13 @@ namespace Wenzil.Console
                 OnConsoleLog(line);
         }
 
+        public static void LogError(string line)
+        {
+            Debug.LogWarning(line);
+            if (OnConsoleLog != null)
+                OnConsoleLog("ERROR: " + line);
+        }
+
         public static string ExecuteCommand(string command, params string[] args)
         {
             return ConsoleCommandsDatabase.ExecuteCommand(command, args);

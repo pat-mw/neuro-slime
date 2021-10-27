@@ -71,7 +71,7 @@ namespace RetinaNetworking.Server
                 }
                 catch (SystemException ex)
                 {
-                    Debug.LogError("Age input was not a valid");
+                    Debug.LogError($"Age input was not a valid: {ex}");
                 }
                 string language = inputFields[4].text;
                 string password = inputFields[5].text;

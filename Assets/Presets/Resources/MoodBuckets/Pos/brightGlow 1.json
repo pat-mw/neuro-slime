@@ -1,0 +1,79 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "brightGlow",
+    "stepsPerFrame": 2,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 250000,
+    "trailWeight": 10.34,
+    "decayRate": 0.9,
+    "diffuseRate": 100,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 4,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": -15,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": -75,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    0.753151655,
+                    0,
+                    0
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 20,
+                "turnSpeed": 2,
+                "sensorAngleSpacing": 30,
+                "sensorOffsetDst": 35,
+                "sensorSize": 1,
+                "colour": {
+                    "$type": 3,
+                    1,
+                    1,
+                    1,
+                    0
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 10.3,
+                "turnSpeed": 3,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 1,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    1,
+                    0.639622331,
+                    0,
+                    0
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 7.75,
+                "turnSpeed": -11.74,
+                "sensorAngleSpacing": 1.62,
+                "sensorOffsetDst": 2.05,
+                "sensorSize": 2,
+                "colour": {
+                    "$type": 3,
+                    1,
+                    0.930357933,
+                    0.6650944,
+                    0
+                }
+            }
+        ]
+    }
+}

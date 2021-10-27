@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "redVelvet",
+    "stepsPerFrame": 3,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 310314,
+    "trailWeight": 69.26291,
+    "decayRate": 6.566532,
+    "diffuseRate": 48.2848358,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 61.1606178,
+                "turnSpeed": 5.952258,
+                "sensorAngleSpacing": 80.15536,
+                "sensorOffsetDst": 26.0826931,
+                "sensorSize": 2,
+                "colour": {
+                    "$type": 3,
+                    0.813845336,
+                    0.280255675,
+                    0.390355974,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 58.66464,
+                "turnSpeed": 2.53568316,
+                "sensorAngleSpacing": 20.8182564,
+                "sensorOffsetDst": 34.13996,
+                "sensorSize": 8,
+                "colour": {
+                    "$type": 3,
+                    0.650435,
+                    0.292469472,
+                    0.451414436,
+                    1
+                }
+            }
+        ]
+    }
+}

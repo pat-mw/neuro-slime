@@ -21,8 +21,4 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  inferedMood: 3
-  perceivedMood: neutral
-  happy: 0
-  control: 2
-  excited: 2
+  inferedMood: 2

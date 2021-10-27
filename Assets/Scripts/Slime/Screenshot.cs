@@ -38,7 +38,7 @@ public class Screenshot : MonoBehaviour
     {
         if (takeScreenshotOnNextFrame)
         {
-            Debug.Log($"Taking Screenshot");
+            Wenzil.Console.Console.Log($"Taking Screenshot");
             RenderTexture renderTexture = screenshotCamera.targetTexture;
             
             // read image
@@ -48,9 +48,11 @@ public class Screenshot : MonoBehaviour
 
             // save image to png
             byte[] byteArray = renderResult.EncodeToPNG();
-            string filepath = Application.dataPath + "/CameraScreenshot.png";
+
+            // TODO: add user name and timestamp here for unique naming
+            string filepath = Application.persistentDataPath + "/neuroprint.png";
             System.IO.File.WriteAllBytes(filepath, byteArray);
-            Debug.Log($"Saved screenshot to: {filepath}");
+            Wenzil.Console.Console.Log($"Saved screenshot to: {filepath}");
 
             // send email
             email.SendEmail(filepath);

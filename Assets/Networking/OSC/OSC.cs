@@ -126,11 +126,12 @@ public class UDPPacketIO
 	}
 	
 	
+    // ~
 	~UDPPacketIO()
 	{
 		// latest time for this socket to be closed
 		if (IsOpen()) {
-			Debug.Log("closing udpclient listener on port " + localPort);
+			Wenzil.Console.Console.Log("closing udpclient listener on port " + localPort);
 			Close();
 		}
 		
@@ -146,8 +147,6 @@ public class UDPPacketIO
 		try
 		{
 			Sender = new UdpClient();
-			Debug.Log("Opening OSC listener on port " + localPort);
-			
 			IPEndPoint listenerIp = new IPEndPoint(IPAddress.Any, localPort);
 			Receiver = new UdpClient(listenerIp);
 			
@@ -158,8 +157,8 @@ public class UDPPacketIO
 		}
 		catch (Exception e)
 		{
-			Debug.LogWarning("cannot open udp client interface at port "+localPort);
-			Debug.LogWarning(e);
+            Wenzil.Console.Console.LogError("cannot open udp client interface at port "+localPort);
+			//Debug.LogWarning(e);
 		}
 		
 		return false;
@@ -372,12 +371,13 @@ public class UDPPacketIO
   /// of other parameters in Object form. 
   /// 
   /// </summary>
+  [DefaultExecutionOrder(-10)]
   public class OSC : MonoBehaviour
   {
 
-    public int inPort  = 6969;
+    public int inPort  = 12345;
     public string outIP = "127.0.0.1";
-    public int outPort  = 6161;
+    public int outPort  = 12346;
 
     private UDPPacketIO OscPacketIO;
     Thread ReadThread;
@@ -395,24 +395,21 @@ public class UDPPacketIO
 	bool paused = false;
 
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     
     private void HandleOnPlayModeChanged(UnityEditor.PlayModeStateChange state) //FIX FOR UNITY POST 2017
     {
 		// This method is run whenever the playmode state is changed.
-		
-		
-			paused = UnityEditor.EditorApplication.isPaused;
-			//print ("editor paused "+paused);
-			// do stuff when the editor is paused.
-		
+		paused = UnityEditor.EditorApplication.isPaused;
+		//print ("editor paused "+paused);
+		// do stuff when the editor is paused.
 	}
-#endif
+    #endif
 
 
 
     void Awake() {
-		//print("Opening OSC listener on port " + inPort);
+		Wenzil.Console.Console.Log("Opening OSC listener on port " + inPort);
 
 		OscPacketIO = new UDPPacketIO(outIP, outPort, inPort);
 		AddressTable = new Hashtable();
@@ -427,10 +424,10 @@ public class UDPPacketIO
 		ReadThread.IsBackground = true;      
 		ReadThread.Start();
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         //UnityEditor.EditorApplication.playmodeStateChanged = HandleOnPlayModeChanged;
         UnityEditor.EditorApplication.playModeStateChanged += HandleOnPlayModeChanged;  //FIX FOR UNITY POST 2017
-#endif
+        #endif
 
     }
 

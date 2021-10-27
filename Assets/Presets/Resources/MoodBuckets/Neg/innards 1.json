@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "innards",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 159725,
+    "trailWeight": 92.60377,
+    "decayRate": 3.21336246,
+    "diffuseRate": 2.39634514,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 39.9304924,
+                "turnSpeed": 2.58923864,
+                "sensorAngleSpacing": 81.81123,
+                "sensorOffsetDst": 44.2817841,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.622665942,
+                    0.09551057,
+                    0.117140226,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 15.4001236,
+                "turnSpeed": -8.069422,
+                "sensorAngleSpacing": 90.76929,
+                "sensorOffsetDst": -37.2108841,
+                "sensorSize": 7,
+                "colour": {
+                    "$type": 3,
+                    0.8263859,
+                    0.412397921,
+                    0.8259635,
+                    1
+                }
+            }
+        ]
+    }
+}

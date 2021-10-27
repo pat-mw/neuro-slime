@@ -8,7 +8,7 @@ public class SlimeSerializer
     public static void SaveSlimePreset(SlimePreset slimePreset, string saveFolder)
     {
         // Save to Assets folder
-        string path = Application.dataPath + $"/{saveFolder}/{slimePreset.presetName}.json";
+        string path = Application.persistentDataPath + $"/{saveFolder}/{slimePreset.presetName}.json";
         DataFormat dataFormat = DataFormat.JSON;
 
         // Serialization
@@ -36,9 +36,26 @@ public class SlimeSerializer
         }
         catch(Exception e)
         {
-            Debug.LogError($"Error loading slime preset from path: {path} \n Full Exception: {e}");
+            Debug.LogWarning($"Error loading slime preset from path: {path} \n Full Exception: {e}");
             return null;
         }
             
+    }
+
+    public static SlimePreset LoadSlimePresetFromString(string jsonBody)
+    {
+        DataFormat dataFormat = DataFormat.JSON;
+        try
+        {
+            var bytes = System.Text.Encoding.UTF8.GetBytes(jsonBody);
+            SlimePreset slimePreset = SerializationUtility.DeserializeValue<SlimePreset>(bytes, dataFormat);
+            return slimePreset;
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning($"Error loading slime preset from text \n Full Exception: {e}");
+            return null;
+        }
+
     }
 }

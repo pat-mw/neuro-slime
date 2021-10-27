@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4e80ee38340aac4fa13416adf7090a1, type: 3}
-  m_Name: accZ_trailWeight
+  m_Name: accZ_numAgents
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -25,4 +25,4 @@ MonoBehaviour:
   slimeSettings: {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
   mapType: 0
   influencer: 12
-  receiver: 2
+  receiver: 1

@@ -7,6 +7,7 @@ using Sirenix.Serialization;
 using System.Collections;
 using UnityEditor;
 using Cysharp.Threading.Tasks;
+using RetinaNetworking.Server;
 //using System;
 
 [DefaultExecutionOrder(-1)]
@@ -18,7 +19,11 @@ public class Simulation : SerializedMonoBehaviour
 	const int diffuseMapKernel = 1;
 	const int colourKernel = 2;
 
-	[Header("SLIME SETTINGS")]
+	[Header("DATA")]
+	[InlineEditor(InlineEditorModes.FullEditor)]
+	[System.NonSerialized] [OdinSerialize] public ConnectionParams connectionParams;
+
+	[Header("SETTINGS")]
 	[InlineEditor(InlineEditorModes.FullEditor)]
 	[System.NonSerialized] [OdinSerialize] public SlimeSettings settings;
 
@@ -32,6 +37,18 @@ public class Simulation : SerializedMonoBehaviour
 
 	[Header("DISPLAY")]
 	public bool showAgentsOnly;
+
+	public FilterMode filterMode = FilterMode.Point;
+	public GraphicsFormat format = ComputeHelper.defaultGraphicsFormat;
+
+
+	[Header("COLORS")]
+
+	public bool changeLogoColorWithMood = true;
+	[SerializeField] private Color positiveColor = new Color(0, 1, 0, 1);
+	[SerializeField] private Color neutralColor = new Color(1, 1, 1, 1);
+	[SerializeField] private Color negativeColor = new Color(1, 0, 0, 1);
+
 	public void ShowAgentsOnly()
     {
 		showAgentsOnly = true;
@@ -40,69 +57,23 @@ public class Simulation : SerializedMonoBehaviour
 	{
 		showAgentsOnly = false;
 	}
-	public FilterMode filterMode = FilterMode.Point;
-	public GraphicsFormat format = ComputeHelper.defaultGraphicsFormat;
 
 	[Header("SPAWN SHAPE (Optional)")]
 	public Texture2D spawnBitmap;
 
-	[Header("PRESETS")]
-	[SerializeField] private string saveFolder = "Presets";
-	[ListDrawerSettings(ShowIndexLabels = true, ShowPaging = true, ShowItemCount = true, HideRemoveButton = false, ListElementLabelName = "presetName")]
-	[OdinSerialize] private List<SlimePreset> slimePresetList = new List<SlimePreset>();
 
-	[OnValueChanged("ChangePreset")]
-	[ValueDropdown("GetAllCurrentlyLoadedPresets", DropdownTitle = "Select current preset", IsUniqueList = true)]
-	[OdinSerialize] private SlimePreset currentPreset;
-
-
-	[Button(ButtonSizes.Large)]
-	public void SavePreset(string presetName)
-	{
-		if (presetName == null)
-			presetName = $"NewSlime_{System.DateTime.Now}";
-
-		SlimePreset slimePreset = new SlimePreset(
-			presetName, settings.stepsPerFrame, settings.width, settings.height, settings.numAgents, settings.trailWeight, settings.decayRate,
-			settings.diffuseRate, settings.speciesSettings);
-
-		SlimeSerializer.SaveSlimePreset(slimePreset, saveFolder);
-		slimePresetList.Add(slimePreset);
-	}
-
-	[Button(ButtonSizes.Large)]
-	public void LoadPreset(string presetName)
-	{
-		if (presetName == null)
-			throw new System.Exception("Preset Name cannot be null, please add name before saving");
-
-		try
-		{
-			string savePath = $"{saveFolder}/{presetName}.json";
-			SlimePreset slimePreset = SlimeSerializer.LoadSlimePreset(savePath);
-			slimePresetList.Add(slimePreset);
-			ChangePreset(slimePreset);
-		}
-		catch (System.Exception e)
-		{
-			Debug.LogError($"Error loading slime preset: {presetName} \n Full Exception: {e}");
-		}
-	}
-
-    [SerializeField, HideInInspector] protected RenderTexture trailMap;
+	[SerializeField, HideInInspector] protected RenderTexture trailMap;
 	[SerializeField, HideInInspector] protected RenderTexture diffusedTrailMap;
 	[SerializeField, HideInInspector] protected RenderTexture displayTexture;
 
 	ComputeBuffer agentBuffer;
 	ComputeBuffer settingsBuffer;
-	Texture2D colourMapTexture;
-
 
 	bool isSimActive = false;
 
-
-	protected virtual void Awake()
+	protected virtual void Start()
 	{
+		Wenzil.Console.Console.Log($"SLIME SIM STARTING");
 		PreActivateSim();
 	}
 
@@ -112,147 +83,8 @@ public class Simulation : SerializedMonoBehaviour
 		Init();
 	}
 
-	
-	public void ActivateSim()
-    {
-		Debug.Log("ACTIVATING SLIME");
-		isSimActive = true;
-		SlowUpdate();
-	}
-
-
-	[GUIColor(1, 0.188f, 0.756f)]
-	[Button(ButtonSizes.Large)]
-	[LabelText("RANDOMISE")]
-	public void RandomiseSettings()
-    {
-		/// SLIME SETTINGS
-		//public int width = 1080;
-		//public int height = 1080;
-		//[Range(1, 5)] public int stepsPerFrame = 1;
-		//[Range(100000, 500000)] public int numAgents = 250000;
-		//public Simulation.SpawnMode spawnMode = Simulation.SpawnMode.InwardCircle;
-		//[Range(0, 100)] public float trailWeight = 1f;
-		//[Range(0.1f, 10f)] public float decayRate = 1f;
-		//[Range(0, 100)] public float diffuseRate = 1f;
-		//public SpeciesSettings[] speciesSettings;
-
-		
-		// create a new slime preset 
-		var stepsPerFrame = Random.Range(1, 5);
-		var width = 1080;
-		var height = 1080;
-		var numAgents = Random.Range(100000, 500000);
-		var trailWeight = Random.Range(0f, 100f);
-		var decayRate = Random.Range(0.1f, 10f);
-		var diffuseRate = Random.Range(0f, 100f);
-
-		/// SPECIES SETTINGS
-		//[Range(0, 100)] public float moveSpeed;
-		//[Range(-15, 15)] public float turnSpeed;
-		//[Range(0, 100)] public float sensorAngleSpacing;
-		//[Range(-75, 75)] public float sensorOffsetDst;
-		//[Range(0, 10)] public int sensorSize;
-		//public Color colour;
-
-		SlimeSettings.SpeciesSettings[] species = new SlimeSettings.SpeciesSettings[3];
-		
-		// first species is the logo (zero movement)
-		species[0].moveSpeed = 0;
-		species[0].turnSpeed = 0;
-		species[0].sensorAngleSpacing = 0;
-		species[0].sensorOffsetDst = 0;
-		species[0].sensorSize = 0;
-		species[0].colour = Color.white;
-
-        // remaining two species are random
-        for (int i = 1; i < 3; i++)
-        {
-			species[i].moveSpeed = Random.Range(0f, 100f);
-			species[i].turnSpeed = Random.Range(-15f, 15f);
-			species[i].sensorAngleSpacing = Random.Range(0f, 100f);
-			species[i].sensorOffsetDst = Random.Range(-75f, 75f);
-			species[i].sensorSize = Random.Range(1, 10);
-			var randomColor = Random.ColorHSV();
-			species[i].colour = Color.HSVToRGB(randomColor[0], Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
-		}
-
-		// create slime preset and apply it
-		SlimePreset preset = new SlimePreset("random", stepsPerFrame, width, height, numAgents, trailWeight, decayRate, diffuseRate, species);
-		slimePresetList.Add(preset);
-		ChangePreset(preset);
-    }
-
-
-	[GUIColor(0.8f, 0.6f, 1)]
-	[Button(ButtonSizes.Large)]
-	[LabelText(" << PREVIOUS PRESET")]
-	[ButtonGroup("PresetSwitcher")]
-	public void PreviousPreset()
-	{
-		// get index of current preset
-		var index = slimePresetList.IndexOf(currentPreset);
-
-		// iterate index (find previous preset)
-		index -= 1;
-
-		// check overflow
-		if (index < 0)
-		{
-			index = slimePresetList.Count - 1;
-		}
-
-		// get and set preset
-		var preset = slimePresetList[index];
-		ChangePreset(preset);
-	}
-
-	[GUIColor(1, 0.85f, 0.45f)]
-	[Button(ButtonSizes.Large)]
-	[LabelText("NEXT PRESET >>")]
-	[ButtonGroup("PresetSwitcher")]
-	public void NextPreset()
-	{
-		// get index of current preset
-		var index = slimePresetList.IndexOf(currentPreset);
-
-		// iterate index (find next preset)
-		index += 1;
-
-		// check overflow
-		if (index >= slimePresetList.Count)
-		{
-			index = 0;
-		}
-
-		// get and set preset
-		var preset = slimePresetList[index];
-		ChangePreset(preset);
-	}
-
-
-	[GUIColor(0, 1, 0)]
-	[Button(ButtonSizes.Large)]
-	[ButtonGroup("SimActivationButtons")]
-	public void ActivateSimButton()
-	{
-		ActivateSim();
-	}
-
-
-	[GUIColor(1, 0, 0)]
-	[Button(ButtonSizes.Large)]
-	[ButtonGroup("SimActivationButtons")]
-	public void DeactivateSim()
-    {
-		isSimActive = false;
-		PreActivateSim();
-    }
-
 	void Init()
 	{
-		RefreshSlimePresetList();
-
 		// Create render textures
 		ComputeHelper.CreateRenderTexture(ref trailMap, settings.width, settings.height, filterMode, format);
 		ComputeHelper.CreateRenderTexture(ref diffusedTrailMap, settings.width, settings.height, filterMode, format);
@@ -297,26 +129,26 @@ public class Simulation : SerializedMonoBehaviour
 				angle = randomAngle;
 			}
 			else if (settings.spawnMode == SpawnMode.Bitmap)
-            {
-                try
-                {
+			{
+				try
+				{
 					//Debug.Log("Trying to load via bitmap");
 
 					if (!spawnBitmap)
 					{
-						Debug.LogError("Attempting to spawn in Bitmap mode but no Bitmap provided in settings");
+						Wenzil.Console.Console.LogError("Attempting to spawn in Bitmap mode but no Bitmap provided in settings");
 						return;
 					}
 
-					int random_number = UnityEngine.Random.Range(1, positions.Count);
+					int random_number = Random.Range(1, positions.Count);
 					startPos = Scalepoint(positions[random_number], spawnBitmap);
 					angle = randomAngle;
 				}
-                catch (System.Exception ex)
-                {
-					Debug.LogError($"Error reading bitmap image for spawn: {ex}");
-                }
-                
+				catch (System.Exception ex)
+				{
+					Wenzil.Console.Console.LogError($"Error reading bitmap image for spawn: {ex}");
+				}
+
 			}
 
 			Vector3Int speciesMask;
@@ -329,7 +161,7 @@ public class Simulation : SerializedMonoBehaviour
 			}
 			else
 			{
-				int species = UnityEngine.Random.Range(1, numSpecies + 1);
+				int species = Random.Range(1, numSpecies + 1);
 				speciesIndex = species - 1;
 				speciesMask = new Vector3Int((species == 1) ? 1 : 0, (species == 2) ? 1 : 0, (species == 3) ? 1 : 0);
 			}
@@ -348,6 +180,36 @@ public class Simulation : SerializedMonoBehaviour
 
 	}
 
+	public void ActivateSim()
+    {
+		Wenzil.Console.Console.Log("ACTIVATING SLIME");
+		isSimActive = true;
+		SlowUpdate();
+	}
+
+
+
+
+	[GUIColor(0, 1, 0)]
+	[Button(ButtonSizes.Large)]
+	[ButtonGroup("SimActivationButtons")]
+	public void ActivateSimButton()
+	{
+		ActivateSim();
+	}
+
+
+	[GUIColor(1, 0, 0)]
+	[Button(ButtonSizes.Large)]
+	[ButtonGroup("SimActivationButtons")]
+	public void DeactivateSim()
+    {
+		isSimActive = false;
+		PreActivateSim();
+    }
+
+	
+
 	void FixedUpdate()
 	{
 		if (isSimActive)
@@ -360,7 +222,6 @@ public class Simulation : SerializedMonoBehaviour
 		
 	}
 
-	// *** LATE UPDATE??
     private void LateUpdate()
     {
 		if (isSimActive)
@@ -379,19 +240,50 @@ public class Simulation : SerializedMonoBehaviour
 	}
 
 
+	/// <summary>
+	/// slow update used for parameter mapping
+	/// </summary>
 	async private void SlowUpdate()
     {
 		if (isSimActive)
         {
+			if (changeLogoColorWithMood)
+            {
+				CheckMoodColor();
+			}
 			if (activateMappings)
             {
 				ApplyMappings();
-				await UniTask.Delay(1000);
+				await UniTask.Delay(100);
 				SlowUpdate();
 			}
 		}
     }
 
+
+	void CheckMoodColor()
+    {
+		if (isSimActive)
+        {
+			Mood currentMood = connectionParams.FetchMood();
+
+			if (settings.speciesSettings.Length >= 1)
+			{
+				switch (currentMood)
+				{
+					case Mood.POSITIVE:
+						settings.speciesSettings[0].colour = positiveColor;
+						break;
+					case Mood.NEUTRAL:
+						settings.speciesSettings[0].colour = neutralColor;
+						break;
+					case Mood.NEGATIVE:
+						settings.speciesSettings[0].colour = negativeColor;
+						break;
+				}
+			}
+		}
+    }
 	void ApplyMappings()
     {
         foreach (IMapping mapping in Mappings)
@@ -467,83 +359,4 @@ public class Simulation : SerializedMonoBehaviour
 
 		return newpoint;
 	}
-
-
-	private void RefreshSlimePresetList()
-	{
-		slimePresetList.Clear();
-
-		var folder = $"Assets/{saveFolder}/";
-
-		//Debug.Log($"Attempting to load existing presets from folder: {folder}");
-
-		// since we are loading a JSON file we cannot easily filter by type
-		// so assume all objects in the folder are presets, and catch any errors later
-		string filter = "";
-		string[] presetRefs = AssetDatabase.FindAssets(filter, new[] { folder });
-
-		slimePresetList.Clear();
-		foreach (string presetRef in presetRefs)
-		{
-			var assetPath = AssetDatabase.GUIDToAssetPath(presetRef);
-
-			try
-			{
-				SlimePreset preset = SlimeSerializer.LoadSlimePreset(assetPath);
-				//Debug.Log($"Found existing slime preset: {preset.presetName}");
-				slimePresetList.Add(preset);
-
-				if (preset.presetName == "default")
-				{
-					Debug.Log("Found default preset");
-					ChangePreset(preset);
-				}
-			}
-			catch (System.Exception e)
-			{
-				Debug.LogError($"Failed to load given slime preset: {assetPath} " +
-					$"\n are you sure it is the correct type? " +
-					$"\n Full Exception: {e}");
-			}
-		}
-	}
-
-	private IEnumerable GetAllCurrentlyLoadedPresets()
-	{
-		if (Application.isPlaying)
-        {
-			var dropdownItems = new List<ValueDropdownItem>();
-			foreach (SlimePreset preset in slimePresetList)
-			{
-				yield return new ValueDropdownItem(preset.presetName, preset);
-			}
-		}
-	}
-
-	private void ChangePreset(SlimePreset slimePreset)
-	{
-		// then set the preset
-		currentPreset = slimePreset;
-		settings.width = currentPreset.width;
-		settings.height = currentPreset.height;
-		settings.numAgents = currentPreset.numAgents;
-		settings.trailWeight = currentPreset.trailWeight;
-		settings.decayRate = currentPreset.decayRate;
-		settings.diffuseRate = currentPreset.diffuseRate;
-		settings.speciesSettings = currentPreset.speciesSettings;
-	}
-
-    private void OnDisable()
-    {
-		currentPreset = null;
-		slimePresetList.Clear();
-
-		settings.numAgents = 0;
-		settings.spawnMode = SpawnMode.Bitmap;
-		settings.trailWeight = 0;
-		settings.decayRate = 0;
-		settings.diffuseRate = 0;
-		settings.speciesSettings = null;
-	}
-
 }

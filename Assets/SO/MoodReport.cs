@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-
+using ScriptableObjectArchitecture;
 
 namespace RetinaNetworking.Server
 {
@@ -10,7 +10,7 @@ namespace RetinaNetworking.Server
     public class MoodReport : SerializedScriptableObject
     {
         public Mood inferedMood = Mood.NEUTRAL;
-
+        
         public void SetInferedMood(Mood _mood)
         {
             inferedMood = _mood;

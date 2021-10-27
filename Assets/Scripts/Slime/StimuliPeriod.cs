@@ -39,7 +39,7 @@ public class StimuliPeriod : MonoBehaviour
         cyclesElapsed += 1;
         if (cyclesElapsed <= stimCycleCount)
         {
-            Debug.Log($"STIM CYCLE: {cyclesElapsed}");
+            Wenzil.Console.Console.Log($"STIM CYCLE: {cyclesElapsed}");
             await StimDelay(stimCycleDuration);
             StimUpdate();
         }
@@ -57,7 +57,7 @@ public class StimuliPeriod : MonoBehaviour
 
     void EndStim()
     {
-        Debug.Log("Stimuli Period finished - freezing and capturing screenshot");
+        Wenzil.Console.Console.Log("Stimuli Period finished - freezing and capturing screenshot");
 
         onDeactivateSimulation.Raise();
         onStopReceivingBrainData.Raise();

@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "limepie",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 235387,
+    "trailWeight": 72.9311142,
+    "decayRate": 0.487491757,
+    "diffuseRate": 38.2951927,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 96.36173,
+                "turnSpeed": 2.941752,
+                "sensorAngleSpacing": 87.09916,
+                "sensorOffsetDst": 25.1658764,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.7981714,
+                    0.9806034,
+                    0.178797632,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 93.81206,
+                "turnSpeed": -6.425677,
+                "sensorAngleSpacing": 96.29063,
+                "sensorOffsetDst": 26.3528976,
+                "sensorSize": 3,
+                "colour": {
+                    "$type": 3,
+                    0.181787178,
+                    0.75512445,
+                    0.319937766,
+                    1
+                }
+            }
+        ]
+    }
+}

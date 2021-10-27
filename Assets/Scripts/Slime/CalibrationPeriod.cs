@@ -40,9 +40,9 @@ public class CalibrationPeriod : MonoBehaviour
     
     async UniTask CalibrationDelay(float calibrationLength)
     {
-        Debug.Log($"Calibration started! Duration: {calibrationLength}s");
+        Wenzil.Console.Console.Log($"Calibration started! Duration: {calibrationLength}s");
         await UniTask.Delay(System.TimeSpan.FromSeconds(calibrationLength), ignoreTimeScale: false);
-        Debug.Log($"Calibration finished!");
+        Wenzil.Console.Console.Log($"Calibration finished!");
         return;
     }
 

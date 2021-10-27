@@ -4,7 +4,7 @@ using UnityEngine;
 using ScriptableObjectArchitecture;
 using UnityEngine.Networking;
 using Cysharp.Threading.Tasks;
-
+using Wenzil.Console;
 namespace RetinaNetworking.Server
 {
     /// <summary>
@@ -25,15 +25,14 @@ namespace RetinaNetworking.Server
         /// <summary>
         /// for testing
         /// </summary>
-        //private async void Awake()
-        //{
-        //    string bob = await RequestSessionToken(testJWT);
-        //    Debug.Log("*** " + bob);
-        //}
+        private void Awake()
+        {
+            Console.Log($"STARTING STRAPI");
+        }
 
         public async UniTask<string> RequestSessionToken(string _JWT)
         {
-            Debug.Log(" -- attempting to request session token -- ");
+            Console.Log(" -- attempting to request session token -- ");
 
             //StartCoroutine(GetRequest(strapiURL + strapiEndpoint + strapiParams + sessionTimeLimit.ToString(), _JWT));
 
@@ -45,7 +44,7 @@ namespace RetinaNetworking.Server
         async UniTask GetSessionToken(string _URL, string _JWT)
         {
             lastResponse = new StrapiTokenResponse();
-            Debug.Log($"-- attempting GET request: {_URL} --");
+            Console.Log($"-- attempting GET request: {_URL} --");
             using (UnityWebRequest webRequest = UnityWebRequest.Get(_URL))
             {
                 // authentication
@@ -60,31 +59,31 @@ namespace RetinaNetworking.Server
                 switch (webRequest.result)
                 {
                     case UnityWebRequest.Result.ConnectionError:
-                        Debug.LogError(pages[page] + ": Connection error: " + webRequest.error);
+                        Console.Log(pages[page] + ": Connection error: " + webRequest.error);
 
                         lastResponse = null;
                         break;
 
                     case UnityWebRequest.Result.DataProcessingError:
-                        Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                        Console.Log(pages[page] + ": Error: " + webRequest.error);
 
                         lastResponse = null;
                         break;
 
                     case UnityWebRequest.Result.ProtocolError:
-                        Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                        Console.Log(pages[page] + ": HTTP Error: " + webRequest.error);
 
                         lastResponse = null;
                         break;
 
                     case UnityWebRequest.Result.Success:
-                        Debug.Log(pages[page] + ":\n Received: " + webRequest.downloadHandler.text);
+                        Console.Log(pages[page] + ":\n Received: " + webRequest.downloadHandler.text);
                         StrapiTokenResponse response = new StrapiTokenResponse();
                         JsonUtility.FromJsonOverwrite(webRequest.downloadHandler.text, response);
 
-                        Debug.Log("-- USER AUTHENTICATED --");
-                        Debug.Log($"token: {response.token}");
-                        Debug.Log($"expires at: {response.expires_at}");
+                        Console.Log("-- USER AUTHENTICATED --");
+                        Console.Log($"token: {response.token}");
+                        Console.Log($"expires at: {response.expires_at}");
 
                         lastResponse = response;
                         break;

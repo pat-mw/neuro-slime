@@ -98,6 +98,12 @@ namespace RetinaNetworking.Server
             {
                 field.text = "";
             }
+            debugText.text = "";
+
+            foreach(Toggle toggle in consentToggles)
+            {
+                toggle.isOn = false;
+            }
         }
 
     }

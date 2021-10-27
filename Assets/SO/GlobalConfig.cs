@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public static class GlobalConfig
 {
     public enum CHANNEL
@@ -18,6 +14,8 @@ public static class GlobalConfig
     public static int CALIBRATION_DURATION = 20;
     public static int CALIBRATION_SAMPLE_COUNT = SAMPLE_RATE * CALIBRATION_DURATION;
 
-    public static int EPOCH_DURATION = 20;
+    public static int EPOCH_DURATION = 10;
     public static int EPOCH_SAMPLE_COUNT = SAMPLE_RATE * EPOCH_DURATION;
+
+    public static float TRANSITION_DURATION = 10f;
 }

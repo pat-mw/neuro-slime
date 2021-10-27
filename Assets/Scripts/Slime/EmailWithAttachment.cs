@@ -15,12 +15,12 @@ namespace RetinaNetworking.Server
     public class EmailWithAttachment : SerializedMonoBehaviour
     {
         public string sender = "info@kouo.io";
-        public string password = "<3JIie!}v8w\\,";
+        private string password = "<3JIie!}v8w\\,";
         [TextArea(1, 3)] public string emailSubject;
         [TextArea(3, 50)] public string emailBody;
         public ConnectionParams connectionParams;
 
-        async public void SendEmail(string attachmentPath)
+        public void SendEmail(string attachmentPath)
         {
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress(sender);
@@ -40,7 +40,7 @@ namespace RetinaNetworking.Server
 
             server.Send(mail);
 
-            Debug.Log("SENT MAIL");
+            Wenzil.Console.Console.Log($"SENT MAIL. from: {mail.From} - to: {mail.To} \n subject: {mail.Subject} - attachments: {mail.Attachments}");
         }
 
         string InsertName(string name, string body)

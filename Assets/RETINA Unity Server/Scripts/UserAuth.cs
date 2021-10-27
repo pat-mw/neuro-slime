@@ -18,7 +18,7 @@ namespace RetinaNetworking.Server
         public string defaultEndpoint = "/auth/local/register";
 
         [Header("Events")]
-        public StringGameEvent formDebuggerEvent = default(StringGameEvent);
+        public StringGameEvent DebuggerEvent = default(StringGameEvent);
         public GameEvent closeFormEvent = default(GameEvent);
         public GameEvent resetFormEvent = default(GameEvent);
         public GameEvent showInstructions = default(GameEvent);
@@ -34,7 +34,7 @@ namespace RetinaNetworking.Server
 
         async public void RequestAuth(string username, string email, string gender, int age, string language, string password)
         {
-            Debug.Log(" -- attempting to request authentication -- ");
+             Wenzil.Console.Console.Log(" -- attempting to request authentication -- ");
 
             Dictionary<string, dynamic> data = new Dictionary<string, dynamic>();
 
@@ -53,16 +53,16 @@ namespace RetinaNetworking.Server
         {
             WWWForm form = new WWWForm();
 
-            Debug.Log(" -- header -- ");
-            foreach(KeyValuePair<string,string> item in form.headers)
-            {
-                Debug.Log(item.Key + ": " + item.Value);
-            }
+            // Wenzil.Console.Console.Log(" -- header -- ");
+            //foreach(KeyValuePair<string,string> item in form.headers)
+            //{
+            //     Wenzil.Console.Console.Log(item.Key + ": " + item.Value);
+            //}
 
-            Debug.Log(" -- adding fields -- ");
+            // Wenzil.Console.Console.Log(" -- adding fields -- ");
             foreach(KeyValuePair<string, dynamic> item in _data)
             {
-                Debug.Log($"{item.Key} : {item.Value}");
+                // Wenzil.Console.Console.Log($"{item.Key} : {item.Value}");
                 form.AddField(item.Key, item.Value);
             }
 
@@ -74,22 +74,22 @@ namespace RetinaNetworking.Server
                 }
                 catch (UnityWebRequestException e)
                 {
-                    Debug.LogWarning($"Exception: {e}");
+                    Wenzil.Console.Console.LogError($"Exception: {e}");
                 }
 
                 if (www.result == UnityWebRequest.Result.Success)
                 {
-                    Debug.Log("Form upload complete!");
-                    Debug.Log(www.result);
+                    // Wenzil.Console.Console.Log("Form upload complete!");
+                     Debug.Log(www.result);
 
                     // error
                     GoodResponse response = new GoodResponse();
                     JsonUtility.FromJsonOverwrite(www.downloadHandler.text, response);
 
-                    Debug.Log("-- USER AUTHENTICATED --");
-                    Debug.Log($"JWT: {response.jwt}");
-                    Debug.Log($"User ID: {response.user.id}");
-                    Debug.Log($"Username: {response.user.username}");
+                    Wenzil.Console.Console.Log("-- USER AUTHENTICATED --");
+                    Wenzil.Console.Console.Log($"JWT: {response.jwt}");
+                    Wenzil.Console.Console.Log($"User ID: {response.user.id}");
+                    Wenzil.Console.Console.Log($"Username: {response.user.username}");
 
                     connectionParams.SetParams(response.user.id, response.user.username, response.jwt);
 
@@ -111,21 +111,21 @@ namespace RetinaNetworking.Server
                     BadResponse response = new BadResponse();
                     JsonUtility.FromJsonOverwrite(www.downloadHandler.text, response);
 
-                    Debug.Log(response);
+                    Wenzil.Console.Console.Log(response.ToString());
 
-                    Debug.Log("-- POST REQUEST ERROR --");
-                    Debug.Log(" Error Code: " + response.statusCode);
-                    Debug.Log(" Error: " + response.error);
+                    Wenzil.Console.Console.Log("-- POST REQUEST ERROR --");
+                    Wenzil.Console.Console.Log(" Error Code: " + response.statusCode);
+                    Wenzil.Console.Console.Log(" Error: " + response.error);
 
                     foreach(BadResponse.embeddedMessage message in response.message)
                     {
                         foreach(BadResponse.mess mess in message.messages)
                         {
-                            //Debug.Log($"message ID: {mess.id}");
-                            Debug.Log($" message: {mess.message}");
+                            // Wenzil.Console.Console.Log($"message ID: {mess.id}");
+                            Wenzil.Console.Console.Log($" message: {mess.message}");
 
-                            // debug text
-                            formDebuggerEvent.Raise($"User authentication failed! \n message: {mess.message}");
+                            //  Wenzil.Console.Console text
+                            DebuggerEvent.Raise($"User authentication failed! \n message: {mess.message}");
                         }
                     }
                 }
@@ -134,17 +134,17 @@ namespace RetinaNetworking.Server
 
         async public void RequestSessionToken(string JWT)
         {
-            Debug.Log($"REQUESTING SESSION TOKEN with JWT: {JWT}");
+            Wenzil.Console.Console.Log($"REQUESTING SESSION TOKEN with JWT: {JWT}");
             await FetchSessionToken(JWT);
         }
 
         async public UniTask FetchSessionToken(string JWT)
         {
-            Debug.Log($"Fetching Session Token");
+             Wenzil.Console.Console.Log($"Fetching Session Token");
             var sessionToken = await auth.RequestSessionToken(JWT);
             sessionToken = sessionToken.ToString();
 
-            Debug.Log($"Session token fetched: {sessionToken}");
+             Wenzil.Console.Console.Log($"Session token fetched: {sessionToken}");
             connectionParams.SetSessionToken(sessionToken);
         }
 
