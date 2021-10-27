@@ -25,7 +25,7 @@ namespace RetinaNetworking.Server
         /// <summary>
         /// for testing
         /// </summary>
-        private void Awake()
+        private void Start()
         {
             Console.Log($"STARTING STRAPI");
         }

@@ -92,7 +92,14 @@ public class SlimePresetLoader : SerializedMonoBehaviour
             {
                 try
                 {
-                    settings.speciesSettings[i].colour = Color.LerpUnclamped(settings.speciesSettings[i].colour, currentPreset.speciesSettings[i].colour, time/transitionDuration);
+                    if (i > 0)
+                    {
+                        settings.speciesSettings[i].colour = new Color(
+                            Mathf.SmoothStep(settings.speciesSettings[i].colour.r, currentPreset.speciesSettings[i].colour.r, time / transitionDuration),
+                            Mathf.SmoothStep(settings.speciesSettings[i].colour.g, currentPreset.speciesSettings[i].colour.g, time / transitionDuration),
+                            Mathf.SmoothStep(settings.speciesSettings[i].colour.b, currentPreset.speciesSettings[i].colour.b, time / transitionDuration)
+                            );
+                    }
                     settings.speciesSettings[i].moveSpeed = Mathf.SmoothStep(settings.speciesSettings[i].moveSpeed, currentPreset.speciesSettings[i].moveSpeed, time / transitionDuration);
                     settings.speciesSettings[i].turnSpeed = Mathf.SmoothStep(settings.speciesSettings[i].turnSpeed, currentPreset.speciesSettings[i].turnSpeed, time / transitionDuration);
                     settings.speciesSettings[i].sensorAngleSpacing = Mathf.SmoothStep(settings.speciesSettings[i].sensorAngleSpacing, currentPreset.speciesSettings[i].sensorAngleSpacing, time / transitionDuration);

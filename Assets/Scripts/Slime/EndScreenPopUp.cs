@@ -5,6 +5,8 @@ public class EndScreenPopUp : MonoBehaviour
 {
     public GameEvent onEndSimulation;
     public GameEvent onReset;
+    public GameEvent onSoftReset;
+
     Transform endScreenModal;
 
     private void Awake()
@@ -12,6 +14,7 @@ public class EndScreenPopUp : MonoBehaviour
         endScreenModal = transform.GetChild(0);
         onEndSimulation.AddListener(ShowEndScreen);
         onReset.AddListener(HideButton);
+        onSoftReset.AddListener(HideButton);
     }
 
     void ShowEndScreen()
