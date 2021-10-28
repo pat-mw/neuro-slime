@@ -985,7 +985,6 @@ GameObject:
   - component: {fileID: 166539360}
   - component: {fileID: 166539370}
   - component: {fileID: 166539369}
-  - component: {fileID: 166539368}
   - component: {fileID: 166539367}
   - component: {fileID: 166539366}
   - component: {fileID: 166539365}
@@ -1203,7 +1202,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 166539359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d33ca24d5dfdc744a54e9ed7a56652e, type: 3}
+  m_Script: {fileID: 11500000, guid: 16ae67596016c43b3a7ef6ff17d8b051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   strapiURL: https://kouo-strapi-staging.herokuapp.com
@@ -1211,22 +1210,6 @@ MonoBehaviour:
   strapiParams: ?expires_after=
   sessionTimeLimit: 20
   testJWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTA1LCJpYXQiOjE2MjM2ODY4ODUsImV4cCI6MTYyNjI3ODg4NX0.j1Q2r-7pOOoAzDcDjQu0oQnRiMoWBqmW5Xh7FmMlXY4
---- !u!114 &166539368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 166539359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f051a30f124d774088e3b1025bc5c63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strapiURL: https://kouo-strapi-staging.herokuapp.com
-  strapiEndpoint: /datasets/getAuthToken/
-  strapiParams: ?expires_after=
-  sessionTimeLimit: 20
 --- !u!114 &166539369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4143,8 +4126,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -7.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1474641342}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9785,55 +9767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1474641341
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1474641342}
-  - component: {fileID: 1474641343}
-  m_Layer: 0
-  m_Name: ScreenRecorder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1474641342
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474641341}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.89}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 603235578}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1474641343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474641341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a743de51adb71c74cb1cc0b977ec101a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slimeSettings: {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
-  onStartRecording: {fileID: 11400000, guid: 2f9f6d747cfdb2240a1a3985d489501c, type: 2}
-  onStopRecording: {fileID: 11400000, guid: c29ff41f17ef7d243be85f10c7ae08ba, type: 2}
-  captureEveryXSeconds: 2
-  gifFrameRate: 12
-  email: {fileID: 603235581}
 --- !u!1 &1476265131
 GameObject:
   m_ObjectHideFlags: 0
@@ -11251,10 +11184,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1603345483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 977d07b01f8e04f4f85d2ac24e1dc0dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 06090642c022d4f92ad5aee4b650e033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmyURL: https://kouo-websummit-test.herokuapp.com
+  AmyURL: http//kouo-websummit-test.herokuapp.com
   AmyEndpointStart: /v2/inference/timeseries/start
   AmyEndpointChunk: /v2/inference/timeseries/chunk
   OnFetchMood: {fileID: 11400000, guid: 67009c9f3e1a7c043b0c4153d0c6f558, type: 2}

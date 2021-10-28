@@ -7,7 +7,7 @@ using Cysharp.Threading.Tasks;
 
 namespace RetinaNetworking.Server
 {
-    [RequireComponent(typeof(GetAuthToken))]
+    [RequireComponent(typeof(Strapi))]
     public class UserAuth : MonoBehaviour
     {
         [Header("DATA")]
@@ -25,11 +25,11 @@ namespace RetinaNetworking.Server
         
         //public GameEvent activateSimEvent = default(GameEvent);
 
-        private GetAuthToken auth;
+        private Strapi auth;
 
         private void Awake()
         {
-            auth = GetComponent<GetAuthToken>();
+            auth = GetComponent<Strapi>();
         }
 
         async public void RequestAuth(string username, string email, string gender, int age, string language, string password)
