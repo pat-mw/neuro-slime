@@ -9167,7 +9167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9357,7 +9357,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 0
 --- !u!223 &1402746319
 Canvas:
   m_ObjectHideFlags: 0
@@ -10839,7 +10839,7 @@ MonoBehaviour:
   cursorImage: {fileID: 1315297227}
   cursorMode: 1
   isActive: 1
-  disableRealCursor: 1
+  disableRealCursor: 0
   LazyCursorSpeed: 8
 --- !u!222 &1539156268
 CanvasRenderer:
@@ -12093,7 +12093,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Consent
+  m_text: Mailing List
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc0a51300573e1048a8a26eaf3981383, type: 2}
   m_sharedMaterial: {fileID: 8768474044576840894, guid: fc0a51300573e1048a8a26eaf3981383,
