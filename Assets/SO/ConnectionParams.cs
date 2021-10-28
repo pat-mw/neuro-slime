@@ -17,6 +17,7 @@ namespace RetinaNetworking.Server
 
         [Header("MOOD CHANGED")]
         public GameEvent onMoodChanged;
+        public GameEvent onCalibrationError;
 
         [Header("PARAMS")]
         [HideIf("debugMode")]
@@ -41,7 +42,8 @@ namespace RetinaNetworking.Server
         [SerializeField] string sessionToken;
         [SerializeField] int sessionId;
 
-        [Header("INFERENCE ID")]
+        [Header("INFERENCE")]
+        [SerializeField] bool calibrationReceived = false;
         [SerializeField] int inferenceId;
 
         [Header("MOOD")]
@@ -78,6 +80,16 @@ namespace RetinaNetworking.Server
         public void SetInferenceID(int _inferenceId)
         {
             inferenceId = _inferenceId;
+        }
+
+        public void SetCalibrationReceived(bool received)
+        {
+            Wenzil.Console.Console.Log($"CALIBRATION RECEIVED! : {received}");
+            calibrationReceived = received;
+
+            if (received == false){
+                onCalibrationError.Raise();
+            }
         }
 
         public void Reset()
@@ -162,6 +174,11 @@ namespace RetinaNetworking.Server
         public Mood FetchMood()
         {
             return moodReport.inferedMood;
+        }
+
+        public bool CalibrationReceived()
+        {
+            return calibrationReceived;
         }
     }
 

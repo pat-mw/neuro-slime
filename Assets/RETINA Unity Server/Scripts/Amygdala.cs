@@ -60,20 +60,31 @@ namespace RetinaNetworking.Server
                 if (responseText == null)
                 {
                     Wenzil.Console.Console.Log("START SESSION RESPONSE: Response was empty, cannot decode");
+                    connectionParams.SetCalibrationReceived(false);
                 }
                 else
                 {
                     Wenzil.Console.Console.Log($"START SESSION RESPONSE: {responseText}");
                     SessionStartResponse response = new SessionStartResponse();
-                    JsonUtility.FromJsonOverwrite(responseText, response);
-                    Wenzil.Console.Console.Log($"INFERENCE ID: {response.inferenceId}");
-                    connectionParams.SetInferenceID(response.inferenceId);
+                    try
+                    {
+                        JsonUtility.FromJsonOverwrite(responseText, response);
+                        Wenzil.Console.Console.Log($"INFERENCE ID: {response.inferenceId}");
+                        connectionParams.SetInferenceID(response.inferenceId);
+                        connectionParams.SetCalibrationReceived(true);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        Wenzil.Console.Console.Log($"AMYGDALA response not recognised: {ex}");
+                        connectionParams.SetCalibrationReceived(false);
+                    }
                 }
             }
             catch (System.Exception ex)
             {
                 Wenzil.Console.Console.Log($"AMYGDALA ERROR: {ex}");
-                throw;
+                connectionParams.SetCalibrationReceived(false);
+                return;
             }
         }
 

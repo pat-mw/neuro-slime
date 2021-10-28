@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 using Cysharp.Threading.Tasks;
+using RetinaNetworking.Server;
 
 public class CloseEyesPopUp : MonoBehaviour
 {
     public GameEvent onCloseEyes;
+    public GameEvent onHideCloseEyesPopUp;
     public GameEvent onStartStimuli;
+    public ConnectionParams connectionParams;
 
     public float popUpDuration = 3;
 
@@ -17,6 +20,7 @@ public class CloseEyesPopUp : MonoBehaviour
     {
         closeEyesModal = transform.GetChild(0);
         onCloseEyes.AddListener(CloseEyes);
+        onHideCloseEyesPopUp.AddListener(HidePopUp);
     }
 
 
@@ -24,7 +28,15 @@ public class CloseEyesPopUp : MonoBehaviour
     {
         closeEyesModal.gameObject.SetActive(true);
         await CloseEyesDelay(popUpDuration);
+
+        await UniTask.WaitUntil(() => connectionParams.CalibrationReceived() == true);
+
         onStartStimuli.Raise();
+        closeEyesModal.gameObject.SetActive(false);
+    }
+
+    void HidePopUp()
+    {
         closeEyesModal.gameObject.SetActive(false);
     }
 

@@ -27,8 +27,9 @@ MonoBehaviour:
       Data: 0
   debugMode: 0
   onMoodChanged: {fileID: 11400000, guid: 0aa605b3af2627a4ba0504e4fca324f5, type: 2}
+  onCalibrationError: {fileID: 11400000, guid: ce7ef30d2cc5c1d4ab34e59ca165f949, type: 2}
   userID: -1
-  fullName: Hello
+  fullName: Sdmn
   username: 
   jwt: 
   debugUserID: 186
@@ -37,4 +38,5 @@ MonoBehaviour:
   debugJwt: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTg2LCJpYXQiOjE2MzI5OTYzNjQsImV4cCI6MTYzNTU4ODM2NH0.4TIciP6yiu8HBzLyEYGV1RmHP6nyHCRnprDWjmdPUfo
   sessionToken: 
   sessionId: -1
+  calibrationReceived: 0
   inferenceId: -1

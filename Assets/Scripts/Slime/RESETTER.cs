@@ -16,6 +16,8 @@ public class RESETTER : MonoBehaviour
     public GameEvent onHideMainMenu;
     public GameEvent onShowInstructions;
     public GameEvent onHideInstructions;
+    public GameEvent onHideCloseEyesPopUp;
+    public GameEvent onHideCalibError;
     public GameEvent onHideTrails;
     public BrainData brainData;
     public ConnectionParams connection;
@@ -34,6 +36,8 @@ public class RESETTER : MonoBehaviour
         onResetForm.Raise();
         onHideTrails.Raise();
         onHideInstructions.Raise();
+        onHideCalibError.Raise();
+        onHideCloseEyesPopUp.Raise();
         onShowMainMenu.Raise();
     }
 
@@ -43,6 +47,8 @@ public class RESETTER : MonoBehaviour
         brainData.Reset();
         onHideTrails.Raise();
         onHideMainMenu.Raise();
+        onHideCalibError.Raise();
+        onHideCloseEyesPopUp.Raise();
         onShowInstructions.Raise();
     }
 }
