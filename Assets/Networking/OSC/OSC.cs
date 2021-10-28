@@ -155,7 +155,7 @@ public class UDPPacketIO
 			
 			return true;
 		}
-		catch (Exception e)
+		catch (Exception)
 		{
             Wenzil.Console.Console.LogError("cannot open udp client interface at port "+localPort);
 			//Debug.LogWarning(e);

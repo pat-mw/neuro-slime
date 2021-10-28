@@ -4,7 +4,7 @@ using UnityEngine;
 using ScriptableObjectArchitecture;
 using RetinaNetworking.Server;
 
-[RequireComponent(typeof(EmailWithAttachment))]
+[RequireComponent(typeof(TemplateEmailWithAttachment))]
 [RequireComponent(typeof(Camera))]
 public class Screenshot : MonoBehaviour
 {
@@ -16,11 +16,11 @@ public class Screenshot : MonoBehaviour
 
     private bool takeScreenshotOnNextFrame = false;
 
-    private EmailWithAttachment email;
+    private TemplateEmailWithAttachment email;
 
     private void Awake()
     {
-        email = GetComponent<EmailWithAttachment>();
+        email = GetComponent<TemplateEmailWithAttachment>();
         screenshotCamera = GetComponent<Camera>();
         ResetTargetTexture();
         onTakeScreenshot.AddListener(TakeScreenshot);
@@ -38,6 +38,8 @@ public class Screenshot : MonoBehaviour
     {
         if (takeScreenshotOnNextFrame)
         {
+            takeScreenshotOnNextFrame = false;
+
             Wenzil.Console.Console.Log($"Taking Screenshot");
             RenderTexture renderTexture = screenshotCamera.targetTexture;
             
@@ -55,14 +57,14 @@ public class Screenshot : MonoBehaviour
             Wenzil.Console.Console.Log($"Saved screenshot to: {filepath}");
 
             // send email
-            email.SendEmail(filepath);
+            List<string> attachments = new List<string>();
+            attachments.Add(filepath);
+            email.SendEmail(attachments);
 
             // reset/clean-up
             RenderTexture.ReleaseTemporary(renderTexture);
-            takeScreenshotOnNextFrame = false;
-            ResetTargetTexture();
-
             
+            ResetTargetTexture();
         }
     }
 

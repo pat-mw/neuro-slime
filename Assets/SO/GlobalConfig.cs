@@ -11,10 +11,10 @@ public static class GlobalConfig
 
     public static int SAMPLE_RATE = 250;
 
-    public static int CALIBRATION_DURATION = 20;
+    public static int CALIBRATION_DURATION = 2;
     public static int CALIBRATION_SAMPLE_COUNT = SAMPLE_RATE * CALIBRATION_DURATION;
 
-    public static int EPOCH_DURATION = 10;
+    public static int EPOCH_DURATION = 2;
     public static int EPOCH_SAMPLE_COUNT = SAMPLE_RATE * EPOCH_DURATION;
 
     public static float TRANSITION_DURATION = 10f;

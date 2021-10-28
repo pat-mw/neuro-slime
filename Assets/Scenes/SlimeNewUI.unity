@@ -4109,7 +4109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 603235578}
   - component: {fileID: 603235577}
-  - component: {fileID: 603235576}
+  - component: {fileID: 603235581}
   - component: {fileID: 603235580}
   - component: {fileID: 603235579}
   m_Layer: 0
@@ -4119,54 +4119,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &603235576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 603235575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d9150fa695c0384996a24ca352ddaa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  sender: info@kouo.io
-  emailSubject: Hi [name], Greetings from Kouo!
-  emailBody: "Hello [name], nice to meet you!\n\nThank you for taking part in the
-    Kouo experience at WebSummit. It was a pleasure meeting you and we hope you've
-    enjoyed translating your emotions into a piece of art.\r\n\r\nYour unique EmotionPrint
-    is attached to this email.\n\r\nI would encourage you to share them with others
-    (don't worry they won't be able to tell what you were feeling \U0001F609). It
-    can be through an online post, an email to your parents or just share it with
-    a friend over a coffee one Sunday. How you do it matters less than the why. More
-    on that below \U0001F447\r\n\r\nOur aim at Kouo is to help people like you and
-    me redefine our relationships with the world and with ourselves. We do this by
-    developing adaptive tools that connect emotional states to everyday activities,
-    helping users better manage their emotions, habits and relationships with others.\r\n\r\nWhile
-    companies have been rushing to develop technologies that help us track our physical
-    health, mental health solutions were left far behind. That's what we are changing
-    with Kouo. Our technology directly connects emotions and mental states to the
-    everyday. This gives the user insight into how their habits and activities affect
-    them, helping them develop a deeper connection to their mental and physical wellbeing
-    while meaningfully improving many other areas of their lives. At Kouo we want
-    to provide better access to preventive tools, engagement with mental health and
-    opens up a dialogue around protecting our wellbeing by looking at it holistically.\r\n\r\nSo
-    when you share your EmotionPrint, beyond the beautiful picture also share a few
-    words about the importance of mental wellbeing and emotional awareness and if
-    it's online tag us with #kouohealth. \r\n\r\nOnce again thank you [name] and
-    don't forget to watch this space for more.\r\n\r\nBest wishes,\r\n\r\nShaan Bassi\r\nFounder
-    & CEO\r\nKouo"
-  connectionParams: {fileID: 11400000, guid: ac82aaf83b4b1f8499ae2559a70ea68e, type: 2}
 --- !u!114 &603235577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4191,7 +4143,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -7.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1474641342}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4298,6 +4251,33 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &603235581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603235575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15829935bf0d6d4c9012204d2187088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  sender: info@kouo.io
+  emailSubject: Hi [Name], Greetings from Kouo!
+  previewText: 'NeuroPrint attached - '
+  body: {fileID: 4900000, guid: 058f9145dc0b1c048aae538278af80b9, type: 3}
+  htmlTemplate: {fileID: 4900000, guid: ecf82d7348dde564b9e372a38256d6be, type: 3}
+  connectionParams: {fileID: 11400000, guid: ac82aaf83b4b1f8499ae2559a70ea68e, type: 2}
 --- !u!1 &605047340
 GameObject:
   m_ObjectHideFlags: 0
@@ -9805,6 +9785,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1474641341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1474641342}
+  - component: {fileID: 1474641343}
+  m_Layer: 0
+  m_Name: ScreenRecorder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1474641342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474641341}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 7.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 603235578}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1474641343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474641341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a743de51adb71c74cb1cc0b977ec101a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeSettings: {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
+  onStartRecording: {fileID: 11400000, guid: 2f9f6d747cfdb2240a1a3985d489501c, type: 2}
+  onStopRecording: {fileID: 11400000, guid: c29ff41f17ef7d243be85f10c7ae08ba, type: 2}
+  captureEveryXSeconds: 2
+  gifFrameRate: 12
+  email: {fileID: 603235581}
 --- !u!1 &1476265131
 GameObject:
   m_ObjectHideFlags: 0
@@ -10214,6 +10243,8 @@ MonoBehaviour:
   onShowTrails: {fileID: 11400000, guid: 06c4c6189b7fcd74095e502403e18eef, type: 2}
   onDeactivateSimulation: {fileID: 11400000, guid: d2002de2349c577468434d2b66387e7b,
     type: 2}
+  onStartRecording: {fileID: 11400000, guid: 2f9f6d747cfdb2240a1a3985d489501c, type: 2}
+  onStopRecording: {fileID: 11400000, guid: c29ff41f17ef7d243be85f10c7ae08ba, type: 2}
   onTakeScreenshot: {fileID: 11400000, guid: aee00f8d0f87d9149ad405d7a3fefa74, type: 2}
   onStopReceivingBrainData: {fileID: 11400000, guid: 7adce5386e7fdb54093b3bbde31c3102,
     type: 2}

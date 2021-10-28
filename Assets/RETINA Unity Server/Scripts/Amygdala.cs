@@ -140,7 +140,7 @@ namespace RetinaNetworking.Server
 
             string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(data);
 
-            //Wenzil.Console.Console.Log($"JSON Data: {jsonData}");
+            //  Wenzil.Console.Console.Log($"JSON Data: {jsonData}");
 
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
 

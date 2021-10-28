@@ -10,6 +10,8 @@ public class StimuliPeriod : MonoBehaviour
     public GameEvent onEndStimuli;
     public GameEvent onShowTrails;
     public GameEvent onDeactivateSimulation;
+    public GameEvent onStartRecording;
+    public GameEvent onStopRecording;
     public GameEvent onTakeScreenshot;
     public GameEvent onStopReceivingBrainData;
 
@@ -27,8 +29,7 @@ public class StimuliPeriod : MonoBehaviour
     {
         cyclesElapsed = 0;
         onShowTrails.Raise();
-
-
+        onStartRecording.Raise();
         StimUpdate();
         // then enter cycle of fetching mood every x seconds
     }
@@ -61,6 +62,7 @@ public class StimuliPeriod : MonoBehaviour
 
         onDeactivateSimulation.Raise();
         onStopReceivingBrainData.Raise();
+        onStopRecording.Raise();
         onTakeScreenshot.Raise();
     }
 }
