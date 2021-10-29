@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "aquapink",
+    "stepsPerFrame": 2,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 300000,
+    "trailWeight": 19.5131531,
+    "decayRate": 1.53937817,
+    "diffuseRate": 58.61613,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 7.11170435,
+                "turnSpeed": -9.789398,
+                "sensorAngleSpacing": 73.45201,
+                "sensorOffsetDst": -65.2901459,
+                "sensorSize": 3,
+                "colour": {
+                    "$type": 3,
+                    1,
+                    0.6084906,
+                    0.8443724,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 31.478899,
+                "turnSpeed": -12.6983318,
+                "sensorAngleSpacing": 46.0542145,
+                "sensorOffsetDst": 22.9178982,
+                "sensorSize": 2,
+                "colour": {
+                    "$type": 3,
+                    0.2783019,
+                    1,
+                    0.9844275,
+                    1
+                }
+            }
+        ]
+    }
+}

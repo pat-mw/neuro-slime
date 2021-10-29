@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "pos_chamomile",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 112808,
+    "trailWeight": 28.4055119,
+    "decayRate": 0.144342452,
+    "diffuseRate": 55.5967636,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 41.0591774,
+                "turnSpeed": -6.413929,
+                "sensorAngleSpacing": 79.5174255,
+                "sensorOffsetDst": -3.0306015,
+                "sensorSize": 2,
+                "colour": {
+                    "$type": 3,
+                    0.77082026,
+                    0.5583531,
+                    0.2685071,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 28.7443581,
+                "turnSpeed": -4.410179,
+                "sensorAngleSpacing": 81.33098,
+                "sensorOffsetDst": 74.9607544,
+                "sensorSize": 6,
+                "colour": {
+                    "$type": 3,
+                    0.223949492,
+                    0.4600225,
+                    0.7660148,
+                    1
+                }
+            }
+        ]
+    }
+}

@@ -45,7 +45,7 @@ public class accelerometerMapping : SerializedScriptableObject, IMapping
             case MappingIndex.Receivers.stepsPerFrame:
                 // stepsPerFrame range: (0, 5) (int)
                 // (-1f, 1f) --> (0, 5)
-                influencerValue = LinearRemap(influencerValue, (-1f, 1f), (0f, 5f));
+                influencerValue = LinearRemap(influencerValue, (0, 1f), (1f, 3f));
                 influencerValue = Mathf.RoundToInt(influencerValue);
                 Mappings.ApplyMap(mapType, (int)influencerValue, ref slimeSettings.stepsPerFrame);
                 break;

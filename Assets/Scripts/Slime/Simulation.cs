@@ -295,6 +295,17 @@ public class Simulation : SerializedMonoBehaviour
 	void RunSimulation()
 	{
 		var speciesSettings = settings.speciesSettings;
+		if (speciesSettings.Length == 0)
+        {
+			speciesSettings = new SlimeSettings.SpeciesSettings[1];
+			speciesSettings[0] = new SlimeSettings.SpeciesSettings();
+			speciesSettings[0].colour = Color.white;
+			speciesSettings[0].moveSpeed = 30f;
+			speciesSettings[0].turnSpeed = 1f;
+			speciesSettings[0].sensorSize = 1;
+			speciesSettings[0].sensorAngleSpacing = 18f;
+			speciesSettings[0].sensorOffsetDst = 15f;
+        }
 		ComputeHelper.CreateStructuredBuffer(ref settingsBuffer, speciesSettings);
 		compute.SetBuffer(updateKernel, "speciesSettings", settingsBuffer);
 		compute.SetBuffer(colourKernel, "speciesSettings", settingsBuffer);

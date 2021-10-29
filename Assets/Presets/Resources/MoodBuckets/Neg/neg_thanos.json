@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neg_thanos",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 286295,
+    "trailWeight": 19.8412514,
+    "decayRate": 5.52998972,
+    "diffuseRate": 89.93646,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 3.309393,
+                "turnSpeed": 10.6732025,
+                "sensorAngleSpacing": 32.0838852,
+                "sensorOffsetDst": -2.26729584,
+                "sensorSize": 2,
+                "colour": {
+                    "$type": 3,
+                    0.2656623,
+                    0.0223081168,
+                    0.5290876,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 0.141239166,
+                "turnSpeed": 1.45708466,
+                "sensorAngleSpacing": 5.820298,
+                "sensorOffsetDst": 61.32844,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.5965978,
+                    0.131939575,
+                    0.105577424,
+                    1
+                }
+            }
+        ]
+    }
+}

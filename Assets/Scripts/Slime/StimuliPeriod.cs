@@ -8,12 +8,16 @@ public class StimuliPeriod : MonoBehaviour
 {
     public GameEvent onStartStimuli;
     public GameEvent onEndStimuli;
+
     public GameEvent onShowTrails;
     public GameEvent onDeactivateSimulation;
+
     public GameEvent onStartRecording;
     public GameEvent onStopRecording;
+
     public GameEvent onStartGraphing;
     public GameEvent onStopGraphing;
+
     public GameEvent onTakeScreenshot;
     public GameEvent onStopReceivingBrainData;
 
@@ -43,7 +47,7 @@ public class StimuliPeriod : MonoBehaviour
         cyclesElapsed += 1;
         if (cyclesElapsed <= stimCycleCount)
         {
-            Wenzil.Console.Console.Log($"STIM CYCLE: {cyclesElapsed}");
+            Wenzil.Console.Console.Log($"STIM CYCLE: {cyclesElapsed}/{stimCycleCount}");
             await StimDelay(stimCycleDuration);
             StimUpdate();
         }

@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neg_astralrage",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 229451,
+    "trailWeight": 61.88958,
+    "decayRate": 2.1223557,
+    "diffuseRate": 17.6659222,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 9.682727,
+                "turnSpeed": 4.867229,
+                "sensorAngleSpacing": 59.7408371,
+                "sensorOffsetDst": 55.8571777,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.6098706,
+                    0.06418979,
+                    0.1906318,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 12.5700712,
+                "turnSpeed": -13.0488243,
+                "sensorAngleSpacing": 94.71399,
+                "sensorOffsetDst": -72.86319,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.213027164,
+                    0.4450597,
+                    0.784218669,
+                    1
+                }
+            }
+        ]
+    }
+}

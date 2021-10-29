@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "pos_therealpurpleburst",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 346392,
+    "trailWeight": 84.99389,
+    "decayRate": 3.24811077,
+    "diffuseRate": 20.0487728,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 57.11463,
+                "turnSpeed": 3.771761,
+                "sensorAngleSpacing": 71.28378,
+                "sensorOffsetDst": -3.64042664,
+                "sensorSize": 7,
+                "colour": {
+                    "$type": 3,
+                    0.943745553,
+                    0.452889323,
+                    0.690027058,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 73.80672,
+                "turnSpeed": -11.5896454,
+                "sensorAngleSpacing": 98.11715,
+                "sensorOffsetDst": 37.8217545,
+                "sensorSize": 7,
+                "colour": {
+                    "$type": 3,
+                    0.06548063,
+                    0.09314446,
+                    0.689884663,
+                    1
+                }
+            }
+        ]
+    }
+}

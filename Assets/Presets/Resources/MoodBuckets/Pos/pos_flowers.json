@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "pos_flowers",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 300000,
+    "trailWeight": 15.6,
+    "decayRate": 1.26,
+    "diffuseRate": 64.3,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 7.43201971,
+                "turnSpeed": 12.03314,
+                "sensorAngleSpacing": 46.0760422,
+                "sensorOffsetDst": -64.1075439,
+                "sensorSize": 3,
+                "colour": {
+                    "$type": 3,
+                    0.46900934,
+                    0.247058779,
+                    0.9137255,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 23.8,
+                "turnSpeed": -3.04942322,
+                "sensorAngleSpacing": 36.6575546,
+                "sensorOffsetDst": 3.414589,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    1,
+                    0.6933962,
+                    0.823944151,
+                    1
+                }
+            }
+        ]
+    }
+}

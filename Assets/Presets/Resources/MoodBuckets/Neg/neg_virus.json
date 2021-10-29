@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neg_virus",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 452479,
+    "trailWeight": 14.7864227,
+    "decayRate": 5.3143816,
+    "diffuseRate": 15.8163309,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 16.3546562,
+                "turnSpeed": -8.499741,
+                "sensorAngleSpacing": 80.2906647,
+                "sensorOffsetDst": 48.7175674,
+                "sensorSize": 1,
+                "colour": {
+                    "$type": 3,
+                    0.456600964,
+                    0.960710943,
+                    0.27640897,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 24.0093231,
+                "turnSpeed": 10.7293472,
+                "sensorAngleSpacing": 66.77645,
+                "sensorOffsetDst": -70.53816,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.9382711,
+                    0.1280796,
+                    0.688573241,
+                    1
+                }
+            }
+        ]
+    }
+}

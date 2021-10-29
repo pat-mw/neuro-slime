@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "pos_africa",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 175206,
+    "trailWeight": 26.0395241,
+    "decayRate": 0.9474453,
+    "diffuseRate": 29.0206127,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 70.399704,
+                "turnSpeed": -8.392464,
+                "sensorAngleSpacing": 88.1198,
+                "sensorOffsetDst": 54.09871,
+                "sensorSize": 3,
+                "colour": {
+                    "$type": 3,
+                    0.328234822,
+                    0.801640153,
+                    0.179876134,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 56.38415,
+                "turnSpeed": 11.0097771,
+                "sensorAngleSpacing": 64.71895,
+                "sensorOffsetDst": -73.00893,
+                "sensorSize": 1,
+                "colour": {
+                    "$type": 3,
+                    0.0552640259,
+                    0.4561174,
+                    0.9338978,
+                    1
+                }
+            }
+        ]
+    }
+}

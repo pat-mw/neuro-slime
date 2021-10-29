@@ -7,6 +7,7 @@ using UnityEditor;
 using Cysharp.Threading.Tasks;
 using RetinaNetworking.Server;
 using ScriptableObjectArchitecture;
+using System.IO;
 
 [DefaultExecutionOrder(-5)]
 public class SlimePresetLoader : SerializedMonoBehaviour
@@ -21,6 +22,7 @@ public class SlimePresetLoader : SerializedMonoBehaviour
     [SerializeField] private string positiveSubFolder = "Pos";
     [SerializeField] private string negativeSubFolder = "Neg";
     [SerializeField] private string neutralSubFolder = "Neut";
+    [SerializeField] private string unsortedSubFolder = "Unsorted";
 
     [ListDrawerSettings(ShowIndexLabels = true, ShowPaging = true, ShowItemCount = true, HideRemoveButton = false, ListElementLabelName = "presetName")]
     [OdinSerialize] private List<SlimePreset> allPresets = new List<SlimePreset>();
@@ -30,9 +32,11 @@ public class SlimePresetLoader : SerializedMonoBehaviour
     [OdinSerialize] private List<SlimePreset> negativePresets = new List<SlimePreset>();
     [ListDrawerSettings(ShowIndexLabels = true, ShowPaging = true, ShowItemCount = true, HideRemoveButton = false, ListElementLabelName = "presetName")]
     [OdinSerialize] private List<SlimePreset> neutralPresets = new List<SlimePreset>();
-
+    [ListDrawerSettings(ShowIndexLabels = true, ShowPaging = true, ShowItemCount = true, HideRemoveButton = false, ListElementLabelName = "presetName")]
+    [OdinSerialize] private List<SlimePreset> unsortedPresets = new List<SlimePreset>();
 
     [Header("CHANGE PRESET")]
+    [SerializeField] private bool includeUnsorted = false;
     [OnValueChanged("ChangePreset")]
     [ValueDropdown("GetAllLoadedPresets", DropdownTitle = "Select preset", IsUniqueList = true)]
     [OdinSerialize] private SlimePreset currentPreset;
@@ -88,28 +92,39 @@ public class SlimePresetLoader : SerializedMonoBehaviour
             settings.diffuseRate = Mathf.SmoothStep(settings.diffuseRate, currentPreset.diffuseRate, time / transitionDuration);
 
             // species settings
-            for (int i = 0; i < settings.speciesSettings.Length; i++)
+            //float[] values = new float[2];
+            //values[0] = settings.speciesSettings.Length;
+            //values[1] = 3;
+            //var limit = Mathf.Min(values);
+            //Debug.Log($"Species limit: {limit}");
+
+            var limit = currentPreset.speciesSettings.Length;
+            for (int i = 0; i < limit; i++)
             {
                 try
                 {
-                    if (i > 0)
+                    if (i < settings.speciesSettings.Length)
                     {
-                        settings.speciesSettings[i].colour = new Color(
-                            Mathf.SmoothStep(settings.speciesSettings[i].colour.r, currentPreset.speciesSettings[i].colour.r, time / transitionDuration),
-                            Mathf.SmoothStep(settings.speciesSettings[i].colour.g, currentPreset.speciesSettings[i].colour.g, time / transitionDuration),
-                            Mathf.SmoothStep(settings.speciesSettings[i].colour.b, currentPreset.speciesSettings[i].colour.b, time / transitionDuration)
-                            );
-                    }
-                    settings.speciesSettings[i].moveSpeed = Mathf.SmoothStep(settings.speciesSettings[i].moveSpeed, currentPreset.speciesSettings[i].moveSpeed, time / transitionDuration);
-                    settings.speciesSettings[i].turnSpeed = Mathf.SmoothStep(settings.speciesSettings[i].turnSpeed, currentPreset.speciesSettings[i].turnSpeed, time / transitionDuration);
-                    settings.speciesSettings[i].sensorAngleSpacing = Mathf.SmoothStep(settings.speciesSettings[i].sensorAngleSpacing, currentPreset.speciesSettings[i].sensorAngleSpacing, time / transitionDuration);
-                    settings.speciesSettings[i].sensorOffsetDst = Mathf.SmoothStep(settings.speciesSettings[i].sensorOffsetDst, currentPreset.speciesSettings[i].sensorOffsetDst, time / transitionDuration);
-                    settings.speciesSettings[i].sensorSize = (int)Mathf.SmoothStep(settings.speciesSettings[i].sensorSize, currentPreset.speciesSettings[i].sensorSize, time / transitionDuration);
-                }
-                catch (System.Exception)
-                {
+                        if (i > 0)
+                        {
+                            settings.speciesSettings[i].colour = new Color(
+                                Mathf.SmoothStep(settings.speciesSettings[i].colour.r, currentPreset.speciesSettings[i].colour.r, time / transitionDuration),
+                                Mathf.SmoothStep(settings.speciesSettings[i].colour.g, currentPreset.speciesSettings[i].colour.g, time / transitionDuration),
+                                Mathf.SmoothStep(settings.speciesSettings[i].colour.b, currentPreset.speciesSettings[i].colour.b, time / transitionDuration)
+                                );
+                        }
 
-                    throw;
+                        settings.speciesSettings[i].moveSpeed = Mathf.SmoothStep(settings.speciesSettings[i].moveSpeed, currentPreset.speciesSettings[i].moveSpeed, time / transitionDuration);
+                        settings.speciesSettings[i].turnSpeed = Mathf.SmoothStep(settings.speciesSettings[i].turnSpeed, currentPreset.speciesSettings[i].turnSpeed, time / transitionDuration);
+                        settings.speciesSettings[i].sensorAngleSpacing = Mathf.SmoothStep(settings.speciesSettings[i].sensorAngleSpacing, currentPreset.speciesSettings[i].sensorAngleSpacing, time / transitionDuration);
+                        settings.speciesSettings[i].sensorOffsetDst = Mathf.SmoothStep(settings.speciesSettings[i].sensorOffsetDst, currentPreset.speciesSettings[i].sensorOffsetDst, time / transitionDuration);
+                        settings.speciesSettings[i].sensorSize = (int)Mathf.SmoothStep(settings.speciesSettings[i].sensorSize, currentPreset.speciesSettings[i].sensorSize, time / transitionDuration);
+                    }
+                    
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.Log($"Error switching species settings: {ex}");
                 }
             }
 
@@ -122,7 +137,7 @@ public class SlimePresetLoader : SerializedMonoBehaviour
         settings.trailWeight = currentPreset.trailWeight;
         settings.decayRate = currentPreset.decayRate;
         settings.diffuseRate = currentPreset.diffuseRate;
-        settings.speciesSettings = currentPreset.speciesSettings;
+        //settings.speciesSettings = currentPreset.speciesSettings;
 
         await UniTask.WaitForEndOfFrame();
         Debug.Log($"FINISHED TRANSITIONING");
@@ -130,6 +145,8 @@ public class SlimePresetLoader : SerializedMonoBehaviour
 
     private void RefreshSlimePresetList()
     {
+        if (includeUnsorted)
+            RefreshUnsortedPresets();
         RefreshPositivePresets();
         RefreshNegativePresets();
         RefreshNeutralPresets();
@@ -150,13 +167,47 @@ public class SlimePresetLoader : SerializedMonoBehaviour
         Wenzil.Console.Console.Log($"Loaded {allPresets.Count} presets in total");
     }
 
+
+
+    private void RefreshUnsortedPresets()
+    {
+        unsortedPresets.Clear();
+
+        var folder = $"{saveFolder}/{unsortedSubFolder}/";
+
+        Wenzil.Console.Console.Log($"loading: {folder}");
+
+        // since we are loading a JSON file we cannot easily filter by type
+        // so assume all objects in the folder are presets, and catch any errors later
+        TextAsset[] presetRefTextAssets = Resources.LoadAll<TextAsset>(folder);
+        string[] presetJsonStrings = new string[presetRefTextAssets.Length];
+        for (int i = 0; i < presetJsonStrings.Length; i++)
+        {
+            presetJsonStrings[i] = presetRefTextAssets[i].ToString();
+        }
+        foreach (string jsonString in presetJsonStrings)
+        {
+            try
+            {
+                SlimePreset preset = SlimeSerializer.LoadSlimePresetFromString(jsonString);
+                unsortedPresets.Add(preset);
+            }
+            catch (System.Exception e)
+            {
+                Wenzil.Console.Console.LogError($"Failed to load given slime preset" +
+                    $"\n are you sure it is the correct type? " +
+                    $"\n Full Exception: {e}");
+            }
+        }
+    }
+
     private void RefreshPositivePresets()
     {
         positivePresets.Clear();
 
         var folder = $"{saveFolder}/{positiveSubFolder}/";
 
-        Wenzil.Console.Console.Log($"Attempting to load existing presets from folder: {folder}");
+        Wenzil.Console.Console.Log($"loading: {folder}");
 
         // since we are loading a JSON file we cannot easily filter by type
         // so assume all objects in the folder are presets, and catch any errors later
@@ -194,7 +245,7 @@ public class SlimePresetLoader : SerializedMonoBehaviour
 
         var folder = $"{saveFolder}/{negativeSubFolder}/";
 
-        Wenzil.Console.Console.Log($"Attempting to load existing presets from folder: {folder}");
+        Wenzil.Console.Console.Log($"loading: {folder}");
 
         // since we are loading a JSON file we cannot easily filter by type
         // so assume all objects in the folder are presets, and catch any errors later
@@ -232,7 +283,7 @@ public class SlimePresetLoader : SerializedMonoBehaviour
 
         var folder = $"{saveFolder}/{neutralSubFolder}/";
 
-        Wenzil.Console.Console.Log($"Attempting to load existing presets from folder: {folder}");
+        Wenzil.Console.Console.Log($"loading: {folder}");
 
         // since we are loading a JSON file we cannot easily filter by type
         // so assume all objects in the folder are presets, and catch any errors later
@@ -280,10 +331,13 @@ public class SlimePresetLoader : SerializedMonoBehaviour
 
     private void InitialPreset(SlimePreset slimePreset)
     {
-        Debug.Log($"SETTING INITIAL PRESET: {slimePreset.presetName}");
-        float transitionDuration = 0f;
+        Wenzil.Console.Console.Log($"SETTING INITIAL PRESET: {slimePreset.presetName}");
         currentPreset = slimePreset;
-        UpdateSlimeValues(transitionDuration);
+        settings.numAgents = currentPreset.numAgents;
+        settings.trailWeight = currentPreset.trailWeight;
+        settings.decayRate = currentPreset.decayRate;
+        settings.diffuseRate = currentPreset.diffuseRate;
+        settings.speciesSettings = currentPreset.speciesSettings;
     }
 
     private void OnDisable()
@@ -317,6 +371,10 @@ public class SlimePresetLoader : SerializedMonoBehaviour
             {
                 yield return new ValueDropdownItem($"NEUT_{preset.presetName}", preset);
             }
+            foreach (SlimePreset preset in unsortedPresets)
+            {
+                yield return new ValueDropdownItem($"UNS_{preset.presetName}", preset);
+            }
         }
         else
         {
@@ -348,6 +406,16 @@ public class SlimePresetLoader : SerializedMonoBehaviour
     }
 
     private IEnumerable GetAllLoadedNeutralPresets()
+    {
+        if (Application.isPlaying)
+        {
+            foreach (SlimePreset preset in neutralPresets)
+            {
+                yield return new ValueDropdownItem($"NEUT_{preset.presetName}", preset);
+            }
+        }
+    }
+    private IEnumerable GetAllLoadedUnsortedPresets()
     {
         if (Application.isPlaying)
         {
@@ -503,18 +571,38 @@ public class SlimePresetLoader : SerializedMonoBehaviour
         ChangePreset(preset);
     }
 
+    [GUIColor(0.2f, 0.7f, 0.1f)]
+    [Button(ButtonSizes.Large)]
+    [LabelText("RANDOM UNSORTED")]
+    [ButtonGroup("MoodSwitcher")]
+    public void RandomUnsortedPreset()
+    {
+        SlimePreset preset = unsortedPresets[Random.Range(0, unsortedPresets.Count)];
+        Wenzil.Console.Console.Log($"SELECTED UNSORTED PRESET: {preset.presetName}");
+        ChangePreset(preset);
+    }
+
 
     [Button(ButtonSizes.Large)]
-    public void SavePreset(string presetPath)
+    public void SavePreset(string presetName)
     {
-        if (presetPath == null)
-            presetPath = $"NewSlime_{System.DateTime.Now}";
+        if (presetName == null)
+            presetName = $"NewSlime_{System.DateTime.Now}";
 
         SlimePreset slimePreset = new SlimePreset(
-            presetPath, settings.stepsPerFrame, settings.width, settings.height, settings.numAgents, settings.trailWeight, settings.decayRate,
+            presetName, settings.stepsPerFrame, settings.width, settings.height, settings.numAgents, settings.trailWeight, settings.decayRate,
             settings.diffuseRate, settings.speciesSettings);
 
-        SlimeSerializer.SaveSlimePreset(slimePreset, saveFolder);
+        var folder = $"{saveFolder}/{unsortedSubFolder}/";
+        
+      
+        if (!Directory.Exists(folder))
+        {
+            Debug.Log($"Directory doesn't exist");
+            Directory.CreateDirectory(folder);
+        }
+
+        SlimeSerializer.SaveSlimePreset(slimePreset, folder);
         allPresets.Add(slimePreset);
     }
 

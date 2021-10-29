@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neg_mytochondria",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 470843,
+    "trailWeight": 83.2774,
+    "decayRate": 4.98136425,
+    "diffuseRate": 94.01584,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 26.7685356,
+                "turnSpeed": 7.249449,
+                "sensorAngleSpacing": 32.88993,
+                "sensorOffsetDst": -14.2488689,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.932037652,
+                    0.166698664,
+                    0.951884151,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 96.18411,
+                "turnSpeed": -5.05449629,
+                "sensorAngleSpacing": 16.6679268,
+                "sensorOffsetDst": 31.1734524,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.807621956,
+                    0.07552656,
+                    0.0420226157,
+                    1
+                }
+            }
+        ]
+    }
+}

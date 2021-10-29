@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neut_rivers",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 448492,
+    "trailWeight": 91.8624,
+    "decayRate": 2.68567443,
+    "diffuseRate": 14.2335653,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 17.8555489,
+                "turnSpeed": -13.4143963,
+                "sensorAngleSpacing": 56.4193077,
+                "sensorOffsetDst": -60.6633759,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.560163558,
+                    0.485369742,
+                    0.126201287,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 70.92571,
+                "turnSpeed": 8.046537,
+                "sensorAngleSpacing": 94.60305,
+                "sensorOffsetDst": 68.36618,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.274074137,
+                    0.5347657,
+                    0.5643473,
+                    1
+                }
+            }
+        ]
+    }
+}

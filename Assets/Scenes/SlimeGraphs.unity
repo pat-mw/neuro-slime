@@ -4904,6 +4904,7 @@ GameObject:
   - component: {fileID: 603235581}
   - component: {fileID: 603235580}
   - component: {fileID: 603235579}
+  - component: {fileID: 603235576}
   m_Layer: 0
   m_Name: Screenshot + Email
   m_TagString: screenshotCam
@@ -4911,6 +4912,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &603235576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603235575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390a27473521434aa79257de84ff0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
+  slimeSettings: {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
+  onStartRecording: {fileID: 11400000, guid: 2f9f6d747cfdb2240a1a3985d489501c, type: 2}
+  onStopRecording: {fileID: 11400000, guid: c29ff41f17ef7d243be85f10c7ae08ba, type: 2}
+  captureEveryXSeconds: 0.7
+  gifFrameRate: 12
+  email: {fileID: 603235581}
 --- !u!114 &603235577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12494,9 +12514,22 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: unsortedPresets
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[SlimePreset, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: currentPreset
       Entry: 7
-      Data: 4|SlimePreset, Assembly-CSharp
+      Data: 5|SlimePreset, Assembly-CSharp
     - Name: presetName
       Entry: 1
       Data: berghaus
@@ -12523,7 +12556,7 @@ MonoBehaviour:
       Data: 75.59122
     - Name: speciesSettings
       Entry: 7
-      Data: 5|SlimeSettings+SpeciesSettings[], Assembly-CSharp
+      Data: 6|SlimeSettings+SpeciesSettings[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 3
@@ -12662,6 +12695,7 @@ MonoBehaviour:
   positiveSubFolder: Pos
   negativeSubFolder: Neg
   neutralSubFolder: Neut
+  unsortedSubFolder: Unsorted
 --- !u!114 &1531495871
 MonoBehaviour:
   m_ObjectHideFlags: 0

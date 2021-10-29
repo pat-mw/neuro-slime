@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neg_rottenorange",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 274091,
+    "trailWeight": 95.51041,
+    "decayRate": 4.78061533,
+    "diffuseRate": 19.68689,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 32.3864632,
+                "turnSpeed": 4.547889,
+                "sensorAngleSpacing": 95.74566,
+                "sensorOffsetDst": -57.1797638,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.8188236,
+                    0.3951655,
+                    0.228170991,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 61.4883728,
+                "turnSpeed": 13.8831387,
+                "sensorAngleSpacing": 42.67227,
+                "sensorOffsetDst": -24.1615276,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.745687962,
+                    0.3489677,
+                    0.0209661536,
+                    1
+                }
+            }
+        ]
+    }
+}

@@ -8,7 +8,7 @@ public class SlimeSerializer
     public static void SaveSlimePreset(SlimePreset slimePreset, string saveFolder)
     {
         // Save to Assets folder
-        string path = Application.persistentDataPath + $"/{saveFolder}/{slimePreset.presetName}.json";
+        string path = Application.dataPath + $"/{saveFolder}/{slimePreset.presetName}.json";
         DataFormat dataFormat = DataFormat.JSON;
 
         // Serialization

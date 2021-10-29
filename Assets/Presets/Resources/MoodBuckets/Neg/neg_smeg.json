@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neg_smeg",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 447361,
+    "trailWeight": 64.2974,
+    "decayRate": 5.75710869,
+    "diffuseRate": 1.51102543,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 25.9730282,
+                "turnSpeed": -5.107521,
+                "sensorAngleSpacing": 82.20884,
+                "sensorOffsetDst": 54.6725769,
+                "sensorSize": 6,
+                "colour": {
+                    "$type": 3,
+                    0.121312112,
+                    0.674238563,
+                    0.602415264,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 35.472805,
+                "turnSpeed": 11.1119308,
+                "sensorAngleSpacing": 68.6940155,
+                "sensorOffsetDst": -68.8886261,
+                "sensorSize": 8,
+                "colour": {
+                    "$type": 3,
+                    0.344714731,
+                    0.0562597178,
+                    0.634502053,
+                    1
+                }
+            }
+        ]
+    }
+}

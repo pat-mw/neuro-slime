@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neut_newton",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 164202,
+    "trailWeight": 86.81622,
+    "decayRate": 3.67913246,
+    "diffuseRate": 7.951069,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 39.1972122,
+                "turnSpeed": 13.22006,
+                "sensorAngleSpacing": 53.6867332,
+                "sensorOffsetDst": -67.23041,
+                "sensorSize": 7,
+                "colour": {
+                    "$type": 3,
+                    0.0438449159,
+                    0.00214042724,
+                    0.53458,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 16.35586,
+                "turnSpeed": 0.100945473,
+                "sensorAngleSpacing": 78.4322357,
+                "sensorOffsetDst": -69.70766,
+                "sensorSize": 8,
+                "colour": {
+                    "$type": 3,
+                    0.7597996,
+                    0.11510545,
+                    0.075356774,
+                    1
+                }
+            }
+        ]
+    }
+}

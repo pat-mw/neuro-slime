@@ -39,3 +39,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.log
+*.png
+*.gif
+*.meta

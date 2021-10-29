@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neut_cropcircles",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 114690,
+    "trailWeight": 60.6823273,
+    "decayRate": 5.24154043,
+    "diffuseRate": 2.68359184,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 6.068814,
+                "turnSpeed": -6.9508357,
+                "sensorAngleSpacing": 73.33759,
+                "sensorOffsetDst": -71.88612,
+                "sensorSize": 6,
+                "colour": {
+                    "$type": 3,
+                    0.55767,
+                    0.6193736,
+                    0.137048781,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 63.1,
+                "turnSpeed": 12.5069008,
+                "sensorAngleSpacing": 73.6,
+                "sensorOffsetDst": -1.5,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.646669865,
+                    0.5298643,
+                    0.188503861,
+                    1
+                }
+            }
+        ]
+    }
+}

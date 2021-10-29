@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neg_bloodflow",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 304686,
+    "trailWeight": 79.45839,
+    "decayRate": 2.97543573,
+    "diffuseRate": 91.74739,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 71.20126,
+                "turnSpeed": -5.054249,
+                "sensorAngleSpacing": 86.46005,
+                "sensorOffsetDst": -19.89599,
+                "sensorSize": 3,
+                "colour": {
+                    "$type": 3,
+                    0.554237664,
+                    0.2838461,
+                    0.8095448,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 87.22994,
+                "turnSpeed": 1.94631624,
+                "sensorAngleSpacing": 82.23375,
+                "sensorOffsetDst": 68.31276,
+                "sensorSize": 2,
+                "colour": {
+                    "$type": 3,
+                    0.59479,
+                    0.00606130576,
+                    0.0833265558,
+                    1
+                }
+            }
+        ]
+    }
+}

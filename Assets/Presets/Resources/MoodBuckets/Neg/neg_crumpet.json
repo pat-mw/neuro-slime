@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neg_crumpet",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 211755,
+    "trailWeight": 20.0438213,
+    "decayRate": 0.512335658,
+    "diffuseRate": 88.308754,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 76.43752,
+                "turnSpeed": 9.609837,
+                "sensorAngleSpacing": 49.13686,
+                "sensorOffsetDst": 13.2708817,
+                "sensorSize": 5,
+                "colour": {
+                    "$type": 3,
+                    0.48748523,
+                    0.7650733,
+                    0.33610636,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 55.56082,
+                "turnSpeed": -3.18131256,
+                "sensorAngleSpacing": 96.10136,
+                "sensorOffsetDst": 57.3732758,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.838736653,
+                    0.466194332,
+                    0.3479412,
+                    1
+                }
+            }
+        ]
+    }
+}

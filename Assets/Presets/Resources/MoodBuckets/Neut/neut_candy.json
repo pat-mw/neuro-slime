@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neut_candy",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 362525,
+    "trailWeight": 20.4,
+    "decayRate": 1.06,
+    "diffuseRate": 100,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 87.3177643,
+                "turnSpeed": -3.45561647,
+                "sensorAngleSpacing": 63.4084244,
+                "sensorOffsetDst": 53.6766167,
+                "sensorSize": 6,
+                "colour": {
+                    "$type": 3,
+                    0.8944743,
+                    0.5896226,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 26.0695515,
+                "turnSpeed": 12.727808,
+                "sensorAngleSpacing": 99.17022,
+                "sensorOffsetDst": 45.5976219,
+                "sensorSize": 7,
+                "colour": {
+                    "$type": 3,
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            }
+        ]
+    }
+}

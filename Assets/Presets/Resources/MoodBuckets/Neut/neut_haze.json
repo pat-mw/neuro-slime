@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neut_haze",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 151611,
+    "trailWeight": 61.34781,
+    "decayRate": 2.18700314,
+    "diffuseRate": 74.3526459,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 32.19679,
+                "turnSpeed": -12.29879,
+                "sensorAngleSpacing": 64.3348846,
+                "sensorOffsetDst": 37.57156,
+                "sensorSize": 2,
+                "colour": {
+                    "$type": 3,
+                    0.3785219,
+                    0.05628377,
+                    0.9774124,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 65.28578,
+                "turnSpeed": 4.34245634,
+                "sensorAngleSpacing": 0.4788041,
+                "sensorOffsetDst": -40.4887848,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.09688569,
+                    0.56442827,
+                    0.211124569,
+                    1
+                }
+            }
+        ]
+    }
+}

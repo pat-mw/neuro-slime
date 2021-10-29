@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "pos_islandhols",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 443928,
+    "trailWeight": 86.49831,
+    "decayRate": 0.1,
+    "diffuseRate": 88.63674,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 55.23563,
+                "turnSpeed": -11.7069016,
+                "sensorAngleSpacing": 30.0528584,
+                "sensorOffsetDst": -73.0713348,
+                "sensorSize": 4,
+                "colour": {
+                    "$type": 3,
+                    0.136748657,
+                    0.579341769,
+                    0.335708559,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 54.055603,
+                "turnSpeed": 0.144890785,
+                "sensorAngleSpacing": 8.284819,
+                "sensorOffsetDst": 27.8898754,
+                "sensorSize": 6,
+                "colour": {
+                    "$type": 3,
+                    0.003921556,
+                    0.390838057,
+                    0.545098066,
+                    1
+                }
+            }
+        ]
+    }
+}

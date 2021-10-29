@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "pos_waves",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 308333,
+    "trailWeight": 67.208374,
+    "decayRate": 3.13634944,
+    "diffuseRate": 62.65906,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 37.45919,
+                "turnSpeed": 4.074558,
+                "sensorAngleSpacing": 53.20942,
+                "sensorOffsetDst": -37.2362747,
+                "sensorSize": 3,
+                "colour": {
+                    "$type": 3,
+                    0.165094316,
+                    0.6855697,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 75.666214,
+                "turnSpeed": -8.174099,
+                "sensorAngleSpacing": 47.2183647,
+                "sensorOffsetDst": -66.97409,
+                "sensorSize": 6,
+                "colour": {
+                    "$type": 3,
+                    1,
+                    0.3726415,
+                    0.8025086,
+                    1
+                }
+            }
+        ]
+    }
+}

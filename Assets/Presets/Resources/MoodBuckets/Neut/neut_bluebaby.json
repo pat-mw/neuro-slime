@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "neut_bluebaby",
+    "stepsPerFrame": 1,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 226214,
+    "trailWeight": 71.36952,
+    "decayRate": 4.200018,
+    "diffuseRate": 26.9769974,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 17.75012,
+                "turnSpeed": 2.384561,
+                "sensorAngleSpacing": 91.9267044,
+                "sensorOffsetDst": -20.3065662,
+                "sensorSize": 7,
+                "colour": {
+                    "$type": 3,
+                    0.07133571,
+                    0.693285942,
+                    0.370067567,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 11.6821766,
+                "turnSpeed": 6.728132,
+                "sensorAngleSpacing": 74.56618,
+                "sensorOffsetDst": 45.72129,
+                "sensorSize": 2,
+                "colour": {
+                    "$type": 3,
+                    0.244499266,
+                    0.407773674,
+                    0.8389921,
+                    1
+                }
+            }
+        ]
+    }
+}

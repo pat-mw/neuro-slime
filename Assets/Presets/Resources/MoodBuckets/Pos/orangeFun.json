@@ -1,0 +1,64 @@
+{
+    "$id": 0,
+    "$type": "0|SlimePreset, Assembly-CSharp",
+    "presetName": "orangeFun",
+    "stepsPerFrame": 2,
+    "width": 1080,
+    "height": 1080,
+    "numAgents": 300000,
+    "trailWeight": 19.44086,
+    "decayRate": 4.652592,
+    "diffuseRate": 7.83039331,
+    "speciesSettings": {
+        "$id": 1,
+        "$type": "1|SlimeSettings+SpeciesSettings[], Assembly-CSharp",
+        "$rlength": 3,
+        "$rcontent": [
+            {
+                "$type": "2|SlimeSettings+SpeciesSettings, Assembly-CSharp",
+                "moveSpeed": 0,
+                "turnSpeed": 0,
+                "sensorAngleSpacing": 0,
+                "sensorOffsetDst": 0,
+                "sensorSize": 0,
+                "colour": {
+                    "$type": "3|UnityEngine.Color, UnityEngine.CoreModule",
+                    1,
+                    1,
+                    1,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 73.45359,
+                "turnSpeed": -10.4021492,
+                "sensorAngleSpacing": 61.72443,
+                "sensorOffsetDst": -37.72341,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.8258961,
+                    0.451052,
+                    0.250905633,
+                    1
+                }
+            },
+            {
+                "$type": 2,
+                "moveSpeed": 0.078356266,
+                "turnSpeed": 12.2691822,
+                "sensorAngleSpacing": 15.8399343,
+                "sensorOffsetDst": -33.45833,
+                "sensorSize": 9,
+                "colour": {
+                    "$type": 3,
+                    0.0630363747,
+                    0.6338599,
+                    0.318545073,
+                    1
+                }
+            }
+        ]
+    }
+}

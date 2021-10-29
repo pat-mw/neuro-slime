@@ -15,9 +15,9 @@ MonoBehaviour:
   width: 1080
   height: 1080
   stepsPerFrame: 3
-  numAgents: 0
+  numAgents: 100000
   spawnMode: 4
   trailWeight: 0
-  decayRate: 0
+  decayRate: 0.1
   diffuseRate: 0
   speciesSettings: []
