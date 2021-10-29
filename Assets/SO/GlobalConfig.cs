@@ -17,5 +17,8 @@ public static class GlobalConfig
     public static int EPOCH_DURATION = 10;
     public static int EPOCH_SAMPLE_COUNT = SAMPLE_RATE * EPOCH_DURATION;
 
+    public static int DATA_BUFFER_DURATION = 1;
+    public static int DATA_BUFFER_COUNT = SAMPLE_RATE * DATA_BUFFER_DURATION;
+
     public static float TRANSITION_DURATION = 10f;
 }

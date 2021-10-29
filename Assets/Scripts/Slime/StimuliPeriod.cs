@@ -12,6 +12,8 @@ public class StimuliPeriod : MonoBehaviour
     public GameEvent onDeactivateSimulation;
     public GameEvent onStartRecording;
     public GameEvent onStopRecording;
+    public GameEvent onStartGraphing;
+    public GameEvent onStopGraphing;
     public GameEvent onTakeScreenshot;
     public GameEvent onStopReceivingBrainData;
 
@@ -30,6 +32,7 @@ public class StimuliPeriod : MonoBehaviour
         cyclesElapsed = 0;
         onShowTrails.Raise();
         onStartRecording.Raise();
+        onStartGraphing.Raise();
         StimUpdate();
         // then enter cycle of fetching mood every x seconds
     }
@@ -59,10 +62,10 @@ public class StimuliPeriod : MonoBehaviour
     void EndStim()
     {
         Wenzil.Console.Console.Log("Stimuli Period finished - freezing and capturing screenshot");
-
         onDeactivateSimulation.Raise();
         onStopReceivingBrainData.Raise();
         onStopRecording.Raise();
+        onStopGraphing.Raise();
         onTakeScreenshot.Raise();
     }
 }

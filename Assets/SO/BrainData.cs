@@ -20,6 +20,7 @@ public class BrainData : SerializedScriptableObject
     public Accelerometer accelerometer = new Accelerometer();
 
     [Header("EEG SAMPLES")]
+    public EEGBuffer dataBuffer = new EEGBuffer(GlobalConfig.DATA_BUFFER_COUNT);
     public EEGSample currentEpoch = new EEGSample(GlobalConfig.EPOCH_SAMPLE_COUNT);
     public EEGSample previousEpoch = new EEGSample(GlobalConfig.EPOCH_SAMPLE_COUNT);
     public EEGSample calibrationPeriod = new EEGSample(GlobalConfig.CALIBRATION_SAMPLE_COUNT);
@@ -30,6 +31,7 @@ public class BrainData : SerializedScriptableObject
     [ButtonGroup("Reset Brain Data")]
     public void Reset()
     {
+        dataBuffer = new EEGBuffer(GlobalConfig.DATA_BUFFER_COUNT);
         currentEpoch = new EEGSample(GlobalConfig.EPOCH_SAMPLE_COUNT);
         previousEpoch = new EEGSample(GlobalConfig.EPOCH_SAMPLE_COUNT);
         calibrationPeriod = new EEGSample(GlobalConfig.CALIBRATION_SAMPLE_COUNT);
@@ -139,6 +141,72 @@ public class BrainData : SerializedScriptableObject
             {
                 Debug.LogError($"Error adding value: {value} to channel: {channel} \n Full Exception: {e}");
             }
+        }
+    }
+
+
+    [System.Serializable]
+    public class EEGBuffer
+    {
+        public int size;
+        public float[] left;
+        public float[] right;
+
+        public EEGBuffer(int _size)
+        {
+            size = _size;
+            left = new float[size];
+            right = new float[size];
+        }
+
+        public float FetchLatestSampleLeft()
+        {
+            return left[0];
+        }
+
+        public float FetchLatestSampleRight()
+        {
+            return right[0];
+        }
+
+        public void AddSample(float value, GlobalConfig.CHANNEL channel)
+        {
+            try
+            {
+                switch (channel)
+                {
+                    case GlobalConfig.CHANNEL.LEFT:
+                        // add new sample to front of left array and shift everything else - destroying overflow
+                        left = InsertFront(value, left);
+                        break;
+                    case GlobalConfig.CHANNEL.RIGHT:
+                        // add new sample to front of the right array and shift everything else - destroying overflow
+                        right = InsertFront(value, right);
+                        break;
+                    default:
+                        Debug.LogError($"Channel type not recognised as a valid channel: {channel}");
+                        break;
+                }
+
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"Error adding value: {value} to channel: {channel} \n Full Exception: {e}");
+            }
+        }
+
+        float[] InsertFront(float value, float[] array)
+        {
+            float[] output = new float[array.Length];
+
+            output[0] = value;
+            
+            for (int i = 1; i < output.Length; i++)
+            {
+                output[i] = array[i - 1];
+            }
+
+            return output;
         }
     }
 

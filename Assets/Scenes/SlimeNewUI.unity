@@ -7042,6 +7042,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onCloseEyes: {fileID: 11400000, guid: 2e97ed3aba44bb947bc81ffb35839312, type: 2}
+  onHideCloseEyesPopUp: {fileID: 11400000, guid: cf50ef58a6d71d241b188fa3a28df48b,
+    type: 2}
   onStartStimuli: {fileID: 11400000, guid: df85d0a2329dc3c40b3d46804c209604, type: 2}
   connectionParams: {fileID: 11400000, guid: ac82aaf83b4b1f8499ae2559a70ea68e, type: 2}
   popUpDuration: 10
@@ -10861,6 +10863,8 @@ MonoBehaviour:
   onHideMainMenu: {fileID: 11400000, guid: 563e1078ff3e6ea41957de01c4896aea, type: 2}
   onShowInstructions: {fileID: 11400000, guid: dd95ef0dc1c8adc4a99361b55d452416, type: 2}
   onHideInstructions: {fileID: 11400000, guid: c89ad2706cf83bd48b2f8719f8841575, type: 2}
+  onHideCloseEyesPopUp: {fileID: 11400000, guid: cf50ef58a6d71d241b188fa3a28df48b,
+    type: 2}
   onHideCalibError: {fileID: 11400000, guid: deccff657a8015e47acf1212ac231f8c, type: 2}
   onHideTrails: {fileID: 11400000, guid: e17488d2bf0949f4283d57e8b6ed46f9, type: 2}
   brainData: {fileID: 11400000, guid: a20e9cbbe6cf17e4f9199f7fac128d7f, type: 2}

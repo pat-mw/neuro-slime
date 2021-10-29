@@ -242,12 +242,18 @@ public class ReceiveBrainData : SerializedMonoBehaviour
 
         if (isReceiving)
         {
+
+            float left = message.GetFloat(0);
+            float right = message.GetFloat(7);
+
+
+            brainData.dataBuffer.AddSample(left, GlobalConfig.CHANNEL.LEFT);
+            brainData.dataBuffer.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
+
             if (isCalibPeriod)
             {
                 try
                 {
-                    float left = message.GetFloat(0);
-                    float right = message.GetFloat(7);
 
                     // Wenzil.Console.Console.Log($"Received Signal - left: {left} - right: {right}");
 
@@ -270,9 +276,6 @@ public class ReceiveBrainData : SerializedMonoBehaviour
             {
                 try
                 {
-                    float left = message.GetFloat(0);
-                    float right = message.GetFloat(7);
-
                     // Wenzil.Console.Console.Log($"Received Signal - left: {left} - right: {right}");
 
                     brainData.currentEpoch.AddSample(left, GlobalConfig.CHANNEL.LEFT);
