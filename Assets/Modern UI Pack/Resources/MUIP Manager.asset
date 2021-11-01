@@ -93,8 +93,8 @@ MonoBehaviour:
   switchBackgroundColor: {r: 0.05882353, g: 0.5882353, b: 0.99215686, a: 1}
   switchHandleOnColor: {r: 1, g: 1, b: 1, a: 1}
   switchHandleOffColor: {r: 1, g: 1, b: 1, a: 1}
-  toggleFont: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
-  toggleFontSize: 35
+  toggleFont: {fileID: 11400000, guid: fc0a51300573e1048a8a26eaf3981383, type: 2}
+  toggleFontSize: 20
   toggleThemeType: 0
   toggleTextColor: {r: 1, g: 1, b: 1, a: 0}
   toggleBorderColor: {r: 1, g: 1, b: 1, a: 1}

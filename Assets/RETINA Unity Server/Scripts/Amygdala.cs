@@ -22,6 +22,7 @@ namespace RetinaNetworking.Server
         [Header("EVENTS")]
         public GameEvent OnFetchMood;
         public GameEvent OnSendCalibration;
+        public GameEvent onDataError;
         public StringGameEvent OnFetchAuthToken;
 
         [Header("DATA")]
@@ -112,6 +113,8 @@ namespace RetinaNetworking.Server
                 if (responseText == null)
                 {
                     Wenzil.Console.Console.LogError("CHUNK RESPONSE: Response was empty, cannot decode");
+                    onDataError.Raise();
+
                 }
                 else
                 {
@@ -133,14 +136,15 @@ namespace RetinaNetworking.Server
                         default:
                             Wenzil.Console.Console.Log("mood not recognised");
                             connectionParams.SetMood(Mood.NEUTRAL);
+                            onDataError.Raise();
                             break;
                     }
                 }
             }
             catch (System.Exception ex)
             {
-                Wenzil.Console.Console.LogError($"Error occured when starting amygdala session: {ex.Message}");
-                throw;
+                Wenzil.Console.Console.LogError($"Error occured when sending data to amygdala session: {ex.Message}");
+                onDataError.Raise();
             }
         }
 
@@ -197,6 +201,8 @@ namespace RetinaNetworking.Server
                         Wenzil.Console.Console.LogError($"Response not recognised: {www.error}");
                         break;
                 }
+
+                onDataError.Raise();
                 return null;
             }
         }

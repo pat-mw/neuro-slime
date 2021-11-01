@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEditor;
 #endif
 
+
 namespace ScriptableObjectArchitecture
 {
     public abstract class BaseGameEventListener<TType, TEvent, TResponse> : DebuggableGameEventListener, IGameEventListener<TType>
@@ -136,6 +137,8 @@ where TResponse : UnityEvent<TType>
         }
         protected void CreateDebugEntry(UnityEventBase response)
         {
+
+
 #if UNITY_EDITOR
             for (int i = 0; i < response.GetPersistentEventCount(); i++)
             {

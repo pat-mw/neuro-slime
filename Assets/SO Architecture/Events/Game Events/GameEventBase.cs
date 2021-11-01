@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 namespace ScriptableObjectArchitecture
 {
@@ -60,6 +61,17 @@ namespace ScriptableObjectArchitecture
         public List<StackTraceEntry> StackTraces { get { return _stackTraces; } }
         private List<StackTraceEntry> _stackTraces = new List<StackTraceEntry>();
 
+
+
+        protected readonly List<Action<string>> _stringActions = new List<Action<string>>();
+
+        public void AddListener(Action<string> listener)
+        {
+            if (!_stringActions.Contains(listener))
+                _stringActions.Add(listener);
+        }
+
+
         public void AddStackTrace()
         {
 #if UNITY_EDITOR
@@ -77,6 +89,9 @@ namespace ScriptableObjectArchitecture
 
         public void Raise()
         {
+            for (int i = _stringActions.Count - 1; i >= 0; i--)
+                _stringActions[i](this.name);
+
             AddStackTrace();
 
             for (int i = _listeners.Count - 1; i >= 0; i--)
@@ -85,6 +100,7 @@ namespace ScriptableObjectArchitecture
             for (int i = _actions.Count - 1; i >= 0; i--)
                 _actions[i]();
         }
+
         public void AddListener(IGameEventListener listener)
         {
             if (!_listeners.Contains(listener))
@@ -109,6 +125,11 @@ namespace ScriptableObjectArchitecture
         {
             _listeners.RemoveRange(0, _listeners.Count);
             _actions.RemoveRange(0, _actions.Count);
+        }
+
+        public void AddListener(object v)
+        {
+            throw new NotImplementedException();
         }
     } 
 }

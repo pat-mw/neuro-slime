@@ -84,7 +84,7 @@ public class ScreenRecord : MonoBehaviour
 
     private void ResetTargetTexture()
     {
-        screenshotCamera.targetTexture = RenderTexture.GetTemporary(32, 32);
+        screenshotCamera.targetTexture = RenderTexture.GetTemporary(1080, 1080);
     }
 
 

@@ -22,6 +22,7 @@ namespace RetinaNetworking.Server
         public GameEvent closeFormEvent = default(GameEvent);
         public GameEvent resetFormEvent = default(GameEvent);
         public GameEvent showInstructions = default(GameEvent);
+        public GameEvent dataError = default(GameEvent);
         
         //public GameEvent activateSimEvent = default(GameEvent);
 
@@ -46,7 +47,15 @@ namespace RetinaNetworking.Server
             data.Add("language", language);
             data.Add("password", password);
 
-            await POST(defaultURL, defaultEndpoint, data);
+            try
+            {
+                await POST(defaultURL, defaultEndpoint, data);
+            }
+            catch (System.Exception)
+            {
+                Wenzil.Console.Console.LogError("Authentication Error");
+                dataError.Raise();
+            }
         }
 
         async UniTask POST(string _URL, string _endPoint, Dictionary<string, dynamic> _data)
@@ -116,6 +125,8 @@ namespace RetinaNetworking.Server
                     Wenzil.Console.Console.Log("-- POST REQUEST ERROR --");
                     Wenzil.Console.Console.Log(" Error Code: " + response.statusCode);
                     Wenzil.Console.Console.Log(" Error: " + response.error);
+
+                    dataError.Raise();
 
                     foreach(BadResponse.embeddedMessage message in response.message)
                     {

@@ -21,6 +21,7 @@ namespace Wenzil.Console
         public Text outputText;
         public ScrollRect outputArea;
         public InputField inputField;
+        public Transform extraUI;
 
         /// <summary>
         /// Indicates whether the console is currently open or close.
@@ -84,6 +85,7 @@ namespace Wenzil.Console
             inputField.gameObject.SetActive(show);
             outputArea.gameObject.SetActive(show);
             scrollbar.gameObject.SetActive(show);
+            extraUI.gameObject.SetActive(show);
         }
 
         /// <summary>
