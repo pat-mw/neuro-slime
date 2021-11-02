@@ -17,6 +17,8 @@ namespace Wenzil.Console
         public event Action<string> onSubmitCommand;
         public event Action onClearConsole;
 
+
+        public int maxTextLength = 10000;
         public Scrollbar scrollbar;
         public Text outputText;
         public ScrollRect outputArea;
@@ -120,6 +122,9 @@ namespace Wenzil.Console
         /// </summary>
         public void AddNewOutputLine(string line)
         {
+            if (outputText.text.Length > maxTextLength)
+                ClearOutput();
+
             outputText.text += Environment.NewLine + line;
         }
 

@@ -22,16 +22,16 @@ public class EventDebugger : SerializedMonoBehaviour
 
     void Start()
     {
-        eventDictionary.Clear();
+        //eventDictionary.Clear();
+
+        //int i = 0;
+        //foreach (GameEvent gameEvent in gameEvents)
+        //{
+        //    eventDictionary.Add(i, gameEvent.name);
+        //    i++;
+        //}
 
         int i = 0;
-        foreach (GameEvent gameEvent in gameEvents)
-        {
-            eventDictionary.Add(i, gameEvent.name);
-            i++;
-        }
-
-        i = 0;
         foreach (GameEvent gameEvent in gameEvents)
         {
             System.Action<string> logGameEvent;

@@ -21,6 +21,9 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     [Header("NETWORK")]
     public OSC osc;
 
+    [Header("DEBUG")]
+    public BoolReference isOscDebugging;
+
     [Header("EVENTS")]
     public GameEvent onStartReceivingBrainData;
     public GameEvent onStopReceivingBrainData;
@@ -242,7 +245,6 @@ public class ReceiveBrainData : SerializedMonoBehaviour
 
         if (isReceiving)
         {
-
             float left = message.GetFloat(0);
             float right = message.GetFloat(7);
 
@@ -254,11 +256,11 @@ public class ReceiveBrainData : SerializedMonoBehaviour
             {
                 try
                 {
-
-                    // Wenzil.Console.Console.Log($"Received Signal - left: {left} - right: {right}");
-
                     brainData.calibrationPeriod.AddSample(left, GlobalConfig.CHANNEL.LEFT);
                     brainData.calibrationPeriod.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
+
+                    if (isOscDebugging.Value)
+                        Wenzil.Console.Console.Log($"Received calib - L: {left} - R: {right} - \n COUNTS - L: {brainData.calibrationPeriod.leftIndex} - R: {brainData.calibrationPeriod.rightIndex}");
 
                     if (brainData.calibrationPeriod.epochComplete)
                     {
@@ -276,10 +278,11 @@ public class ReceiveBrainData : SerializedMonoBehaviour
             {
                 try
                 {
-                    // Wenzil.Console.Console.Log($"Received Signal - left: {left} - right: {right}");
-
                     brainData.currentEpoch.AddSample(left, GlobalConfig.CHANNEL.LEFT);
                     brainData.currentEpoch.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
+
+                    if (isOscDebugging.Value)
+                        Wenzil.Console.Console.Log($"Received stim - L: {left} - R: {right} - \n COUNTS - L: {brainData.currentEpoch.leftIndex} - R: {brainData.currentEpoch.rightIndex}");
 
                     if (brainData.currentEpoch.epochComplete)
                     {
