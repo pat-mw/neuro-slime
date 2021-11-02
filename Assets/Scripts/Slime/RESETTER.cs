@@ -22,10 +22,12 @@ public class RESETTER : MonoBehaviour
     public BrainData brainData;
     public ConnectionParams connection;
 
-    public void Awake()
+    public void Start()
     {
         onReset.AddListener(ResetSim);
         onSoftReset.AddListener(SoftResetSim);
+
+        onReset.Raise();
     }
 
     void ResetSim()
