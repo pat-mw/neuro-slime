@@ -23,6 +23,8 @@ namespace RetinaNetworking.Server
         public GameEvent resetFormEvent = default(GameEvent);
         public GameEvent showInstructions = default(GameEvent);
         public GameEvent dataError = default(GameEvent);
+        public GameEvent onSessionTokenLoading = default(GameEvent);
+        public GameEvent onSessionTokenHide = default(GameEvent);
         
         //public GameEvent activateSimEvent = default(GameEvent);
 
@@ -126,12 +128,15 @@ namespace RetinaNetworking.Server
                     Wenzil.Console.Console.Log(" Error Code: " + response.statusCode);
                     Wenzil.Console.Console.Log(" Error: " + response.error);
 
-                    dataError.Raise();
+                    bool unknownError = true;
 
                     foreach(BadResponse.embeddedMessage message in response.message)
                     {
                         foreach(BadResponse.mess mess in message.messages)
                         {
+                            if (mess.message == "Email is already taken.")
+                                unknownError = false;
+
                             // Wenzil.Console.Console.Log($"message ID: {mess.id}");
                             Wenzil.Console.Console.Log($" message: {mess.message}");
 
@@ -139,6 +144,9 @@ namespace RetinaNetworking.Server
                             DebuggerEvent.Raise($"User authentication failed! \n message: {mess.message}");
                         }
                     }
+
+                    if (unknownError)
+                        dataError.Raise();
                 }
             }
         }
@@ -151,17 +159,29 @@ namespace RetinaNetworking.Server
 
         async public UniTask FetchSessionToken(string JWT)
         {
-             Wenzil.Console.Console.Log($"Fetching Session Token");
+            Wenzil.Console.Console.Log($"Fetching Session Token");
+
+            onSessionTokenLoading.Raise();
             var sessionToken = await auth.RequestSessionToken(JWT);
             sessionToken = sessionToken.ToString();
 
-             Wenzil.Console.Console.Log($"Session token fetched: {sessionToken}");
+            await WaitSeconds(2f);
+            onSessionTokenHide.Raise();
+
+            Wenzil.Console.Console.Log($"Session token fetched: {sessionToken}");
             connectionParams.SetSessionToken(sessionToken);
         }
 
         private void OnDisable()
         {
             connectionParams.Reset();
+        }
+
+        private async UniTask WaitSeconds(float time)
+        {
+            // replacement of yield return new WaitForSeconds/WaitForSecondsRealtime
+            await UniTask.Delay(System.TimeSpan.FromSeconds(10), ignoreTimeScale: false);
+            return;
         }
 
     }
