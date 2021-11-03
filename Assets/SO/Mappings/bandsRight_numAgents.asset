@@ -24,5 +24,5 @@ MonoBehaviour:
   brainData: {fileID: 11400000, guid: a20e9cbbe6cf17e4f9199f7fac128d7f, type: 2}
   slimeSettings: {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
   mapType: 0
-  influencer: 16
+  influencer: 17
   receiver: 1

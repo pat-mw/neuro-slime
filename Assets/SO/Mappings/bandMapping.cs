@@ -55,7 +55,7 @@ public class bandMapping : SerializedScriptableObject, IMapping
                 break;
             case MappingIndex.Receivers.numAgents:
                 // stepsPerFrame range: (100000, 500000) (int)
-                influencerValue = LinearRemap(influencerValue, (0, 100f), (100000, 500000));
+                influencerValue = LinearRemap(influencerValue, (0, 100f), (100000, 250000));
                 influencerValue = Mathf.RoundToInt(influencerValue);
                 Mappings.ApplyMap(mapType, (int)influencerValue, ref slimeSettings.numAgents);
                 break;

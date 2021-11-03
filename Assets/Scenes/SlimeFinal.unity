@@ -2991,16 +2991,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectionParams: {fileID: 11400000, guid: ac82aaf83b4b1f8499ae2559a70ea68e, type: 2}
-  defaultURL: https://kouo-strapi-staging.herokuapp.com
+  defaultURL: https://kouo-strapi.herokuapp.com
   defaultEndpoint: /auth/local/register
   DebuggerEvent: {fileID: 11400000, guid: 0f41fec33fe407e40af162868f076975, type: 2}
   closeFormEvent: {fileID: 11400000, guid: 10fba235fb7027648bc5d9630115d245, type: 2}
   resetFormEvent: {fileID: 11400000, guid: a875db138cf3e174089a9e8b4406593d, type: 2}
   showInstructions: {fileID: 11400000, guid: dd95ef0dc1c8adc4a99361b55d452416, type: 2}
-  dataError: {fileID: 11400000, guid: ce7ef30d2cc5c1d4ab34e59ca165f949, type: 2}
-  onSessionTokenLoading: {fileID: 11400000, guid: b7c565db24a4aee41ae683e08cee994a,
+  dataError: {fileID: 11400000, guid: bec00f92e92268f4e84113f0124e89ac, type: 2}
+  onSessionTokenLoading: {fileID: 11400000, guid: 5cb9ba058379762448de28cc598ef3ed,
     type: 2}
-  onSessionTokenHide: {fileID: 11400000, guid: 9d19ff8ee8e88324db3d86d84ea10c2f, type: 2}
+  onSessionTokenHide: {fileID: 11400000, guid: 366d25f0152a60b4bb866831bb1c9ed2, type: 2}
 --- !u!114 &166539370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3819,6 +3819,10 @@ PrefabInstance:
     - target: {fileID: 11400012, guid: 312abd0527754e047a6bfbc424f09ace, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400012, guid: 312abd0527754e047a6bfbc424f09ace, type: 3}
+      propertyPath: toggleKey
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 11400012, guid: 312abd0527754e047a6bfbc424f09ace, type: 3}
       propertyPath: closeOnEscape
@@ -6590,7 +6594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c587bf84338751e41842ed69f8fa2137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onCalibrationError: {fileID: 11400000, guid: ce7ef30d2cc5c1d4ab34e59ca165f949, type: 2}
+  onCalibrationError: {fileID: 11400000, guid: bec00f92e92268f4e84113f0124e89ac, type: 2}
   onHideCalibError: {fileID: 11400000, guid: deccff657a8015e47acf1212ac231f8c, type: 2}
 --- !u!114 &381632136
 MonoBehaviour:
@@ -9068,7 +9072,7 @@ MonoBehaviour:
   isOscDebugging:
     _useConstant: 0
     _constantValue: 0
-    _variable: {fileID: 11400000, guid: 74e11806be03c974ca58a3329b527b09, type: 2}
+    _variable: {fileID: 11400000, guid: 7c286e6f65940e44cb3c009954ec3475, type: 2}
   onStartReceivingBrainData: {fileID: 11400000, guid: f885821a31300ed4d8a22c154eeffa0c,
     type: 2}
   onStopReceivingBrainData: {fileID: 11400000, guid: 7adce5386e7fdb54093b3bbde31c3102,
@@ -15039,7 +15043,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 953552670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 729924de114cb6d40a5dc3d0f59ca28f, type: 3}
+  m_Script: {fileID: 11500000, guid: f9ec6ab5aa530684a85ab04b2666d475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onStartCalib: {fileID: 11400000, guid: 2dc98863280d4a643ae2ae826d008518, type: 2}
@@ -15048,9 +15052,9 @@ MonoBehaviour:
   onEndStim: {fileID: 11400000, guid: d369073e4e814424aac2b4c08046f10d, type: 2}
   onReset: {fileID: 11400000, guid: e6eac5784f6006740a83599a2f7be173, type: 2}
   onSoftReset: {fileID: 11400000, guid: 6760e5ae2b75789488933721b1307003, type: 2}
-  startAudio: {fileID: 8300000, guid: 581af7ff8c312c54c8b3a09f462ffea1, type: 3}
-  calibAudio: {fileID: 8300000, guid: e3da6615c32a6d244b74c5d55fde625a, type: 3}
-  stimAudio: {fileID: 8300000, guid: 907397563a0d97b478e57bddf585edec, type: 3}
+  startAudio: {fileID: 8300000, guid: 95cd5b9485e55c74fb74803fdaf54bcb, type: 3}
+  calibAudio: {fileID: 8300000, guid: ddd4803ed08695c4aba4e7104740c82c, type: 3}
+  stimAudio: {fileID: 8300000, guid: 2886bd39640a08f45b3a254e5cb3c38f, type: 3}
 --- !u!4 &953552673
 Transform:
   m_ObjectHideFlags: 0
@@ -15129,7 +15133,7 @@ MonoBehaviour:
   isOscDebugging:
     _useConstant: 0
     _constantValue: 0
-    _variable: {fileID: 11400000, guid: 74e11806be03c974ca58a3329b527b09, type: 2}
+    _variable: {fileID: 11400000, guid: 7c286e6f65940e44cb3c009954ec3475, type: 2}
   channel: 1
   brainData: {fileID: 11400000, guid: a20e9cbbe6cf17e4f9199f7fac128d7f, type: 2}
   onStartGraphing: {fileID: 11400000, guid: 31b5d972d7b193b419358e4e104ae9d0, type: 2}
@@ -15138,8 +15142,8 @@ MonoBehaviour:
   m_lineThickness: 3
   m_useBezier: 0
   delayMode: 1
-  m_frameRate: 12
-  m_noOfDataPoints: 50
+  m_frameRate: 30
+  m_noOfDataPoints: 100
 --- !u!114 &964074289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16840,7 +16844,7 @@ MonoBehaviour:
   isOscDebugging:
     _useConstant: 0
     _constantValue: 0
-    _variable: {fileID: 11400000, guid: 74e11806be03c974ca58a3329b527b09, type: 2}
+    _variable: {fileID: 11400000, guid: 7c286e6f65940e44cb3c009954ec3475, type: 2}
   channel: 0
   brainData: {fileID: 11400000, guid: a20e9cbbe6cf17e4f9199f7fac128d7f, type: 2}
   onStartGraphing: {fileID: 11400000, guid: 31b5d972d7b193b419358e4e104ae9d0, type: 2}
@@ -16849,8 +16853,8 @@ MonoBehaviour:
   m_lineThickness: 3
   m_useBezier: 0
   delayMode: 1
-  m_frameRate: 12
-  m_noOfDataPoints: 50
+  m_frameRate: 30
+  m_noOfDataPoints: 100
 --- !u!1 &1063132477
 GameObject:
   m_ObjectHideFlags: 0
@@ -20178,9 +20182,9 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 11400000, guid: ce7ef30d2cc5c1d4ab34e59ca165f949,
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: bec00f92e92268f4e84113f0124e89ac,
     type: 2}
-  _event: {fileID: 11400000, guid: ce7ef30d2cc5c1d4ab34e59ca165f949, type: 2}
+  _event: {fileID: 11400000, guid: bec00f92e92268f4e84113f0124e89ac, type: 2}
   _response:
     m_PersistentCalls:
       m_Calls:
@@ -21411,8 +21415,8 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: ac82aaf83b4b1f8499ae2559a70ea68e, type: 2}
     - {fileID: 11400000, guid: 09b1143291891724ab47275196a1a916, type: 2}
-    - {fileID: 11400000, guid: ca7764df529be0c47b55741d7fcea53a, type: 2}
-    - {fileID: 11400000, guid: 530830853828a7546b0202151f3ca4bd, type: 2}
+    - {fileID: 11400000, guid: b46b1f7ee02d15941b3f04e079da4392, type: 2}
+    - {fileID: 11400000, guid: d540b900b81ce284992d4099debb4667, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -22019,9 +22023,9 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 11400000, guid: ce7ef30d2cc5c1d4ab34e59ca165f949,
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: bec00f92e92268f4e84113f0124e89ac,
     type: 2}
-  _event: {fileID: 11400000, guid: ce7ef30d2cc5c1d4ab34e59ca165f949, type: 2}
+  _event: {fileID: 11400000, guid: bec00f92e92268f4e84113f0124e89ac, type: 2}
   _response:
     m_PersistentCalls:
       m_Calls:
@@ -23279,7 +23283,7 @@ MonoBehaviour:
   AmyEndpointChunk: /v2/inference/timeseries/chunk
   OnFetchMood: {fileID: 11400000, guid: 67009c9f3e1a7c043b0c4153d0c6f558, type: 2}
   OnSendCalibration: {fileID: 11400000, guid: 7fc6443651a5d394cb96c35c21d0a424, type: 2}
-  onDataError: {fileID: 11400000, guid: ce7ef30d2cc5c1d4ab34e59ca165f949, type: 2}
+  onDataError: {fileID: 11400000, guid: bec00f92e92268f4e84113f0124e89ac, type: 2}
   OnFetchAuthToken: {fileID: 11400000, guid: 0b910346581690c4cbde72a53b815e6b, type: 2}
   connectionParams: {fileID: 11400000, guid: ac82aaf83b4b1f8499ae2559a70ea68e, type: 2}
   brainData: {fileID: 11400000, guid: a20e9cbbe6cf17e4f9199f7fac128d7f, type: 2}
@@ -23808,7 +23812,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1635392108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c3180d88a09efd47853c92e787c6f01, type: 3}
+  m_Script: {fileID: 11500000, guid: dfa970951a7f3a346b32a900e8052068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -23818,7 +23822,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 87d16fc330caedd4ca2877f7513a7cda, type: 2}
     - {fileID: 11400000, guid: 2e97ed3aba44bb947bc81ffb35839312, type: 2}
     - {fileID: 11400000, guid: 6233e76524a38614b97d8f4d2d849531, type: 2}
-    - {fileID: 11400000, guid: ce7ef30d2cc5c1d4ab34e59ca165f949, type: 2}
+    - {fileID: 11400000, guid: bec00f92e92268f4e84113f0124e89ac, type: 2}
     - {fileID: 11400000, guid: d2002de2349c577468434d2b66387e7b, type: 2}
     - {fileID: 11400000, guid: d092875a2830c514c8027206e3aea2ac, type: 2}
     - {fileID: 11400000, guid: e8bb520745084f648a34f75e170332bf, type: 2}
@@ -23838,8 +23842,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7fc6443651a5d394cb96c35c21d0a424, type: 2}
     - {fileID: 11400000, guid: 6a7377390b790e54cb7a91e509698cbd, type: 2}
     - {fileID: 11400000, guid: 6475d59f4298bc944807aa50d5d69d12, type: 2}
-    - {fileID: 11400000, guid: 9d19ff8ee8e88324db3d86d84ea10c2f, type: 2}
-    - {fileID: 11400000, guid: b7c565db24a4aee41ae683e08cee994a, type: 2}
+    - {fileID: 11400000, guid: 366d25f0152a60b4bb866831bb1c9ed2, type: 2}
+    - {fileID: 11400000, guid: 5cb9ba058379762448de28cc598ef3ed, type: 2}
     - {fileID: 11400000, guid: cad463cf13b9ea745b6cbbdb40734efe, type: 2}
     - {fileID: 11400000, guid: dd95ef0dc1c8adc4a99361b55d452416, type: 2}
     - {fileID: 11400000, guid: 7d0dd1f08c75c82459b4608d4c9f4858, type: 2}
@@ -23996,7 +24000,7 @@ MonoBehaviour:
   isEventDebugging:
     _useConstant: 0
     _constantValue: 0
-    _variable: {fileID: 11400000, guid: 024969bca0409db48aefd0269e5daebd, type: 2}
+    _variable: {fileID: 11400000, guid: c8ade8390829a474ea041b865d6fcb81, type: 2}
 --- !u!1 &1645911307
 GameObject:
   m_ObjectHideFlags: 0
@@ -26623,7 +26627,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 024969bca0409db48aefd0269e5daebd, type: 2}
+      - m_Target: {fileID: 11400000, guid: c8ade8390829a474ea041b865d6fcb81, type: 2}
         m_TargetAssemblyTypeName: ScriptableObjectArchitecture.BaseVariable`1[[System.Boolean,
           mscorlib
         m_MethodName: set_Value
@@ -26654,13 +26658,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1865277757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748b36f15ed11004f8ef63b75ec68a42, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a74d9f59fae44746956f93497f3e5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   boolValue:
     _useConstant: 0
     _constantValue: 0
-    _variable: {fileID: 11400000, guid: 024969bca0409db48aefd0269e5daebd, type: 2}
+    _variable: {fileID: 11400000, guid: c8ade8390829a474ea041b865d6fcb81, type: 2}
 --- !u!1 &1867795414
 GameObject:
   m_ObjectHideFlags: 0
@@ -26930,8 +26934,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c587bf84338751e41842ed69f8fa2137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onCalibrationError: {fileID: 11400000, guid: b7c565db24a4aee41ae683e08cee994a, type: 2}
-  onHideCalibError: {fileID: 11400000, guid: 9d19ff8ee8e88324db3d86d84ea10c2f, type: 2}
+  onCalibrationError: {fileID: 11400000, guid: 5cb9ba058379762448de28cc598ef3ed, type: 2}
+  onHideCalibError: {fileID: 11400000, guid: 366d25f0152a60b4bb866831bb1c9ed2, type: 2}
 --- !u!222 &1897219592
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27700,13 +27704,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1933790131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748b36f15ed11004f8ef63b75ec68a42, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a74d9f59fae44746956f93497f3e5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   boolValue:
     _useConstant: 0
     _constantValue: 0
-    _variable: {fileID: 11400000, guid: 74e11806be03c974ca58a3329b527b09, type: 2}
+    _variable: {fileID: 11400000, guid: 7c286e6f65940e44cb3c009954ec3475, type: 2}
 --- !u!114 &1933790134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27836,7 +27840,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 74e11806be03c974ca58a3329b527b09, type: 2}
+      - m_Target: {fileID: 11400000, guid: 7c286e6f65940e44cb3c009954ec3475, type: 2}
         m_TargetAssemblyTypeName: ScriptableObjectArchitecture.BaseVariable`1[[System.Boolean,
           mscorlib
         m_MethodName: set_Value

@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SlimeGraphs.unity
     guid: ff89774c2387cee48968ee27fbc0c3da
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/SlimeFinal.unity
-    guid: 8ab4df271059d4b85aaf35be113256d5
+    guid: c2a4d18f0776d2147af7381d5b521773
   m_configObjects: {}

@@ -260,8 +260,8 @@ public class ReceiveBrainData : SerializedMonoBehaviour
             float left = message.GetFloat(0);
             float right = message.GetFloat(7);
 
-            //brainData.dataBuffer.AddSample(left, GlobalConfig.CHANNEL.LEFT);
-            //brainData.dataBuffer.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
+            brainData.dataBuffer.AddSample(left, GlobalConfig.CHANNEL.LEFT);
+            brainData.dataBuffer.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
 
             if (isCalibPeriod)
             {
