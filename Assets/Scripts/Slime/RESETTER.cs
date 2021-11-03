@@ -19,6 +19,7 @@ public class RESETTER : MonoBehaviour
     public GameEvent onHideCloseEyesPopUp;
     public GameEvent onHideCalibError;
     public GameEvent onHideTrails;
+    public GameEvent onStopReceivingData;
     public BrainData brainData;
     public ConnectionParams connection;
 
@@ -41,6 +42,7 @@ public class RESETTER : MonoBehaviour
         onHideCalibError.Raise();
         onHideCloseEyesPopUp.Raise();
         onShowMainMenu.Raise();
+        onStopReceivingData.Raise();
     }
 
     void SoftResetSim()
@@ -52,5 +54,6 @@ public class RESETTER : MonoBehaviour
         onHideCalibError.Raise();
         onHideCloseEyesPopUp.Raise();
         onShowInstructions.Raise();
+        onStopReceivingData.Raise();
     }
 }

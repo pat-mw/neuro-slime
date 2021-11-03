@@ -36,6 +36,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     [SerializeField] private string bandpowerKey = "/band";
     [SerializeField] private string signalKey = "/signal";
     [SerializeField] private string accelerometerKey = "/accelerometer";
+    [SerializeField] private string signalFilteredKey = "/sigFilt";
 
     [Header("MODE")]
     [SerializeField] private HandlerMode handler = HandlerMode.Custom;
@@ -71,6 +72,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                 osc.SetAddressHandler(bandpowerKey, OnReceiveBandpower);
                 osc.SetAddressHandler(signalKey, OnReceiveSignal);
                 osc.SetAddressHandler(accelerometerKey, OnReceiveAccelerometer);
+                osc.SetAddressHandler(signalFilteredKey, OnReceiveFilteredSignal);
                 break;
             default:
                 Wenzil.Console.Console.LogError($"Handler mode not recognised: {handler}");
@@ -132,6 +134,9 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                 case "/signal":
                     OnReceiveSignal(message);
                     break;
+                case "/sigFilt":
+                    OnReceiveFilteredSignal(message);
+                    break;
                 case "/accelerometer":
                     OnReceiveAccelerometer(message);
                     break;
@@ -186,11 +191,14 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                     float theta = message.GetFloat(2);
                     float alpha = message.GetFloat(3);
 
-                    Wenzil.Console.Console.Log($"Received bandpower data: \n" +
-                       $"channel: {channelNumber} \n" +
-                       $"delta: {delta} \n" +
-                       $"theta: {theta} \n" +
-                       $"alpha: {alpha} \n");
+                    if (isOscDebugging.Value)
+                    {
+                        Wenzil.Console.Console.Log($"Received bandpower data: \n" +
+                           $"channel: {channelNumber} \n" +
+                           $"delta: {delta} \n" +
+                           $"theta: {theta} \n" +
+                           $"alpha: {alpha} \n");
+                    }
 
                     brainData.leftBands.delta = delta;
                     brainData.leftBands.theta = theta;
@@ -203,11 +211,14 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                     float theta = message.GetFloat(2);
                     float alpha = message.GetFloat(3);
 
-                    Wenzil.Console.Console.Log($"Received bandpower data: \n" +
-                       $"channel: {channelNumber} \n" +
-                       $"delta: {delta} \n" +
-                       $"theta: {theta} \n" +
-                       $"alpha: {alpha} \n");
+                    if (isOscDebugging.Value)
+                    {
+                        Wenzil.Console.Console.Log($"Received bandpower data: \n" +
+                           $"channel: {channelNumber} \n" +
+                           $"delta: {delta} \n" +
+                           $"theta: {theta} \n" +
+                           $"alpha: {alpha} \n");
+                    }
 
                     brainData.rightBands.delta = delta;
                     brainData.rightBands.theta = theta;
@@ -223,6 +234,19 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     }
 
 
+    void OnReceiveFilteredSignal(OscMessage message)
+    {
+        Wenzil.Console.Console.Log($"Receiving filtered signal: {message}");
+
+        if (isReceiving)
+        {
+            float left = message.GetFloat(0);
+            float right = message.GetFloat(7);
+            brainData.dataBuffer.AddSample(left, GlobalConfig.CHANNEL.LEFT);
+            brainData.dataBuffer.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
+        }
+    }
+
     /// <summary>
     /// Data as floats for each channel, sent all at once
     /// 0. 1. 2. 3. ...
@@ -236,9 +260,8 @@ public class ReceiveBrainData : SerializedMonoBehaviour
             float left = message.GetFloat(0);
             float right = message.GetFloat(7);
 
-
-            brainData.dataBuffer.AddSample(left, GlobalConfig.CHANNEL.LEFT);
-            brainData.dataBuffer.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
+            //brainData.dataBuffer.AddSample(left, GlobalConfig.CHANNEL.LEFT);
+            //brainData.dataBuffer.AddSample(right, GlobalConfig.CHANNEL.RIGHT);
 
             if (isCalibPeriod)
             {

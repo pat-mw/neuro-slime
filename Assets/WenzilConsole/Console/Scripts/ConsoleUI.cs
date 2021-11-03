@@ -33,6 +33,7 @@ namespace Wenzil.Console
         void Awake()
         {
             Show(false);
+            ToggleConsole();
         }
 
         /// <summary>

@@ -35,6 +35,7 @@ namespace RetinaNetworking.Server
             htmlBody = InsertElement("Name", connectionParams.Name(), htmlBody);
             htmlBody = InsertElement("Preview", previewText, htmlBody);
             htmlBody = InsertElement("Subject", mail.Subject, htmlBody);
+            htmlBody = InsertElement("ModalMood", connectionParams.GetModalMood(), htmlBody);
 
             mail.IsBodyHtml = true;
             mail.Body = htmlBody;

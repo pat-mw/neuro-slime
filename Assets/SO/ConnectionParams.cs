@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using ScriptableObjectArchitecture;
 using Wenzil.Console;
+using System.Linq;
 
 namespace RetinaNetworking.Server
 {
@@ -111,6 +112,7 @@ namespace RetinaNetworking.Server
             sessionId = -1;
             inferenceId = -1;
             emailConsent = false;
+            moodReport.ClearMoodLog();
         }
 
         public string SessionToken()
@@ -189,6 +191,50 @@ namespace RetinaNetworking.Server
         public bool CalibrationReceived()
         {
             return calibrationReceived;
+        }
+
+        public string GetModalMood()
+        {
+            var neutCounter = 0;
+            var posCounter = 0;
+            var negCounter = 0;
+            foreach (Mood mood in moodReport.moodLog)
+            {
+                switch (mood)
+                {
+                    case Mood.NEUTRAL:
+                        neutCounter += 1;
+                        break;
+                    case Mood.POSITIVE:
+                        posCounter += 1;
+                        break;
+                    case Mood.NEGATIVE:
+                        negCounter += 1;
+                        break;
+                }
+            }
+
+            int[] counts = new int[3];
+            counts[0] = neutCounter;
+            counts[1] = neutCounter;
+            counts[2] = neutCounter;
+
+            int maxValue = counts.Max();
+            int maxIndex = counts.ToList().IndexOf(maxValue);
+
+            switch (maxIndex)
+            {
+                case 0:
+                    return "Neutral";
+                case 1:
+                    return "Positive";
+                case 2:
+                    return "Negative";
+                default:
+                    Debug.LogError("Error finding the modal mood");
+                    return null;
+            }
+
         }
     }
 

@@ -32,7 +32,10 @@ public static class MappingIndex
         accelerometerY,
         accelerometerZ,
         sampleAmplitudeLeft,
-        sampleAmplitudeRight
+        sampleAmplitudeRight,
+        totalBandPower,
+        totalBandsLeft,
+        totalBandsRight
     }
 
     public enum Receivers
