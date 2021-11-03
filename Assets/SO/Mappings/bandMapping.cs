@@ -33,12 +33,6 @@ public class bandMapping : SerializedScriptableObject, IMapping
             case MappingIndex.Influencers.bandLeftAlpha:
                 influencerValue = brainData.leftBands.alpha;
                 break;
-            case MappingIndex.Influencers.bandLeftBeta:
-                influencerValue = brainData.leftBands.beta;
-                break;
-            case MappingIndex.Influencers.bandLeftGamma:
-                influencerValue = brainData.leftBands.gamma;
-                break;
 
             // RIGHT BANDS
             case MappingIndex.Influencers.bandRightDelta:
@@ -49,12 +43,6 @@ public class bandMapping : SerializedScriptableObject, IMapping
                 break;
             case MappingIndex.Influencers.bandRightAlpha:
                 influencerValue = brainData.rightBands.alpha;
-                break;
-            case MappingIndex.Influencers.bandRightBeta:
-                influencerValue = brainData.rightBands.beta;
-                break;
-            case MappingIndex.Influencers.bandRightGamma:
-                influencerValue = brainData.rightBands.gamma;
                 break;
 
             // ERROR HANDLING

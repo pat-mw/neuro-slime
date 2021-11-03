@@ -116,7 +116,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
     /// </summary>
     void OnReceiveAnything(OscMessage message)
     {
-        // Wenzil.Console.Console.Log($"Receiving message: {message}");
+        Wenzil.Console.Console.Log($"Receiving message: {message}");
         
         if (isReceiving)
         {
@@ -185,22 +185,16 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                     float delta = message.GetFloat(1);
                     float theta = message.GetFloat(2);
                     float alpha = message.GetFloat(3);
-                    float beta = message.GetFloat(4);
-                    float gamma = message.GetFloat(5);
 
-                    // Wenzil.Console.Console.Log($"Received bandpower data: \n" +
-                    //    $"channel: {channelNumber} \n" +
-                    //    $"delta: {delta} \n" +
-                    //    $"theta: {theta} \n" +
-                    //    $"alpha: {alpha} \n" +
-                    //    $"beta: {beta} \n" +
-                    //    $"gamma: {gamma} \n");
+                    Wenzil.Console.Console.Log($"Received bandpower data: \n" +
+                       $"channel: {channelNumber} \n" +
+                       $"delta: {delta} \n" +
+                       $"theta: {theta} \n" +
+                       $"alpha: {alpha} \n");
 
                     brainData.leftBands.delta = delta;
                     brainData.leftBands.theta = theta;
                     brainData.leftBands.alpha = alpha;
-                    brainData.leftBands.beta = beta;
-                    brainData.leftBands.gamma = gamma;
                 }
 
                 if (channelNumber == rightChannel)
@@ -208,22 +202,16 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                     float delta = message.GetFloat(1);
                     float theta = message.GetFloat(2);
                     float alpha = message.GetFloat(3);
-                    float beta = message.GetFloat(4);
-                    float gamma = message.GetFloat(5);
 
-                    // Wenzil.Console.Console.Log($"Received bandpower data: \n" +
-                    //    $"channel: {channelNumber} \n" +
-                    //    $"delta: {delta} \n" +
-                    //    $"theta: {theta} \n" +
-                    //    $"alpha: {alpha} \n" +
-                    //    $"beta: {beta} \n" +
-                    //    $"gamma: {gamma} \n");
+                    Wenzil.Console.Console.Log($"Received bandpower data: \n" +
+                       $"channel: {channelNumber} \n" +
+                       $"delta: {delta} \n" +
+                       $"theta: {theta} \n" +
+                       $"alpha: {alpha} \n");
 
                     brainData.rightBands.delta = delta;
                     brainData.rightBands.theta = theta;
                     brainData.rightBands.alpha = alpha;
-                    brainData.rightBands.beta = beta;
-                    brainData.rightBands.gamma = gamma;
                 }
             }
             catch (System.Exception e)

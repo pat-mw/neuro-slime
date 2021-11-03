@@ -217,8 +217,6 @@ public class BrainData : SerializedScriptableObject
         public float delta;
         public float theta;
         public float alpha;
-        public float beta;
-        public float gamma;
 
         public BandPower(int _channelNo)
         {
