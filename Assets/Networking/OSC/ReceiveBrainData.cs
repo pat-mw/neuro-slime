@@ -129,7 +129,7 @@ public class ReceiveBrainData : SerializedMonoBehaviour
                 case "/band":
                     OnReceiveBandpower(message);
                     break;
-                case "/focus":
+                case "/signal":
                     OnReceiveSignal(message);
                     break;
                 case "/accelerometer":
