@@ -79,7 +79,10 @@ public class SlimeAudio : MonoBehaviour
         audioSource.Stop();
 
         AudioClip prevClip = audioSource.clip;
-        audioQueue.RemoveAt(0);
+        
+        
+        if (audioQueue.Count > 0)
+            audioQueue.RemoveAt(0);
 
         if (audioQueue.Count == 0)
         {

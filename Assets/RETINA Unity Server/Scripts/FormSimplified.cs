@@ -14,6 +14,8 @@ namespace RetinaNetworking.Server
 
         [SerializeField] List<Toggle> consentToggles;
 
+        [SerializeField] Toggle emailToggle;
+
         [SerializeField] Button button;
 
         [SerializeField] TextMeshProUGUI debugText;
@@ -83,7 +85,7 @@ namespace RetinaNetworking.Server
 
 
                 webPost.connectionParams.SetName(fullName);
-
+                webPost.connectionParams.SetEmailConsent(emailToggle.isOn);
                 webPost.RequestAuth(username, email, gender, age, language, password);
             }
             else
@@ -104,6 +106,8 @@ namespace RetinaNetworking.Server
             {
                 toggle.isOn = false;
             }
+
+            emailToggle.isOn = false;
         }
 
     }

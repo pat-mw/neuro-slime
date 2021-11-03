@@ -38,6 +38,7 @@ namespace RetinaNetworking.Server
         [SerializeField] string debugUsername = "popsjohns";
         [ShowIf("debugMode", true)]
         [SerializeField] string debugJwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTg2LCJpYXQiOjE2MzI5OTYzNjQsImV4cCI6MTYzNTU4ODM2NH0.4TIciP6yiu8HBzLyEYGV1RmHP6nyHCRnprDWjmdPUfo";
+        
         [Header("SESSION")]
         [SerializeField] string sessionToken;
         [SerializeField] int sessionId;
@@ -45,6 +46,9 @@ namespace RetinaNetworking.Server
         [Header("INFERENCE")]
         [SerializeField] bool calibrationReceived = false;
         [SerializeField] int inferenceId;
+
+        [Header("CONSENT")]
+        [SerializeField] bool emailConsent = false;
 
         [Header("MOOD")]
         [InlineEditor(InlineEditorModes.FullEditor)][OdinSerialize] MoodReport moodReport;
@@ -92,6 +96,11 @@ namespace RetinaNetworking.Server
             }
         }
 
+        public void SetEmailConsent(bool consent)
+        {
+            emailConsent = consent;
+        }
+
         public void Reset()
         {
             userID = -1;
@@ -101,6 +110,7 @@ namespace RetinaNetworking.Server
             moodReport.SetInferedMood(Mood.NEUTRAL);
             sessionId = -1;
             inferenceId = -1;
+            emailConsent = false;
         }
 
         public string SessionToken()

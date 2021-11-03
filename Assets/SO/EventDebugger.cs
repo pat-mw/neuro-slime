@@ -17,19 +17,8 @@ public class EventDebugger : SerializedMonoBehaviour
     [System.NonSerialized]
     [OdinSerialize] List<GameEvent> gameEvents;
 
-    [System.NonSerialized]
-    [OdinSerialize] private Dictionary<int, string> eventDictionary = new Dictionary<int, string>();
-
     void Start()
     {
-        //eventDictionary.Clear();
-
-        //int i = 0;
-        //foreach (GameEvent gameEvent in gameEvents)
-        //{
-        //    eventDictionary.Add(i, gameEvent.name);
-        //    i++;
-        //}
 
         int i = 0;
         foreach (GameEvent gameEvent in gameEvents)

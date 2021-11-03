@@ -17,6 +17,8 @@ namespace RetinaGraph
     [RequireComponent(typeof(LineChart))]
     public class BrainDataGrappher : SerializedMonoBehaviour
     {
+        public BoolReference isOscDebugging;
+
         public GraphChannel channel = GraphChannel.LEFT;
         public BrainData brainData;
         public GameEvent onStartGraphing;
@@ -137,13 +139,14 @@ namespace RetinaGraph
 
                     if (dataReduced[i] == 0)
                     {
-                        Debug.LogWarning($"data point value is zero - check streaming");
+                        if (isOscDebugging.Value)
+                            Wenzil.Console.Console.LogError($"data point value is zero - check streaming");
                     }
 
                     //Debug.Log($"i: {i} - value: {dataReduced[i]} - copied: {graph.GetChartData().DataSets[0].Entries[i].Value}");
                 }
 
-                // Refresh chart
+                // Refresh chart    
                 graph.SetDirty();
 
                 // delay and repeat
